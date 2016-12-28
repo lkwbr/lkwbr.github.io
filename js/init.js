@@ -21,7 +21,16 @@ function generateBoard(numRows, numCols) {
 		var row = createDOMObject(rowStr); 
 		board.append(row)
 		for (j = 0; j < numCols; j++) {
-			var cell = row.append(cellStr);
+			var cell = createDOMObject(cellStr);
+			row.append(cell);
+	
+			// Randomly activate cells
+			var rand = Math.floor(Math.random() * 2)
+			if (rand == 0) {	
+				cell.addClass("active");
+			} else {
+				cell.addClass("inactive");
+			}
 		}	
 	}	
 

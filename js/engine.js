@@ -5,9 +5,9 @@ var Engine = function(board) {
 
   var start = function() {
     // TODO: Setup and call vroom once every interval, event-driven
-  }
+  };
 
   var vroom = function() {
     // TODO
-  }
+  };
 };

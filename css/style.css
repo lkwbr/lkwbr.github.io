@@ -1,16 +1,29 @@
 /* style.css */
 
+/* States */
+
+.active {
+  background-color:orange;
+}
+
+.inactive {
+  background-color:white;
+}
+
+/* Basic */
+
 .cell {
   /* Row cells are horizontally adjacent */
   display:inline-block;
   float:left;
 
   border:0.1em solid white;
-  background-color:orange;
 
   width:3em;
   height:3em;
 }
 
-.row {
+#board {
+  display:block;
+  float:none;
 }

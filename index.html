@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 
 <!--
-BunFun: 18 Years a Faggot
-Written by Luke & Logan Weber
-Created 12/27/2016
+Written by Luke Weber (with pain)
+Forgotten by Logan Weber (with ease)
+Recieved by Ben Weber (with grace)
+Created on 12/27/2016
+
+Just a fun alteration of Conway's Game of Life
+(https://en.wikipedia.org/wiki/Conway's_Game_of_Life) with some additional
+bells and whistles
+
+*ES6 compliant
+*Strict mode in use
 -->
 
 <html>
-<head>
-  <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
-  <script type="text/javascript" src="js/engine.js" ></script>
-  <script type="text/javascript" src="js/init.js" ></script>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>  
-  <div id="board">[JavaScript not running!]</div>
-</body>
+  <head>
+    <title>lukedottec</title>
+
+    <!-- Libraries -->
+    <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="js/lib/jquery.csv.min.js" ></script>
+
+    <!-- Source -->
+    <script type="text/javascript" src="js/util.js" ></script>
+    <script type="text/javascript" src="js/grid.js" ></script>
+    <script type="text/javascript" src="js/landscape.js" ></script>
+    <script type="text/javascript" src="js/shape.js" ></script>
+    <script type="text/javascript" src="js/board.js" ></script>
+    <script type="text/javascript" src="js/engine.js" ></script>
+    <script type="text/javascript" src="js/page.js" ></script>
+    <script type="text/javascript" src="js/init.js" ></script>
+
+    <!-- Static styling -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body> 
+    <div id="page">
+      <div id="title"></div>
+      <div id="side"></div> 
+      <div id="board">
+        <div id="morgue"></div>
+
+        <!-- Conway animation -->
+        <div id="doodle"></div>
+
+        <!-- Text content of side links -->
+        <div id="content"></div>
+
+        <div id="ranks"></div>
+      </div>
+      <div id="foot"></div>
+    </div>
+  </body>
 </html>

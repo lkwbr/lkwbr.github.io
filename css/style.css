@@ -1,29 +1,144 @@
 /* style.css */
 
-/* States */
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-.active {
-  background-color:orange;
+body {
+  background-color:#FFF;
+	font-family: 'Quicksand', sans-serif;
+	color:#444;
 }
 
-.inactive {
-  background-color:white;
+a {
+	color:#428BCA;
 }
 
-/* Basic */
+.pop {
+	box-shadow:
+		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset, /* top shine */
+		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset; /* bottom shadow */ 
+
+	border-radius:1em; /* TODO: Maybe toggle this */ 
+}
+
+.pop:hover {
+	box-shadow:
+		0em 1em 0em 0em rgba(0, 0, 0, 0.15) inset,
+		0em 0.35em 0em 0em rgba(0, 0, 0, 0.25) inset;
+}
+
+#page {
+  position:absolute;
+}
+
+.frag {
+}
+
+#title {	
+	margin-top:3em;
+  margin-bottom:0.5em;
+
+	position:relative;
+}
+
+#title #landscape {
+	float:bottom;
+	position:absolute;
+	z-index:-1;
+}
+
+#title table {}
+
+#title #intro {
+  font-size:1em;
+
+  padding:0em;
+  margin:0em;
+}
+
+#title h1 {
+  font-size:4em;
+  font-weight:normal;
+
+  padding:0em;
+  margin:0em;
+}
+
+#title #handle {
+	font-size:1.25em;	
+	color:#428BCA;
+
+	margin-bottom:0.5em;
+	display:inline;
+}
+
+#title #mugshot {
+	float:right;
+}
+
+#side {
+  display:inline-block; 
+  float:right;
+}
+
+#side .frag {
+  float:left;
+  display:flex;
+}
+
+#side #links {
+	margin-top:2em;
+	margin-left:1.5em;
+}
+
+#side #links a {
+	display:block;
+}
+
+#board {
+  display:inline-block;
+}
+
+#morgue .frag {
+  float:left;
+  display:flex;
+  margin-bottom:1em;
+}
+
+#doodle { }
 
 .cell {
   /* Row cells are horizontally adjacent */
   display:inline-block;
-  float:left;
-
-  border:0.1em solid white;
-
-  width:3em;
-  height:3em;
 }
 
-#board {
-  display:block;
-  float:none;
+.row {
+  /* HACK: Gets rid of that pesky vertical row spacing */
+  margin-bottom:-0.25em;
+}
+
+#ranks { 
+  padding-top:1em;
+}
+
+#ranks .swatch {
+  float:left;
+  display:flex;
+
+  background-color:black; /* default */
+}
+
+#foot {
+	margin-top:0.5em;
+	margin-bottom:5em;
+
+	font-size:0.85em;
+}
+
+#foot div {
+	float:right;
+	clear:right;
+}
+
+#foot i {
+	color:#AAA;
 }

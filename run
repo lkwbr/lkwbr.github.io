@@ -1,3 +1,4 @@
 #!/bin/bash
 
-chromium index.html
+# Start simple http webserver at localhost:8000 for cwd
+python3 -m http.server --bind localhost 8000

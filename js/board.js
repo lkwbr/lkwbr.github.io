@@ -145,6 +145,11 @@ class Board {
     });
   }
 
+  getRandomColor() {
+    var i = Math.floor(Math.random() * this.palette.length);
+    var color = this.palette[i];
+  }
+
   isInBounds(row, col) {
     if ((row < 0) || (row >= this.numRows) || (col < 0) || (col >= this.numCols)) {
       return false; 

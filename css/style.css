@@ -12,6 +12,12 @@ a {
 	color:#428BCA;
 }
 
+.sep {
+  color:#a8a8a8;
+	font-style:normal;
+  display:inline;
+}
+
 .pop {
 	box-shadow:
 		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset, /* top shine */
@@ -22,6 +28,14 @@ a {
 
 .pop:hover {
 	box-shadow:
+		0em 0.25em 0.5em 0em rgba(255, 255, 255, 0.25) inset, /* top shine */
+		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset, /* bottom shadow */ 
+		0em 0.25em 0.125em 0em rgba(0, 0, 0, 0.175); /* back shadow */ 
+
+}
+
+.pop:active {
+	box-shadow:
 		0em 1em 0em 0em rgba(0, 0, 0, 0.15) inset,
 		0em 0.35em 0em 0em rgba(0, 0, 0, 0.25) inset;
 }
@@ -30,13 +44,10 @@ a {
   position:absolute;
 }
 
-.frag {
-}
+.frag { }
 
 #title {	
 	margin-top:3em;
-  margin-bottom:0.5em;
-
 	position:relative;
 }
 
@@ -46,7 +57,7 @@ a {
 	z-index:-1;
 }
 
-#title table {}
+#title table { }
 
 #title #intro {
   font-size:1em;
@@ -63,11 +74,17 @@ a {
   margin:0em;
 }
 
-#title #handle {
+#title #subtitle {
 	font-size:1.25em;	
-	color:#428BCA;
+  color:#a8a8a8;
 
 	margin-bottom:0.5em;
+}
+
+#title #handle {
+	font-style:normal;
+	color:#428BCA;
+
 	display:inline;
 }
 
@@ -85,13 +102,26 @@ a {
   display:flex;
 }
 
-#side #links {
+#side #links { 
 	margin-top:2em;
 	margin-left:1.5em;
 }
 
 #side #links a {
 	display:block;
+}
+
+#side table {
+	margin-top:1.5em;
+	margin-left:1.5em;
+} 
+
+#side table img {
+	opacity:0.5;	
+}
+
+#side table img:hover {
+	opacity:1;	
 }
 
 #board {

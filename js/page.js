@@ -97,12 +97,6 @@ class Page {
 		frags[0].css("background-color", color);
   }
 
-  graveyard() {
-    // TODO: Randomly pile up dead bodies below
-    // TODO: Be able to select individual cells by hovering
-    // TODO: Find a way to sustain the game longer with cooler patterns
-  }
-
   setupWidth() {
     // Set page width to board
     var bw = $(this.board.width()).toPx();
@@ -144,7 +138,7 @@ class Page {
     });
 
     // Side pane link events
-    var linkLoadMap = {
+    var pathLoadMap = {
       "home":self.loadHome,
       "about":self.loadAbout,
       "projects":self.loadProjects,
@@ -152,12 +146,23 @@ class Page {
       "academics":self.loadAcademics,
       "resume":self.loadResume
     }; 
-    $("#side #links a").click(function(e) {
-      // Get link name
-      var linkName = e.target.pathname.substring(1); 
-      var linkLoadFunc = linkLoadMap[linkName]; 
-      
-      linkLoadFunc(self);
+
+		// Handle custom and outsid links
+    $("a").click(function(e) {
+
+      // Check if custom link	
+			if (e.target.pathname != null) {
+				var pathName = e.target.pathname.substring(1); 
+				var pathLoadFunc = pathLoadMap[pathName]; 
+				if (pathLoadFunc != null) {
+					// Load custom content
+					pathLoadFunc(self);
+					return;
+				}
+			} 
+
+			// Regular link
+			window.location.href = e.currentTarget.href; 	
     });
   }
 
@@ -225,19 +230,20 @@ class Page {
 		// Content
 		var introStr = "<p id='intro'>hello friend, my name is</p>";
 		var nameStr = "<h1>luke weber</h1>";
-		var handleStr = "<div id='handle'>@lukedottec</div> // computer scientist // n00b";
+    var sep = "<p class='sep'>//</p>";
+		var subtitleStr = "<div id = 'subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
 		var mugshotStr = "<div id='mugshot'></div>";
 
 		var intro = createDOMObject(introStr);
 		var name = createDOMObject(nameStr);
-		var handle = createDOMObject(handleStr);
+		var subtitle = createDOMObject(subtitleStr);
 		this.mugshot = createDOMObject(mugshotStr);
 		this.loadMugshot(this.mugshot);
 
 		// Connection
 		tableColLeft.append(intro);	
 		tableColLeft.append(name);	
-		tableColLeft.append(handle);	
+		tableColLeft.append(subtitle);	
 		tableColRight.append(this.mugshot);	
 		tableRow.append(tableColLeft);
 		tableRow.append(tableColRight);
@@ -269,15 +275,23 @@ class Page {
 	}
 
 	loadShape() {
-		
-		// Determine origin		
-		
 
-		
-		this.shape = new Shape();	
-		
-		// Load shape into landscape	
-		this.landscape.loadShape(this.shape);
+    // Origin for shape
+    var row = Math.floor(this.landscape.numRows * 0.5); 
+    var col = Math.floor(this.landscape.numCols * 0.75); 
+    var origin = [row, col];
+
+    // Load shape, giving it landscape and origin
+		this.shape = new FollowerShape(this.landscape);	
+    this.shape.setOrigin(origin);
+
+    // Setup mouse over event
+    var self = this;
+    console.log(this.landscapeE);
+    this.titleE.mousemove(function(e) {
+      console.log("mouse over landscape"); 
+      self.shape.draw();
+    });
 	}
 
 	loadMugshot(mugshot) {
@@ -315,10 +329,54 @@ class Page {
       links.append(l);
     });
     this.sideE.append(links);
+
+    // Social media
+    var tableStr = "<table></table"; 
+    var tableRowStr = "<tr></tr>"; 
+    var tableColStr = "<td></td>"; 
+		var linkStr = "<a></a>";
+		var imgStr = "<img>";
+
+    var imgLinkMap = {
+			"row1":{
+				"res/images/github.png":"https://github.com/lukedottec",
+				"res/images/linkedin.png":"https://www.linkedin.com/in/lukedottec",
+			},
+			"row2":{
+				"res/images/facebook.png":"https://www.facebook.com/lukedottec",
+				"res/images/email.png":"mailto:lukedottec@gmail.com"
+			}
+    };
+
+		var table = createDOMObject(tableStr);
+		for (var r in imgLinkMap) {
+			var o = imgLinkMap[r];
+			var row = createDOMObject(tableRowStr);
+
+			for (var l in o) {
+				var url = o[l]; 
+				var col = createDOMObject(tableColStr);
+
+				var link = createDOMObject(linkStr);
+				var img = createDOMObject(imgStr);	
+				link.attr("href", url);
+				console.log("url = " + url);
+				img.attr("src", l);
+				img.css("width", this.cellSize * 1.5 + "em");
+				img.css("height", this.cellSize * 1.5 + "em");
+
+				link.append(img);
+				col.append(link);
+				row.append(col);	
+			} 	
+			table.append(row);	
+		}
+		this.sideE.append(table);		
+
   }
 
   loadFoot() {
     // Smelly
-		this.footE.html("<div>MultiConway <a href='.'>[Source]</a></div><div><i>Variation of Conway's Game of Life</i></div>");	
+		this.footE.html("<div>MultiConway [<a href='https://github.com/lukedottec/BunFun'>Source</a>]</div><div><i>Variation of Conway's Game of Life</i></div>");	
   }
 }

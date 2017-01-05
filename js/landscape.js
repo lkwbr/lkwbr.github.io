@@ -1,5 +1,7 @@
 /* landscape.js */
 
+/* Landscape grid given to shape to animate on */
+
 "use strict";
 
 class Landscape extends Grid {
@@ -68,9 +70,4 @@ class Landscape extends Grid {
 			}, 100);
 		}, Math.random() * 1000);
 	}
-
-  loadShape(shape) {
-    // TODO
-    // Create interface contract for a shape and use "extends"
-  }
 }

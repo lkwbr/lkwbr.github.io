@@ -15,7 +15,7 @@ class Grid {
   setCell(cell, row, col) { }
 }
 
-
+// TODO: Implement the MVC model below
 
 // Manipulated by controller, updates view
 class Model {

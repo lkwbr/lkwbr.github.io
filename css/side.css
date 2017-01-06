@@ -1,0 +1,33 @@
+/* side.css */
+
+#side {
+  display:inline-block; 
+  float:right;
+}
+
+#side .frag {
+  float:left;
+  display:flex;
+}
+
+#side #links {
+	margin-top:2em;
+	margin-left:1.5em;
+}
+
+#side #links d-a {
+	display:block;
+}
+
+#side table {
+	margin-top:1.25em;
+	margin-left:1.5em;
+}
+
+#side table d-a {
+  opacity:0.25;
+}
+
+#side table d-a:hover {
+  opacity:1;
+}

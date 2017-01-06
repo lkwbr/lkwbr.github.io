@@ -1,0 +1,34 @@
+/* board.css */
+
+#board {
+  display:inline-block;
+}
+
+#morgue .frag {
+  float:left;
+  display:flex;
+  margin-bottom:1em;
+}
+
+#doodle { }
+
+.cell {
+  /* Row cells are horizontally adjacent */
+  display:inline-block;
+}
+
+.row {
+  /* HACK: Gets rid of that pesky vertical row spacing */
+  margin-bottom:-0.25em;
+}
+
+#ranks { 
+  padding-top:1em;
+}
+
+#ranks .swatch {
+  float:left;
+  display:flex;
+
+  background-color:black; /* default */
+}

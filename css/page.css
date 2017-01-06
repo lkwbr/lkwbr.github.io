@@ -1,0 +1,54 @@
+/* page.css */
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body {
+  background-color:#FFF;
+	font-family: 'Quicksand', sans-serif;
+	color:#444;
+}
+
+d-a {
+  display:inline;
+	color:#428BCA;
+  text-decoration:underline;
+}
+
+d-a:hover {
+  cursor:pointer;
+}
+
+.sep {
+  color:#A1A1A1;
+  display:inline;
+}
+
+.pop {
+	box-shadow:
+		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset, /* top shine */
+		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset; /* bottom shadow */ 
+
+	border-radius:1em; /* TODO: Maybe toggle this */ 
+}
+
+.pop:hover {
+	box-shadow:
+		0em 0.5em 0.5em 0em rgba(255, 255, 255, 0.15) inset, /* light */
+		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset, /* bottom shadow */ 
+		0em 0.25em 0.5em 0em rgba(0, 0, 0, 0.25); /* backdrop */
+
+  cursor:pointer;
+}
+
+.pop:active {
+	box-shadow:
+		0em 1em 0em 0em rgba(0, 0, 0, 0.15) inset,
+		0em 0.35em 0em 0em rgba(0, 0, 0, 0.25) inset;
+}
+
+#page {
+  position:absolute;
+}
+
+.frag {
+}

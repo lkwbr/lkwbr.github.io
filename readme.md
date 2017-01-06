@@ -1,4 +1,4 @@
-# BunFun
+# Personal Website
 
 ![alt tag](res/images/screenshot_1.png)
 

@@ -8,13 +8,18 @@ body {
 	color:#444;
 }
 
-a {
+d-a {
+  display:inline;
 	color:#428BCA;
+  text-decoration:underline;
+}
+
+d-a:hover {
+  cursor:pointer;
 }
 
 .sep {
-  color:#a8a8a8;
-	font-style:normal;
+  color:#A1A1A1;
   display:inline;
 }
 
@@ -28,26 +33,24 @@ a {
 
 .pop:hover {
 	box-shadow:
-		0em 0.25em 0.5em 0em rgba(255, 255, 255, 0.25) inset, /* top shine */
-		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset, /* bottom shadow */ 
-		0em 0.25em 0.125em 0em rgba(0, 0, 0, 0.175); /* back shadow */ 
-
-}
-
-.pop:active {
-	box-shadow:
 		0em 1em 0em 0em rgba(0, 0, 0, 0.15) inset,
 		0em 0.35em 0em 0em rgba(0, 0, 0, 0.25) inset;
+  cursor:pointer;
 }
 
 #page {
   position:absolute;
 }
 
-.frag { }
+.frag {
+}
+
+/* Title */
 
 #title {	
 	margin-top:3em;
+  margin-bottom:0.5em;
+
 	position:relative;
 }
 
@@ -57,7 +60,7 @@ a {
 	z-index:-1;
 }
 
-#title table { }
+#title table {}
 
 #title #intro {
   font-size:1em;
@@ -75,22 +78,23 @@ a {
 }
 
 #title #subtitle {
+	display:inline;
 	font-size:1.25em;	
-  color:#a8a8a8;
-
-	margin-bottom:0.5em;
+  color:#A1A1A1;
 }
 
 #title #handle {
-	font-style:normal;
 	color:#428BCA;
 
+	margin-bottom:0.5em;
 	display:inline;
 }
 
 #title #mugshot {
 	float:right;
 }
+
+/* Side */
 
 #side {
   display:inline-block; 
@@ -102,27 +106,29 @@ a {
   display:flex;
 }
 
-#side #links { 
+#side #links {
 	margin-top:2em;
 	margin-left:1.5em;
 }
 
-#side #links a {
+#side #links d-a {
 	display:block;
 }
 
 #side table {
-	margin-top:1.5em;
+	margin-top:1.25em;
 	margin-left:1.5em;
-} 
-
-#side table img {
-	opacity:0.5;	
 }
 
-#side table img:hover {
-	opacity:1;	
+#side table d-a {
+  opacity:0.25;
 }
+
+#side table d-a:hover {
+  opacity:1;
+}
+
+/* Board */
 
 #board {
   display:inline-block;
@@ -156,6 +162,8 @@ a {
 
   background-color:black; /* default */
 }
+
+/* Foot */
 
 #foot {
 	margin-top:0.5em;

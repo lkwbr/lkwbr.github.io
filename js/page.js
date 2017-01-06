@@ -40,6 +40,7 @@ class Page {
   // Party starts
   init() {
 		// NOTE: Order of these calls is very important
+    this.createCustomElements();
 
     // Load title, board, and side panel
     this.loadTitle(); 
@@ -57,8 +58,21 @@ class Page {
     $(window).resize();
   }
 
+  createCustomElements() {
+    // Motivation: I'm a control freak. GitHub pages will not allow link 
+    // clicks to be stopped and processed with custom JS code; rather, 
+    // they just redirect to the URL anyways! I want to dynamically load content
+    // on this page without any silly redirects. Thus, I create my own type
+    // of link that GitHub cannot interfere with.
+    
+    // Short for "dynamic link"
+    var DLink = document.registerElement("d-a", {
+      prototype: Object.create(HTMLElement.prototype)
+    }); 
+  }
+
   fragHandler(e) {
-    //console.log(e);
+
     var color = e.color.color;
     var context = e.context;
 
@@ -132,11 +146,6 @@ class Page {
     // Subscribe to board's "frag" line
     this.board.subscribe("frag", this, this.fragHandler);
     
-    // Stop link redirecting
-    $('a').click(function() {
-      return false;
-    });
-
     // Side pane link events
     var pathLoadMap = {
       "home":self.loadHome,
@@ -148,21 +157,20 @@ class Page {
     }; 
 
 		// Handle custom and outsid links
-    $("a").click(function(e) {
-
+    $("d-a").click(function(e) {
+      // Get link
+      var href = e.currentTarget.attributes["href"].value;
+     
       // Check if custom link	
-			if (e.target.pathname != null) {
-				var pathName = e.target.pathname.substring(1); 
+			if (href.substring(0, 2) == "./") {
+				// Load custom content
+				var pathName = href.substring(2); 
 				var pathLoadFunc = pathLoadMap[pathName]; 
-				if (pathLoadFunc != null) {
-					// Load custom content
-					pathLoadFunc(self);
-					return;
-				}
-			} 
-
-			// Regular link
-			window.location.href = e.currentTarget.href; 	
+				pathLoadFunc(self);
+			} else { 
+        // Regular link
+        window.location.href = href; 	
+      }
     });
   }
 
@@ -231,7 +239,7 @@ class Page {
 		var introStr = "<p id='intro'>hello friend, my name is</p>";
 		var nameStr = "<h1>luke weber</h1>";
     var sep = "<p class='sep'>//</p>";
-		var subtitleStr = "<div id = 'subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
+		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
 		var mugshotStr = "<div id='mugshot'></div>";
 
 		var intro = createDOMObject(introStr);
@@ -324,7 +332,7 @@ class Page {
     // Write links
     var linkTopics = ["home", "about", "projects", "research", "academics", "resume"];
     linkTopics.forEach(function(item) {
-      var ls = "<a href='./" + item +"'>" + item + "</a>";
+      var ls = "<d-a href='./" + item +"'>" + item + "</d-a>";
       var l = createDOMObject(ls);
       links.append(l);
     });
@@ -334,7 +342,7 @@ class Page {
     var tableStr = "<table></table"; 
     var tableRowStr = "<tr></tr>"; 
     var tableColStr = "<td></td>"; 
-		var linkStr = "<a></a>";
+		var linkStr = "<d-a></d-a>";
 		var imgStr = "<img>";
 
     var imgLinkMap = {
@@ -377,6 +385,6 @@ class Page {
 
   loadFoot() {
     // Smelly
-		this.footE.html("<div>MultiConway [<a href='https://github.com/lukedottec/BunFun'>Source</a>]</div><div><i>Variation of Conway's Game of Life</i></div>");	
+		this.footE.html("<div>MultiConway [<d-a href='https://github.com/lukedottec/BunFun'>Source</d-a>]</div><div><i>Variation of Conway's Game of Life</i></div>");	
   }
 }

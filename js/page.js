@@ -1,6 +1,6 @@
 /* page.js */
 
-/* Handles pagelets and such for navigation */
+/* "The Big Cheese": Handles pagelets, interactions, and such for whole page */
 
 "use strict";
 
@@ -207,7 +207,7 @@ class Page {
     el.css({
       position:"absolute",
       left: ($(window).width() - el.outerWidth()) / 2,
-      top: ($(window).height() - el.outerHeight()) / 2
+      //top: ($(window).height() - el.outerHeight()) / 2
     });
   }
 

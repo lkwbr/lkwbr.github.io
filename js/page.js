@@ -151,6 +151,7 @@ class Page {
       "home":self.loadHome,
       "about":self.loadAbout,
       "projects":self.loadProjects,
+      "events":self.loadEvents,
       "research":self.loadResearch,
       "academics":self.loadAcademics,
       "resume":self.loadResume
@@ -187,6 +188,11 @@ class Page {
   loadProjects(self) {
     self.board.hide();
     self.contentE.load("res/content/projects.html");
+  }
+
+  loadEvents(self) {
+    self.board.hide();
+    self.contentE.load("res/content/events.html");
   }
 
   loadResearch(self) {
@@ -330,7 +336,8 @@ class Page {
     var links = createDOMObject(linksString); 
     
     // Write links
-    var linkTopics = ["home", "about", "projects", "research", "academics", "resume"];
+    // TODO: Automatically pull these from /res/content
+    var linkTopics = ["home", "about", "projects", "events", "research", "academics", "resume"];
     linkTopics.forEach(function(item) {
       var ls = "<d-a href='./" + item +"'>" + item + "</d-a>";
       var l = createDOMObject(ls);

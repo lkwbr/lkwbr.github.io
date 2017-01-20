@@ -173,6 +173,12 @@ class Page {
         window.location.href = href; 	
       }
     });
+
+    // Cell presses
+    $(".pop").click(function(e) {
+      // TODO: React to cell press
+      console.log("Cell clicked!");
+    });
   }
 
   loadHome(self) {

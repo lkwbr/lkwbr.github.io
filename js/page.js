@@ -229,6 +229,9 @@ class Page {
 
     // Kick 'em in the balls
     this.engine.start();
+
+    // Hide non-Chrome user warning
+    this.contentE.hide();
   }
 
   loadTitle() {

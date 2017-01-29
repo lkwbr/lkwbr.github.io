@@ -40,6 +40,11 @@ $.fn.toPx = function(settings){
     return Math.round(that * scopeVal) + 'px';
 };
 
+// Get outer + inner html
+jQuery.fn.outerHTML = function() {
+	return jQuery('<div />').append(this.eq(0).clone()).html();
+};
+
 // Returns new DOM object from string
 function createDOMObject(s) {
 	return $("<div/>").html(s).contents();

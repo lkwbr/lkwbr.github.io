@@ -42,6 +42,8 @@ class Page {
 		// NOTE: Order of these calls is very important
     this.createCustomElements();
 
+    this.setupFavicon();
+
     // Load title, board, and side panel
     this.loadTitle(); 
     this.loadBoard(); 
@@ -56,6 +58,46 @@ class Page {
 
     // Adjust window
     $(window).resize();
+  }
+
+  // Randomly create favicon
+	// TODO: Extract main functionality into library function (second commit)
+  setupFavicon() {
+
+    let canvas = createDOMObject("<canvas></canvas>");
+    let context = canvas[0].getContext("2d");
+ 		// TODO: Add inline styling
+		let icon = createDOMObject("<div xmlns='http://www.w3.org/1999/xhtml'><h1>FUCK</h1></div>");
+		//let popCSS = $(".pop").css();
+		//icon.css(popCSS);
+		icon.addClass("pop");
+		
+    let data = "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>" +
+             		"<foreignObject width='100%' height='100%'>" +
+									icon.outerHTML() +	
+             		"</foreignObject>" +
+           		"</svg>"; 
+
+		console.log(data);
+
+		let DOMURL = self.URL || self.webkitURL || self;
+		let img = new Image();
+		let svg = new Blob([data], {type: "image/svg+xml;charset=utf-8"});
+		let url = DOMURL.createObjectURL(svg);
+		img.onload = function() {
+			context.drawImage(img, 0, 0);
+			DOMURL.revokeObjectURL(url);
+
+			var png = canvas[0].toDataURL("image/png");	
+			console.log(png);
+		};
+		img.src = url;
+		
+		$("#dynamic-favicon").attr("href", url);		
+
+		//this.pageE.append(img);
+
+    // Link to favicon.png
   }
 
   createCustomElements() {

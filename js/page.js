@@ -78,8 +78,6 @@ class Page {
              		"</foreignObject>" +
            		"</svg>"; 
 
-		console.log(data);
-
 		let DOMURL = self.URL || self.webkitURL || self;
 		let img = new Image();
 		let svg = new Blob([data], {type: "image/svg+xml;charset=utf-8"});
@@ -87,13 +85,15 @@ class Page {
 		img.onload = function() {
 			context.drawImage(img, 0, 0);
 			DOMURL.revokeObjectURL(url);
-
-			var png = canvas[0].toDataURL("image/png");	
-			console.log(png);
 		};
 		img.src = url;
 		
-		$("#dynamic-favicon").attr("href", url);		
+    // Remove past, add new
+    changeFavicon(url);
+
+    // TODO: Figure out how to go from img -> favicon
+
+    console.log(img);
 
 		//this.pageE.append(img);
 
@@ -352,9 +352,8 @@ class Page {
 
     // Setup mouse over event
     var self = this;
-    console.log(this.landscapeE);
     this.titleE.mousemove(function(e) {
-      console.log("mouse over landscape"); 
+      //console.log("mouse over landscape"); 
       self.shape.draw();
     });
 	}
@@ -426,7 +425,6 @@ class Page {
 				var link = createDOMObject(linkStr);
 				var img = createDOMObject(imgStr);	
 				link.attr("href", url);
-				console.log("url = " + url);
 				img.attr("src", l);
 				img.css("width", this.cellSize * 1.5 + "em");
 				img.css("height", this.cellSize * 1.5 + "em");

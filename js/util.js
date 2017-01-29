@@ -1,5 +1,19 @@
 /* util.js */
 
+// Dynamically change favicon
+// Source: https://gist.github.com/mathiasbynens/428626
+function changeFavicon(src) {
+  var link = document.createElement('link'),
+       oldLink = document.getElementById('dynamic-favicon');
+  link.id = 'dynamic-favicon';
+  link.rel = 'shortcut icon';
+  link.src = src;
+  if (oldLink) {
+     document.head.removeChild(oldLink);
+    }
+  document.head.appendChild(link);
+}
+
 // Enable the passage of the 'this' object through the JavaScript timers
 // Great help from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval
 var __nativeST__ = window.setTimeout, __nativeSI__ = window.setInterval;

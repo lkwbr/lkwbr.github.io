@@ -231,26 +231,31 @@ class Page {
   loadAbout(self) {
     self.board.hide();
     self.contentE.load("res/content/about.html");
+    self.contentE.show();
   }
   
   loadProjects(self) {
     self.board.hide();
     self.contentE.load("res/content/projects.html");
+    self.contentE.show();
   }
 
   loadEvents(self) {
     self.board.hide();
     self.contentE.load("res/content/events.html");
+    self.contentE.show();
   }
 
   loadResearch(self) {
     self.board.hide();
     self.contentE.load("res/content/research.html");
+    self.contentE.show();
   }
   
   loadAcademics(self) {
     self.board.hide();
     self.contentE.load("res/content/academics.html");
+    self.contentE.show();
   }
   
   loadResume(self) {

@@ -230,31 +230,31 @@ class Page {
 
   loadAbout(self) {
     self.board.hide();
-    self.contentE.load("res/content/about.html");
+    self.contentE.load("res/content/main/about.html");
     self.contentE.show();
   }
   
   loadProjects(self) {
     self.board.hide();
-    self.contentE.load("res/content/projects.html");
+    self.contentE.load("res/content/main/projects.html");
     self.contentE.show();
   }
 
   loadEvents(self) {
     self.board.hide();
-    self.contentE.load("res/content/events.html");
+    self.contentE.load("res/content/main/events.html");
     self.contentE.show();
   }
 
   loadResearch(self) {
     self.board.hide();
-    self.contentE.load("res/content/research.html");
+    self.contentE.load("res/content/main/research.html");
     self.contentE.show();
   }
   
   loadAcademics(self) {
     self.board.hide();
-    self.contentE.load("res/content/academics.html");
+    self.contentE.load("res/content/main/academics.html");
     self.contentE.show();
   }
   
@@ -366,6 +366,12 @@ class Page {
 	loadMugshot(mugshot) {
 		var img = createDOMObject("<img src='https://s-media-cache-ak0.pinimg.com/236x/9a/3b/1d/9a3b1df438ed9966344b79720da5f211.jpg' />");
 		//mugshot.append(img);						
+    mugshot.load("res/content/quotes/dalai_lama.html");
+    mugshot.width("16em");
+    mugshot.css({
+      "color":"gray", 
+      "font-style":"italic"
+    });
 	}
 
   loadSide() {

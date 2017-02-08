@@ -299,7 +299,7 @@ class Page {
 
 		// Content
 		var introStr = "<p id='intro'>hello friend, my name is</p>";
-		var nameStr = "<h1>luke weber</h1>";
+		var nameStr = "<h1>LUKE WEBER</h1>";
     var sep = "<p class='sep'>//</p>";
 		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
 		var mugshotStr = "<div id='mugshot'></div>";
@@ -364,10 +364,22 @@ class Page {
 	}
 
 	loadMugshot(mugshot) {
-		var img = createDOMObject("<img src='https://s-media-cache-ak0.pinimg.com/236x/9a/3b/1d/9a3b1df438ed9966344b79720da5f211.jpg' />");
-		//mugshot.append(img);						
-    mugshot.load("res/content/quotes/dalai_lama.html");
-    mugshot.width("16em");
+		//var img = createDOMObject("<img src='https://s-media-cache-ak0.pinimg.com/236x/9a/3b/1d/9a3b1df438ed9966344b79720da5f211.jpg' />");
+
+    var imgWrapper = createDOMObject("<div></div>");
+		var img = createDOMObject("<img src='https://s-media-cache-ak0.pinimg.com/736x/ef/52/57/ef52572624d3fd7a1aff27acd0aa0fe0.jpg' />");
+    imgWrapper.width("13em");
+    img.css({
+      "width": "7em",
+      "display": "block",
+      "margin": "auto",
+      "opaciy": "0.75"
+    });
+    imgWrapper.append(img);
+		mugshot.append(imgWrapper);						
+
+    //mugshot.load("res/content/quotes/dalai_lama.html");
+    //mugshot.width("13em");
     mugshot.css({
       "color":"gray", 
       "font-style":"italic"

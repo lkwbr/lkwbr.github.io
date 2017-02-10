@@ -367,13 +367,13 @@ class Page {
 		//var img = createDOMObject("<img src='https://s-media-cache-ak0.pinimg.com/236x/9a/3b/1d/9a3b1df438ed9966344b79720da5f211.jpg' />");
 
     var imgWrapper = createDOMObject("<div></div>");
-		var img = createDOMObject("<img src='http://poloclub.gatech.edu/mmap/image/rocket-icon.png' />");
+		var img = createDOMObject("<img src='res/images/mugshot.png' />");
     imgWrapper.width("13em");
     img.css({
       "width": "7em",
       "display": "block",
       "margin": "auto",
-      "opacity": "0.15"
+      "opacity": "http://poloclub.gatech.edu/mmap/image/rocket-icon.png1"
     });
     imgWrapper.append(img);
 		mugshot.append(imgWrapper);						

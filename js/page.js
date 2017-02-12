@@ -6,6 +6,11 @@
 
 class Page {
   constructor() {
+    
+    // Color palette
+    this.paletteLoc = "res/palettes/palette_3.csv";
+    this.palette = null;
+
     // Main page elements
     this.pageE = $("#page");
     this.titleE = $("#title");
@@ -39,9 +44,11 @@ class Page {
 
   // Party starts
   init() {
+
+    this.loadPalette();
+
 		// NOTE: Order of these calls is very important
     this.createCustomElements();
-
     this.setupFavicon();
 
     // Load title, board, and side panel
@@ -58,6 +65,54 @@ class Page {
 
     // Adjust window
     $(window).resize();
+  }
+
+  loadFriendishWord() {
+
+    let friendishLoc = "res/content/words/friendish.csv";
+
+    jQuery.get(friendishLoc, function(data) {
+
+      let arrs = $.csv.toArrays(data);
+      let rando = Math.ceil(Math.random() * (arrs.length - 1)); 
+
+      let noun = arrs[rando][0];
+      let lang = arrs[rando][1];
+
+      $("#friendish").text(noun).attr("title", lang);        
+    });
+
+  }
+
+  // Populate CSS from CSV palette
+  loadPalette() {
+
+    let palette = [];
+
+    // TODO: Remove syncronous CSV fetching
+    jQuery.ajaxSetup({ async:false });
+    this.getPaletteCSV(function(data) {
+      var arrs = $.csv.toArrays(data);
+      for (var i = 1; i < arrs.length; i++) {
+        palette.push(arrs[i][1]); 
+      }
+      jQuery.ajaxSetup({ async:true });
+    });
+
+    this.palette = palette;
+    return palette;
+  }
+
+  getPaletteCSV(callback) {
+    jQuery.get(this.paletteLoc, function(data) {
+      callback(data);        
+    });
+  }
+
+  getRandomColor() {
+    var i = Math.floor(Math.random() * this.palette.length);
+    var color = this.palette[i];
+    return color;
   }
 
   // Randomly create favicon
@@ -98,6 +153,28 @@ class Page {
 		//this.pageE.append(img);
 
     // Link to favicon.png
+  }
+
+  generateColorNoun() {
+    // Give random noun with random background color
+    let color = this.getRandomColor();
+    let noun = "--";
+    let padFact = 0.75;
+
+    let friendish = createDOMObject("<span></span>").text(noun).css({
+      "background-color": color,
+      "font-weight": "bold",
+      "color": "white",
+      "padding-top": (padFact * 0.25) + "em",
+      "padding-left": (padFact * 0.5) + "em",
+      "padding-right": (padFact * 0.5) + "em",
+      "padding-bottom": (padFact * 0.5) + "em",
+    }).attr("id", "friendish").addClass("pop").outerHTML();
+
+    // Async: fetch friend word
+    this.loadFriendishWord();
+
+    return friendish;
   }
 
   createCustomElements() {
@@ -271,7 +348,8 @@ class Page {
   }
 
   loadBoard() {
-    this.board = new Board(this.boardE, this.doodleE, this.morgueE, this.ranksE, this.cellSize, this.boardSize, this.boardSize);
+    this.board = new Board(this.boardE, this.doodleE, this.morgueE, this.ranksE, 
+      this.cellSize, this.boardSize, this.boardSize, this.palette);
     this.engine = new Engine(this.board, this.renderRate);
 
     // Kick 'em in the balls
@@ -298,7 +376,8 @@ class Page {
 		var tableColRight = createDOMObject(tableColStr);
 
 		// Content
-		var introStr = "<p id='intro'>hello friend, my name is</p>";
+    var noun = this.generateColorNoun();
+		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>my name is</i></p>";
 		var nameStr = "<h1>LUKE WEBER</h1>";
     var sep = "<p class='sep'>//</p>";
 		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";

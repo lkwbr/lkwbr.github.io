@@ -70,7 +70,8 @@ class Queue {
 }
 
 class Board {
-  constructor(panel, el, title, info, cellSize, numRows, numCols) {
+  constructor(panel, el, title, info, cellSize, numRows, numCols, palette) {
+    
 		// TODO: Rename
     this.init = true;
 
@@ -95,8 +96,7 @@ class Board {
 		this.morgue = new Queue(); 
 
 		// Setup UI (partly) 
-    this.paletteLoc = "res/palettes/palette_3.csv";
-    this.palette = this.getPalette();
+    this.palette = palette; 
     this.palettePop = Array.apply(null, Array(this.palette.length)).map(function (x, i) { return i; });
     this.cells = this.generate(numRows, numCols);
   }
@@ -120,35 +120,7 @@ class Board {
     }	
 
     return cells;
-  } 
-
-  // Populate CSS from CSV palette
-  getPalette() {
-    var palette = [];
-
-    // TODO: Remove syncronous CSV fetching
-    jQuery.ajaxSetup({ async:false });
-    this.getPaletteCSV(function(data) {
-      var arrs = $.csv.toArrays(data);
-      for (var i = 1; i < arrs.length; i++) {
-        palette.push(arrs[i][1]); 
-      }
-      jQuery.ajaxSetup({ async:true });
-    });
-
-    return palette;
-  }
-
-  getPaletteCSV(callback) {
-    jQuery.get(this.paletteLoc, function(data) {
-      callback(data);        
-    });
-  }
-
-  getRandomColor() {
-    var i = Math.floor(Math.random() * this.palette.length);
-    var color = this.palette[i];
-  }
+  }  
 
   isInBounds(row, col) {
     if ((row < 0) || (row >= this.numRows) || (col < 0) || (col >= this.numCols)) {

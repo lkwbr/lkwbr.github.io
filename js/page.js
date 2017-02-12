@@ -443,7 +443,6 @@ class Page {
 	}
 
 	loadMugshot(mugshot) {
-		//var img = createDOMObject("<img src='https://s-media-cache-ak0.pinimg.com/236x/9a/3b/1d/9a3b1df438ed9966344b79720da5f211.jpg' />");
 
     var imgWrapper = createDOMObject("<div></div>");
 		var img = createDOMObject("<img src='res/images/mugshot.png' />");
@@ -452,17 +451,15 @@ class Page {
       "width": "7em",
       "display": "block",
       "margin": "auto",
-      "opacity": "http://poloclub.gatech.edu/mmap/image/rocket-icon.png1"
+      "opacity": "1"
     });
     imgWrapper.append(img);
 		mugshot.append(imgWrapper);						
 
-    //mugshot.load("res/content/quotes/dalai_lama.html");
-    //mugshot.width("13em");
     mugshot.css({
       "color":"gray", 
       "font-style":"italic"
-    });
+    }).attr("title", "Hiding under the floorboards, I have finally found you...");
 	}
 
   loadSide() {

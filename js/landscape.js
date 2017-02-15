@@ -16,8 +16,11 @@ class Landscape extends Grid {
     this.numRows = null;
     this.numCols = null;
 
-    // Cells will be DOM (not JS) objects
-    this.cells = null;
+    // Cells will be DOM (not JS) objects, which
+    // are a 1-D array treated logically as a 
+    // 2-D array
+    this.cells = [];
+    this.cellSize = 1; // em
 
     this.init(); 
   }
@@ -39,22 +42,27 @@ class Landscape extends Grid {
 		var rowStr = "<div class='row'></div>";
 	
 		// Create grid
-    var cells = [];
 		for (var i = 0; i < this.numRows; i++) {
 			var row = createDOMObject(rowStr);	
 			for (var j = 0; j < this.numCols; j++) {
 				var cell = createDOMObject(cellStr);	
 		
-				//var randColor = this.board.palette[Math.floor(Math.random() * this.board.palette.length)];
-				//this.aShowCell(cell, randColor);
-				
 				cell.width(this.cellSize + "em");
 				cell.height(this.cellSize + "em");
 
 				row.append(cell);
+        this.cells.push(cell);
 			}
-			this.landscape.append(row);
+			this.el.append(row);
 		}
+
+    console.log(this);
+    console.log("Landscape initialized");
+  }
+
+  getCell(x, y) {
+    let index = (this.numCols * y) + x;
+    return this.cells[index];
   }
 
   // Asynchronous dipsplaying of cell

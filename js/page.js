@@ -424,10 +424,12 @@ class Page {
 	}
 
 	loadShape() {
+    // NOTE: Shape will animate itself on landscape when
+    // outside calls Shape.draw()
 
     // Origin for shape
-    var row = Math.floor(this.landscape.numRows * 0.5); 
-    var col = Math.floor(this.landscape.numCols * 0.75); 
+    var row = Math.floor(this.landscape.numRows * 0.1); 
+    var col = Math.floor(this.landscape.numCols * 0.83); 
     var origin = [row, col];
 
     // Load shape, giving it landscape and origin

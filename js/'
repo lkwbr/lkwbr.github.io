@@ -10,10 +10,6 @@ class FollowerShape extends Shape {
   }
 
   draw() {
-    return;
-    let activeCell = this.landscape.getCell(this.origin[1], this.origin[0]);
-    activeCell.css("background-color", "cyan");
-    activeCell.addClass("pop");
-
+    this.landscape.getCell(1, 1);
   }
 }

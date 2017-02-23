@@ -1,12 +1,16 @@
 /* page.js */
 
-/* "The Big Cheese": Handles pagelets, interactions, and such for whole page */
+/*
+The Big Cheese:
+  Dynamically handles pagelets, interactions, animations, and general
+  information for whole website.
+*/
 
 "use strict";
 
 class Page {
   constructor() {
-    
+
     // Color palette
     this.paletteLoc = "res/palettes/palette_3.csv";
     this.palette = null;
@@ -15,7 +19,7 @@ class Page {
     this.pageE = $("#page");
     this.titleE = $("#title");
 		this.landscapeE = null; // dynamically created
-    this.mugshotE = null; // " " 
+    this.mugshotE = null;   // " "
     this.sideE = $("#side");
     this.contentE = $("#content");
     this.boardE = $("#board");
@@ -25,10 +29,10 @@ class Page {
     this.footE = $("#foot");
 
     // Environment properties
-    this.boardSize = 30; // cells 
-    this.cellSize = 1; // em
-    this.renderRate = 1000; // ms 
-    
+    this.boardSize = 30;    // cells
+    this.cellSize = 1;      // em
+    this.renderRate = 1000; // ms
+
     // Objects
     this.board = null;
     this.engine = null;
@@ -36,24 +40,18 @@ class Page {
 		this.landscape = null;
   }
 
-  // TODO: Turn doodle into content, and have this be able to run in background
-  // while there are other displays over it
-  // TODO: UI elements dynamically responding to state of board
-  // TODO: Better naming
-  // TODO: Way better MVC compliancy!
-
   // Party starts
   init() {
+		// NOTE: Order of these calls is very important
 
     this.loadPalette();
 
-		// NOTE: Order of these calls is very important
     this.createCustomElements();
     this.setupFavicon();
 
     // Load title, board, and side panel
-    this.loadTitle(); 
-    this.loadBoard(); 
+    this.loadTitle();
+    this.loadBoard();
     this.loadSide();
     this.loadFoot();
 
@@ -74,12 +72,12 @@ class Page {
     jQuery.get(friendishLoc, function(data) {
 
       let arrs = $.csv.toArrays(data);
-      let rando = Math.ceil(Math.random() * (arrs.length - 1)); 
+      let rando = Math.ceil(Math.random() * (arrs.length - 1));
 
       let noun = arrs[rando][0];
       let lang = arrs[rando][1];
 
-      $("#friendish").text(noun).attr("title", lang);        
+      $("#friendish").text(noun).attr("title", lang);
     });
 
   }
@@ -94,7 +92,7 @@ class Page {
     this.getPaletteCSV(function(data) {
       var arrs = $.csv.toArrays(data);
       for (var i = 1; i < arrs.length; i++) {
-        palette.push(arrs[i][1]); 
+        palette.push(arrs[i][1]);
       }
       jQuery.ajaxSetup({ async:true });
     });
@@ -105,7 +103,7 @@ class Page {
 
   getPaletteCSV(callback) {
     jQuery.get(this.paletteLoc, function(data) {
-      callback(data);        
+      callback(data);
     });
   }
 
@@ -126,12 +124,12 @@ class Page {
 		//let popCSS = $(".pop").css();
 		//icon.css(popCSS);
 		icon.addClass("pop");
-		
+
     let data = "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>" +
              		"<foreignObject width='100%' height='100%'>" +
-									icon.outerHTML() +	
+									icon.outerHTML() +
              		"</foreignObject>" +
-           		"</svg>"; 
+           		"</svg>";
 
 		let DOMURL = self.URL || self.webkitURL || self;
 		let img = new Image();
@@ -142,7 +140,7 @@ class Page {
 			DOMURL.revokeObjectURL(url);
 		};
 		img.src = url;
-		
+
     // Remove past, add new
     changeFavicon(url);
 
@@ -178,16 +176,16 @@ class Page {
   }
 
   createCustomElements() {
-    // Motivation: I'm a control freak. GitHub pages will not allow link 
-    // clicks to be stopped and processed with custom JS code; rather, 
+    // Motivation: I'm a control freak. GitHub pages will not allow link
+    // clicks to be stopped and processed with custom JS code; rather,
     // they just redirect to the URL anyways! I want to dynamically load content
     // on this page without any silly redirects. Thus, I create my own type
     // of link that GitHub cannot interfere with.
-    
+
     // Short for "dynamic link"
     var DLink = document.registerElement("d-a", {
       prototype: Object.create(HTMLElement.prototype)
-    }); 
+    });
   }
 
   fragHandler(e) {
@@ -211,11 +209,11 @@ class Page {
 			var backFrag = (i == (frags.length - 1)) ? null : frags[i + 1];
 			var fragColor = frag.css("background-color");
 
-			// Only pop live cells 
+			// Only pop live cells
 			if (fragColor != "rgba(0, 0, 0, 0)") {
-				frag.addClass("pop");	
+				frag.addClass("pop");
 			} else {
-				frag.removeClass("pop");	
+				frag.removeClass("pop");
 			}
 
 			if (backFrag == null) {
@@ -226,7 +224,7 @@ class Page {
 			i--;
 		}
 
-		// Insert at leftmost from event 
+		// Insert at leftmost from event
 		frags[0].css("background-color", color);
   }
 
@@ -260,11 +258,11 @@ class Page {
     $(window).resize(function() {
 			// Center whole UI
       self.center(self.pageE);
-    }); 
+    });
 
     // Subscribe to board's "frag" line
     this.board.subscribe("frag", this, this.fragHandler);
-    
+
     // Side pane link events
     var pathLoadMap = {
       "home":self.loadHome,
@@ -274,22 +272,22 @@ class Page {
       "research":self.loadResearch,
       "academics":self.loadAcademics,
       "resume":self.loadResume
-    }; 
+    };
 
 		// Handle custom and outsid links
     $("d-a").click(function(e) {
       // Get link
       var href = e.currentTarget.attributes["href"].value;
-     
-      // Check if custom link	
+
+      // Check if custom link
 			if (href.substring(0, 2) == "./") {
 				// Load custom content
-				var pathName = href.substring(2); 
-				var pathLoadFunc = pathLoadMap[pathName]; 
+				var pathName = href.substring(2);
+				var pathLoadFunc = pathLoadMap[pathName];
 				pathLoadFunc(self);
-			} else { 
+			} else {
         // Regular link
-        window.location.href = href; 	
+        window.location.href = href;
       }
     });
 
@@ -310,10 +308,21 @@ class Page {
     self.contentE.load("res/content/main/about.html");
     self.contentE.show();
   }
-  
+
   loadProjects(self) {
+
+    // Go away, Conway
     self.board.hide();
-    self.contentE.load("res/content/main/projects.html");
+
+    // Load project content heading + description
+    self.contentE.load("res/content/main/projects.html", function() {
+      // Load in GitHub projects after content loads
+      let projectList = createDOMObject("<div id='project-list'></div>");
+      projectList.loadRepositories("lukedottec");
+      self.contentE.append(projectList);
+    });
+
+    // Voila!
     self.contentE.show();
   }
 
@@ -328,13 +337,13 @@ class Page {
     self.contentE.load("res/content/main/research.html");
     self.contentE.show();
   }
-  
+
   loadAcademics(self) {
     self.board.hide();
     self.contentE.load("res/content/main/academics.html");
     self.contentE.show();
   }
-  
+
   loadResume(self) {
 		window.location.assign('res/pdf/resume.pdf');
   }
@@ -348,7 +357,7 @@ class Page {
   }
 
   loadBoard() {
-    this.board = new Board(this.boardE, this.doodleE, this.morgueE, this.ranksE, 
+    this.board = new Board(this.boardE, this.doodleE, this.morgueE, this.ranksE,
       this.cellSize, this.boardSize, this.boardSize, this.palette);
     this.engine = new Engine(this.board, this.renderRate);
 
@@ -360,7 +369,7 @@ class Page {
   }
 
   loadTitle() {
-		
+
 		// Grid
 		var landscapeStr = "<div id='landscape'></div>";
 		this.landscapeE = createDOMObject(landscapeStr);
@@ -390,10 +399,10 @@ class Page {
 		this.loadMugshot(this.mugshot);
 
 		// Connection
-		tableColLeft.append(intro);	
-		tableColLeft.append(name);	
-		tableColLeft.append(subtitle);	
-		tableColRight.append(this.mugshot);	
+		tableColLeft.append(intro);
+		tableColLeft.append(name);
+		tableColLeft.append(subtitle);
+		tableColRight.append(this.mugshot);
 		tableRow.append(tableColLeft);
 		tableRow.append(tableColRight);
 		table.append(tableRow);
@@ -405,7 +414,7 @@ class Page {
 		table.css("width", "100%");
 		var tableWidth = table.outerWidth();
 		var leftWidth = tableColLeft.outerWidth();
-		var rightWidth = tableWidth - leftWidth; 
+		var rightWidth = tableWidth - leftWidth;
 		tableColRight.width(rightWidth);
 
 		// Final connection
@@ -413,13 +422,13 @@ class Page {
     this.titleE.append(table);
   }
 
-	loadLandscape() {	
+	loadLandscape() {
 
 		// Width and height
 		var height = this.titleE.outerHeight();
 		var width = this.titleE.outerWidth();
 
-		// Landscape creation  
+		// Landscape creation
 		this.landscape = new Landscape(this.landscapeE, width, height);
 	}
 
@@ -428,18 +437,18 @@ class Page {
     // outside calls Shape.draw()
 
     // Origin for shape
-    var row = Math.floor(this.landscape.numRows * 0.1); 
-    var col = Math.floor(this.landscape.numCols * 0.83); 
+    var row = Math.floor(this.landscape.numRows * 0.1);
+    var col = Math.floor(this.landscape.numCols * 0.83);
     var origin = [row, col];
 
     // Load shape, giving it landscape and origin
-		this.shape = new FollowerShape(this.landscape);	
+		this.shape = new FollowerShape(this.landscape);
     this.shape.setOrigin(origin);
 
     // Setup mouse over event
     var self = this;
     this.titleE.mousemove(function(e) {
-      //console.log("mouse over landscape"); 
+      //console.log("mouse over landscape");
       self.shape.draw();
     });
 	}
@@ -456,10 +465,10 @@ class Page {
       "opacity": "1"
     });
     imgWrapper.append(img);
-		mugshot.append(imgWrapper);						
+		mugshot.append(imgWrapper);
 
     mugshot.css({
-      "color":"gray", 
+      "color":"gray",
       "font-style":"italic"
     }).attr("title", "Hiding under the floorboards, I have finally found you...");
 	}
@@ -472,9 +481,9 @@ class Page {
     // Create fragment top
     var fragStr = "<div></div>";
     var numFrag = 10;
-    for (var i = 0; i < numFrag; i++) { 	
+    for (var i = 0; i < numFrag; i++) {
       var frag = createDOMObject(fragStr);
-      frag.css("width", this.cellSize + "em");	
+      frag.css("width", this.cellSize + "em");
       frag.css("height", this.cellSize + "em");
       frag.addClass("frag");
 
@@ -484,8 +493,8 @@ class Page {
 
     // Create link body
     var linksString = "<div id='links'></div>";
-    var links = createDOMObject(linksString); 
-    
+    var links = createDOMObject(linksString);
+
     // Write links
     // TODO: Automatically pull these from /res/content
     var linkTopics = ["home", "about", "projects", "events", "research", "academics", "resume"];
@@ -497,9 +506,9 @@ class Page {
     this.sideE.append(links);
 
     // Social media
-    var tableStr = "<table></table"; 
-    var tableRowStr = "<tr></tr>"; 
-    var tableColStr = "<td></td>"; 
+    var tableStr = "<table></table";
+    var tableRowStr = "<tr></tr>";
+    var tableColStr = "<td></td>";
 		var linkStr = "<d-a></d-a>";
 		var imgStr = "<img>";
 
@@ -520,11 +529,11 @@ class Page {
 			var row = createDOMObject(tableRowStr);
 
 			for (var l in o) {
-				var url = o[l]; 
+				var url = o[l];
 				var col = createDOMObject(tableColStr);
 
 				var link = createDOMObject(linkStr);
-				var img = createDOMObject(imgStr);	
+				var img = createDOMObject(imgStr);
 				link.attr("href", url);
 				img.attr("src", l);
 				img.css("width", this.cellSize * 1.5 + "em");
@@ -532,16 +541,16 @@ class Page {
 
 				link.append(img);
 				col.append(link);
-				row.append(col);	
-			} 	
-			table.append(row);	
+				row.append(col);
+			}
+			table.append(row);
 		}
-		this.sideE.append(table);		
+		this.sideE.append(table);
 
   }
 
   loadFoot() {
     // Smelly
-		this.footE.html("<div>MultiConway [<d-a href='https://github.com/lukedottec/BunFun'>Source</d-a>]</div><div><i>Variation of Conway's Game of Life</i></div>");	
+		this.footE.html("<div>MultiConway [<d-a href='https://github.com/lukedottec/BunFun'>Source</d-a>]</div><div><i>Variation of Conway's Game of Life</i></div>");
   }
 }

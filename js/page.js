@@ -550,7 +550,12 @@ class Page {
   }
 
   loadFoot() {
-    // Smelly
-		this.footE.html("<div>MultiConway [<d-a href='https://github.com/lukedottec/BunFun'>Source</d-a>]</div><div><i>Variation of Conway's Game of Life</i></div>");
+    		// Smelly
+	  
+	  	// Adding some meta about the MultiConway animation
+	  	let title = "<div>MultiConway [ <d-a href='https://github.com/lukedottec/BunFun'>Source</d-a> ]</div>";
+	  	let subtitle = "<div><i>Variation of Conway's Game of Life</i></div>";
+	  	let author = "<div><i>Written by yours truly!</i></div>";
+		this.footE.html(title + subtitle + author);
   }
 }

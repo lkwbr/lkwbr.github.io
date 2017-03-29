@@ -18,7 +18,7 @@ class Page {
     // Main page elements
     this.pageE = $("#page");
     this.titleE = $("#title");
-		this.landscapeE = null; // dynamically created
+    this.landscapeE = null; // dynamically created
     this.mugshotE = null;   // " "
     this.sideE = $("#side");
     this.contentE = $("#content");
@@ -387,7 +387,7 @@ class Page {
 		// Content
     var noun = this.generateColorNoun();
 		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>my name is</i></p>";
-		var nameStr = "<h1>LUKE WEBER</h1>";
+		var nameStr = "<h1><div class='sep'>[</div> LUKE WEBER <div class='sep'>]</div></h1>";
     var sep = "<p class='sep'>//</p>";
 		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
 		var mugshotStr = "<div id='mugshot'></div>";

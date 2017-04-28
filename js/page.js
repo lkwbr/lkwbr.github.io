@@ -520,6 +520,9 @@ class Page {
 			"row2":{
 				"res/images/facebook.png":"https://www.facebook.com/lukedottec",
 				"res/images/email.png":"mailto:lukedottec@gmail.com"
+			},
+      "row3":{
+				"res/images/soundcloud.png":"https://soundcloud.com/lukedottec"
 			}
     };
 

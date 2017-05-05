@@ -42,10 +42,9 @@ class Page {
 
   // Party starts
   init() {
+
 		// NOTE: Order of these calls is very important
-
     this.loadPalette();
-
     this.createCustomElements();
     this.setupFavicon();
 

@@ -385,7 +385,7 @@ class Page {
 
 		// Content
     var noun = this.generateColorNoun();
-		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>my name is</i></p>";
+		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>I am quite literally</i></p>";
 		var nameStr = "<h1>LUKE WEBER</h1>";
     var sep = "<p class='sep'>//</p>";
 		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist & entrepreneur</div>";

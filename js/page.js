@@ -344,7 +344,7 @@ class Page {
   }
 
   loadResume(self) {
-		window.location.assign('res/pdf/resume.pdf');
+		window.location.assign('res/pdf/resume-0.4.pdf');
   }
 
   center(el) {

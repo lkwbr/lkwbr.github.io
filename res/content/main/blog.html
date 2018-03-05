@@ -1,0 +1,17 @@
+<h1>mind/bytes</h1>
+<p>Mind Over Bytes: Stimulating the prefrontal cortex one byte at a time. Short computer science and mathematics posts. </p>
+<h3>A to B with Dijikstra's</h3>
+<p>
+    Our traffic graph will be a weighted, directed graph which permits self-loops (though these should be rare) and, obviously, parellel edges. For simplicity, edges represent streets and vertices represent intersections -- exceptions to the start and end vertices, `v_s` and `v_e`, as these could be any points on particular streets. The graph will contain `n_e` edges and `n_v` vertices. We'll refer to edges as `e_i`, where `0 <= i <= n_e`, and vertices as `v_j`, where `0 <= j <= n_v`.
+Each edge `e_i`, for `0 <= i <= n_e`, should store a tuple `(d_i, s_i, r_i)` for denoting, respectively, its distance (miles), speed limit (mph), and some quantitative measure of traffic. Let's say this measure of traffic is "fraction of slowdown," a real number in the range `[0, 1]`. When `r_i = 0` traffic is flowing perfectly; when `r_i = 1` traffic is completely inhibited (e.g., driving through downtown Seattle on a Friday at 5:00 pm).
+Furthermore, each vertex `v_j` in the "frontier" will store a tuple `(t_j, d_j)`, ascribing the time and distance, respectively, of arriving at that point in the graph from starting position `v_s`.
+</p>
+<p>
+To keep in line with Dijikstra's, the weight of the edge `i` can be evaluated from a simple linear equation `t_i = (d_i / s_i) * (1 - t_i)` to get the time (in hours) it will take to travel that edge. So if we're at the fifth edge with `d_i = 5 miles, s_i = 25 mph, and r_i = 0.4 fraction slowdown`, `t_5 = 0.08 hours`.
+Upon each iteration of expansion, you would choose a vertex in the frontier with the lowest total time and total distance. If any two vertices in the frontier had the same time `t_j`, you would pick the one with the lowest distance `d_j`.
+Rinse. Repeat. Stop when `v_j = v_e`. 
+</p>
+<p>
+If we were able to choose either to walk or drive from `v_s` to `v_e`, this would change the model only slightly. Now each edge must possess an additional field signifying the modes of transportation it supports. Let's add a tuple inside of the edge's tuple for that. Now, the data stored for the roads looks like this: `(d_i, s_i, r_i, m_i)`, where tuple of boolean values `m_i = (a_p, a_c)` stores the "modes" of that particular edge. Boolean value `a_p` will signify allowing pedestrians and value `a_c` signals allowing of cars. When either is true, it means that mode of transportation is supported.
+Now, having chosen our preferred method of transportation, we will make a minor adaptation to the algorithm. We change the expansion step of Dijikstra's to only consider new vertices which support our method of transportation. That's it!
+</p>

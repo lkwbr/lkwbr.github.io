@@ -267,6 +267,7 @@ class Page {
     // Side pane link events
     var pathLoadMap = {
       "home":self.loadHome,
+      "blog":self.loadBlog,
       "about":self.loadAbout,
       "projects":self.loadProjects,
       "events":self.loadEvents,
@@ -304,7 +305,14 @@ class Page {
     self.board.show();
   }
 
+  loadBlog(self) {
+    self.board.hide();
+    self.contentE.load("res/content/main/blog.html");
+    self.contentE.show();
+  }
+
   loadAbout(self) {
+    // TODO: Cheeky picture of self
     self.board.hide();
     self.contentE.load("res/content/main/about.html");
     self.contentE.show();
@@ -498,7 +506,7 @@ class Page {
 
     // Write links
     // TODO: Automatically pull these from /res/content
-    var linkTopics = ["home", "about", "projects", "events", "research", "academics", "resume"];
+    var linkTopics = ["home", "blog", "research", "projects", "events", "academics", "about", "resume"];
     linkTopics.forEach(function(item) {
       var ls = "<d-a href='./" + item +"'>" + item + "</d-a>";
       var l = createDOMObject(ls);

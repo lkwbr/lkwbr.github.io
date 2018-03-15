@@ -42,7 +42,7 @@ class Page {
 
   // Party starts
   init() {
-	  
+
 		// NOTE: Order of these calls is very important
     this.loadPalette();
     this.createCustomElements();
@@ -62,8 +62,6 @@ class Page {
 
     // Adjust window
     $(window).resize();
-	  
-	  alert("New site being designed now!");
   }
 
   loadFriendishWord() {
@@ -267,7 +265,6 @@ class Page {
     // Side pane link events
     var pathLoadMap = {
       "home":self.loadHome,
-      "blog":self.loadBlog,
       "about":self.loadAbout,
       "projects":self.loadProjects,
       "events":self.loadEvents,
@@ -305,14 +302,7 @@ class Page {
     self.board.show();
   }
 
-  loadBlog(self) {
-    self.board.hide();
-    self.contentE.load("res/content/main/blog.html");
-    self.contentE.show();
-  }
-
   loadAbout(self) {
-    // TODO: Cheeky picture of self
     self.board.hide();
     self.contentE.load("res/content/main/about.html");
     self.contentE.show();
@@ -354,7 +344,7 @@ class Page {
   }
 
   loadResume(self) {
-		window.location.assign('res/pdf/resume-0.4.pdf');
+		window.location.assign('res/pdf/resume.pdf');
   }
 
   center(el) {
@@ -395,10 +385,10 @@ class Page {
 
 		// Content
     var noun = this.generateColorNoun();
-		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>I am quite literally</i></p>";
+		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>my name is</i></p>";
 		var nameStr = "<h1>LUKE WEBER</h1>";
     var sep = "<p class='sep'>//</p>";
-		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist & entrepreneur</div>";
+		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
 		var mugshotStr = "<div id='mugshot'></div>";
 
 		var intro = createDOMObject(introStr);
@@ -506,7 +496,7 @@ class Page {
 
     // Write links
     // TODO: Automatically pull these from /res/content
-    var linkTopics = ["home", "blog", "research", "projects", "events", "academics", "about", "resume"];
+    var linkTopics = ["home", "about", "projects", "events", "research", "academics", "resume"];
     linkTopics.forEach(function(item) {
       var ls = "<d-a href='./" + item +"'>" + item + "</d-a>";
       var l = createDOMObject(ls);

@@ -302,13 +302,13 @@ class Page {
     self.contentE.empty();
     self.board.show();
   }
-	
+
   loadBlog(self) {
     self.board.hide();
     self.contentE.load("res/content/main/blog.html");
     self.contentE.show();
   }
-	
+
   loadAbout(self) {
     self.board.hide();
     self.contentE.load("res/content/main/about.html");
@@ -393,7 +393,7 @@ class Page {
 		// Content
     var noun = this.generateColorNoun();
 		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>my name is</i></p>";
-		var nameStr = "<h1>LUKE WEBER</h1>";
+		var nameStr = "<h1>ALGORHYTHEM</h1>";
     var sep = "<p class='sep'>//</p>";
 		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
 		var mugshotStr = "<div id='mugshot'></div>";

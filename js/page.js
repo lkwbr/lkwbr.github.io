@@ -503,7 +503,7 @@ class Page {
 
     // Write links
     // TODO: Automatically pull these from /res/content
-    var linkTopics = ["home", "blog", "projects", "events", "research", "academics", "about", "resume"];
+    var linkTopics = ["home", "blog", "projects", "events", "research", "academics"];
     linkTopics.forEach(function(item) {
       var ls = "<d-a href='./" + item +"'>" + item + "</d-a>";
       var l = createDOMObject(ls);

@@ -393,7 +393,7 @@ class Page {
 		// Content
     var noun = this.generateColorNoun();
 		var introStr = "<p id='intro'>Hello " + noun + " &mdash; <i>my name is</i></p>";
-		var nameStr = "<h1>ALGORHYTHEM</h1>";
+		var nameStr = "<h1>LUKE WEBER</h1>";
     var sep = "<p class='sep'>//</p>";
 		var subtitleStr = "<div id='subtitle'><div id='handle'>@lukedottec</div> " + sep + " computer scientist</div>";
 		var mugshotStr = "<div id='mugshot'></div>";
@@ -503,7 +503,7 @@ class Page {
 
     // Write links
     // TODO: Automatically pull these from /res/content
-    var linkTopics = ["home", "blog", "projects", "events", "research", "academics", "about", "resume"];
+    var linkTopics = ["home", "blog", "projects", "events", "research", "academics"];
     linkTopics.forEach(function(item) {
       var ls = "<d-a href='./" + item +"'>" + item + "</d-a>";
       var l = createDOMObject(ls);

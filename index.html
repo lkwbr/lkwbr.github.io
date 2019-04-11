@@ -21,9 +21,13 @@ potential employers and friends alike :)
     <!--<link id="dynamic-favicon" rel="icon" href="res/images/mugshot_32.png" type="image/png">-->
     <link rel="icon" href="res/images/mugshot_32.png" type="image/png">
 
-    <!-- Libraries -->
+    <!-- Scripting libraries -->
+    <!-- TODO: Download the files locally. -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
     <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
     <script type="text/javascript" src="js/lib/jquery.csv.min.js" ></script>
+    <script type="text/javascript" src="js/lib/bootstrap.min.js" ></script>
     <script type="text/javascript" src="js/lib/git_api.js" ></script>
 
     <!-- Source -->
@@ -37,7 +41,11 @@ potential employers and friends alike :)
     <script type="text/javascript" src="js/page.js" ></script>
     <script type="text/javascript" src="js/init.js" ></script>
 
-    <!-- Static styling -->
+    <!-- Styling libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+
+    <!-- Custom styling -->
     <link rel="stylesheet" href="css/page.css">
     <link rel="stylesheet" href="css/title.css">
     <link rel="stylesheet" href="css/side.css">
@@ -45,25 +53,48 @@ potential employers and friends alike :)
     <link rel="stylesheet" href="css/foot.css">
   </head>
   <body>
-    <div id="page">
-      <div id="title"></div>
-      <div id="side"></div>
-      <div id="board">
-        <div id="morgue"></div>
-
-        <!-- Conway animation -->
-        <div id="doodle"></div>
-
-        <!-- Text content of side links -->
-        <div id="content">
-          <h1>[ LOADING ]</h1>
-          <h3>If you've been stuck here, try and reload!</h3>
-          <p>And also make sure you're using Google Chrome ;)</p>
-        </div>
-
-        <div id="ranks"></div>
+    <div class="container">
+      <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <h1 class="display-6">🤑 BIG 🔬 LAB 💥 BAD</h1>
+        <p class="lead">
+          NEUROSCIENCE / COMPUTER SCIENCE / MATHEMATICS / AUGMENTED REALITY
+        </p>
       </div>
-      <div id="foot"></div>
+
+      <!-- Main blog content -->
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h2>The Curious Face of Rodger the Turtle</h2>
+            <p>
+              I once owned a turtle named Rodger. One day, he broke and ate the glass
+              of his enclosure - a nasty site. Trails of blood led from his old home
+              to the lake down the hill, his new home.
+            </p>
+            <p>
+              Joke's on him, he has cancer.
+            </p>
+            <span id='target'></span>
+            <br />
+            <span class='katex'>c = \\pm\\sqrt{a^2 + b^2}</span>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 mb-3 bg-light rounded">
+              <h4 class="font-italic">Life... It Just Keeps Happening</h4>
+              <p class="mb-0">It's important in life to not be a whopping cunt.</p>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
+    <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+        var html = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
+          throwOnError: false
+        });
+        $('#target').html(html);
+      });
+    </script>
   </body>
 </html>

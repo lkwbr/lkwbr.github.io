@@ -31,6 +31,7 @@ potential employers and friends alike :)
     <script type="text/javascript" src="js/lib/git_api.js" ></script>
 
     <!-- Source -->
+    <!--
     <script type="text/javascript" src="js/util.js" ></script>
     <script type="text/javascript" src="js/grid.js" ></script>
     <script type="text/javascript" src="js/landscape.js" ></script>
@@ -40,6 +41,7 @@ potential employers and friends alike :)
     <script type="text/javascript" src="js/engine.js" ></script>
     <script type="text/javascript" src="js/page.js" ></script>
     <script type="text/javascript" src="js/init.js" ></script>
+    -->
 
     <!-- Styling libraries -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
@@ -47,54 +49,67 @@ potential employers and friends alike :)
 
     <!-- Custom styling -->
     <link rel="stylesheet" href="css/page.css">
+    <!--
     <link rel="stylesheet" href="css/title.css">
     <link rel="stylesheet" href="css/side.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/foot.css">
+    -->
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <h1 class="display-6">🤑 BIG 🔬 LAB 💥 BAD</h1>
-        <p class="lead">
-          NEUROSCIENCE / COMPUTER SCIENCE / MATHEMATICS / AUGMENTED REALITY
-        </p>
+    <!-- Blog head -->
+    <div class="masthead bg-dark">
+        <div class="jumbotron p-4 p-md-5 text-dark rounded bg-light">
+          <h1 class="display-6"><b>🤑 BIG 🔬 LAB 💥 BAD</b></h1>
+          <p class="lead">
+            NEUROSCIENCE / COMPUTER SCIENCE / MATHEMATICS / AUGMENTED REALITY
+          </p>
+          <small>SITE UNDER CONSTRUCTION; PLEASE VISIT THE OLD SITE <a href="index.1.html">HERE</a>.</small>
+        </div>
       </div>
-
-      <!-- Main blog content -->
-      <main role="main" class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <h2>The Curious Face of Rodger the Turtle</h2>
-            <p>
-              I once owned a turtle named Rodger. One day, he broke and ate the glass
-              of his enclosure - a nasty site. Trails of blood led from his old home
-              to the lake down the hill, his new home.
-            </p>
-            <p>
-              Joke's on him, he has cancer.
-            </p>
-            <span id='target'></span>
-            <br />
-            <span class='katex'>c = \\pm\\sqrt{a^2 + b^2}</span>
+    <div class="container">
+    <!-- Main blog content -->
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>The Curious Face of Rodger the Turtle</h2>
+          <p>13 Feb 2019</p>
+          <p>
+            I once owned a turtle named Rodger. One day, he broke and ate the glass
+            of his enclosure - a nasty site. Trails of blood led from his old home
+            to the lake down the hill, his new home.
+          </p>
+          <p>
+            Joke's on him, he has cancer.
+          </p>
+          <span id='target'></span>
+          <br />
+          <span class='katex'>$$c = \pm\sqrt{a^2 + b^2}$$</span>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="font-italic">Life... It Just Keeps Happening</h4>
+            <p class="mb-0">It's important in life to not be a whopping cunt.</p>
+            <p class="mb-0">Also to get published. But mainly the former.</p>
           </div>
-          <div class="col-md-4">
-            <div class="p-4 mb-3 bg-light rounded">
-              <h4 class="font-italic">Life... It Just Keeps Happening</h4>
-              <p class="mb-0">It's important in life to not be a whopping cunt.</p>
+
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success">Simulation</strong>
+              <h3 class="mb-0">Post title</h3>
+              <div class="mb-1 text-muted">Nov 11</div>
+              <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="stretched-link">Continue reading</a>
             </div>
           </div>
         </div>
-      </main>
-    </div>
-    <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        console.log('DOM fully loaded and parsed');
-        var html = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
-          throwOnError: false
-        });
-        $('#target').html(html);
-      });
-    </script>
+      </div>
+    </main>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body);
+    });
+  </script>
   </body>
 </html>

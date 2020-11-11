@@ -29,7 +29,7 @@ d-a:hover {
 		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset, /* top shine */
 		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset; /* bottom shadow */ 
 
-	border-radius:1em; /* TODO: Maybe toggle this */ 
+	border-radius: 1em; /* TODO: Maybe toggle this */ 
 }
 
 .pop:hover {

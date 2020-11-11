@@ -12,7 +12,7 @@ class Page {
     constructor() {
 
         // Color palette
-        this.paletteLoc = "res/palettes/palette_1.csv";
+        this.paletteLoc = "res/palettes/palette_0.csv";
         this.palette = null;
 
         // Main page elements
@@ -31,7 +31,7 @@ class Page {
         // Environment properties
         this.boardSize = 30;    // cells
         this.cellSize = 1.5;      // em
-        this.renderRate = 2000; // ms
+        this.renderRate = 5000; // ms
 
         // Objects
         this.board = null;
@@ -72,27 +72,27 @@ class Page {
 
             // #let arrs = $.csv.toArrays(data);
             let arrs = [
-                ['word', 'language'],
-                ['buddy', 'English'],
-                ['amigo', 'Spanish'],
-                ['venn', 'Norwegian'],
-                ['друг', 'Russian'],
-                ['ven', 'Danish'],
-                ['mik', 'Albanian'],
-                ['বন্ধু', 'Bengali'],
-                ['priateľ', 'Slovak'],
-                ['přítel', 'Czech'],
-                ['vän', 'Swedish'],
-                ['arkadaş', 'Turkish'],
-                ['दोस्त', 'Hindi'],
-                ['amigos', 'Portuguese'],
-                ['umngane', 'Zulu'],
-                ['ընկեր', 'Armenian'],
-                ['vriend', 'Afrikaans'],
-                ['Frënd', 'Luxembourgish'],
-                ['один', 'Ukrainian'],
-                ['prijatelj', 'Croatian'],
-                ['пријатељ', 'Serbian']
+                // ['word', 'language'],
+                // ['buddy', 'English'],
+                // ['amigo', 'Spanish'],
+                // ['venn', 'Norwegian'],
+                // ['друг', 'Russian'],
+                // ['ven', 'Danish'],
+                // ['mik', 'Albanian'],
+                // ['বন্ধু', 'Bengali'],
+                // ['priateľ', 'Slovak'],
+                // ['přítel', 'Czech'],
+                // ['vän', 'Swedish'],
+                // ['arkadaş', 'Turkish'],
+                // ['दोस्त', 'Hindi'],
+                // ['amigos', 'Portuguese'],
+                // ['umngane', 'Zulu'],
+                // ['ընկեր', 'Armenian'],
+                // ['vriend', 'Afrikaans'],
+                // ['Frënd', 'Luxembourgish'],
+                // ['один', 'Ukrainian'],
+                // ['prijatelj', 'Croatian'],
+                // ['пријатељ', 'Serbian']
             ]
             let rando = Math.ceil(Math.random() * (arrs.length - 1));
 
@@ -108,11 +108,11 @@ class Page {
     loadPalette() {
 
         let palette = [
-            '#CAE7B9',
-            '#F3DE8A',
-            '#EB9486',
-            '#7E7F9A',
-            '#97A7B3'
+            // '#CAE7B9',
+            // '#F3DE8A',
+            // '#EB9486',
+            // '#7E7F9A',
+            // '#97A7B3'
         ];
 
         // TODO: Remove syncronous CSV fetching
@@ -185,7 +185,8 @@ class Page {
 
     generateColorNoun() {
         // Give random noun with random background color
-        let color = this.getRandomColor();
+        // let color = this.getRandomColor();
+        let color = '#000' 
         let noun = "you";
         let padFact = 0.75;
 
@@ -213,9 +214,7 @@ class Page {
         // of link that GitHub cannot interfere with.
 
         // Short for "dynamic link"
-        var DLink = document.registerElement("d-a", {
-            prototype: Object.create(HTMLElement.prototype)
-        });
+        var DLink = customElements.define("d-a", HTMLElement)
     }
 
     fragHandler(e) {
@@ -438,12 +437,18 @@ class Page {
                         <a href='https://scholar.google.com/lkgwbr' style='pointer-events: none; color: #aaa;'>Google Scholar (not yet)</a> - 
                         <a href='https://github.com/lkgwbr'>GitHub</a> - 
                         <a href='https://gitlab.com/lkgwbr'>GitLab</a> - 
+                        <a href='https://medium.com/@lkgwbr'>Medium</a> - 
                     </div>
                     <div>
-                        <a href='https://medium.com/@lkgwbr'>Medium</a> - 
                         <a href='https://soundcloud.com/lkgwbr'>SoundCloud</a> - 
+                        <a href='https://www.duolingo.com/profile/lkgwbr'>DuoLingo</a> - 
+                        <a href='https://lichess.org/@/lukedottec'>lichess</a> -
                         <a href='https://open.spotify.com/playlist/1jrQoiXQrO9Pj57idZrNz9'>Spotify</a> -
-                        <a href='https://play.google.com/store/apps/developer?id=lukedottec&hl=sr__%23Latn'>Google Play</a>
+                    </div>
+                    <div>
+                        <a href='https://play.google.com/store/apps/developer?id=lukedottec&hl=sr__%23Latn'>Google Play</a> - 
+                        <a href='https://www.npmjs.com/~lukedottec'>NPM</a> -
+                        <a href='https://pypi.org/user/lukedottec/'>PyPI</a>
                     </div>
                 </div>
             </div>
@@ -468,7 +473,7 @@ class Page {
         table.append(tableRow);
 
         // NOTE: Setting height here; not best decision
-        this.titleE.height("11em");
+        this.titleE.height("13em");
 
         // Table adjustment
         table.css("width", "100%");
@@ -516,10 +521,11 @@ class Page {
     loadMugshot(mugshot) {
 
         var imgWrapper = createDOMObject("<div></div>");
-        var img = createDOMObject("<img src='res/images/mugshot.png' />");
-        imgWrapper.width("13em");
+        // var img = createDOMObject("<img src='res/images/mugshot.png' />");
+        var img = createDOMObject("<img src='res/images/mugshot.jpg' style='border-radius: 1rem' />");
+        imgWrapper.width("12em");
         img.css({
-            "width": "7em",
+            "width": "12em",
             "display": "block",
             "margin": "auto",
             "opacity": "1"

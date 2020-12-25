@@ -522,7 +522,7 @@ class Page {
 
         var imgWrapper = createDOMObject("<div></div>");
         // var img = createDOMObject("<img src='res/images/mugshot.png' />");
-        var img = createDOMObject("<img src='res/images/mugshot.jpg' style='border-radius: 1rem' />");
+        var img = createDOMObject("<img src='res/images/mugshot.png' style='border-radius: 1rem' />");
         imgWrapper.width("12em");
         img.css({
             "width": "12em",

@@ -1,10 +1,11 @@
 /* page.css */
 
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+/* @import url('https://fonts.googleapis.com/css?family=Quicksand'); */
 
 body {
   background-color:#FFF;
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'arial', sans-serif;
+	/* font-family: 'Quicksand', sans-serif; */
 	/* color:#444; */
 	color:#000;
 }
@@ -51,5 +52,4 @@ d-a:hover {
   position:absolute;
 }
 
-.frag {
-}
+.frag { }

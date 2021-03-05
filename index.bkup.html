@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<!--
+Written by Luke Weber (with pain)
+Forgotten by Logan Weber (with ease)
+Recieved by Ben Weber (with grace)
+Created on 12/27/2016
+
+Just a fun alteration of Conway's Game of Life
+(https://en.wikipedia.org/wiki/Conway's_Game_of_Life) with some additional
+bells and whistles. Built in to my personal website, which is suited for
+potential employers and friends alike :)
+
+*ES6 compliant (strict mode in use)
+*MVC pattern being approached
+-->
+
+    <script>
+
+        if ('registerElement' in document &&
+          'createShadowRoot' in HTMLElement.prototype &&
+          'import' in document.createElement('link') &&
+          'import' in document.createElement('link')) console.log('Woohoo! Browser has native WC support!');
+        else document.write('<script src="bower_components/webcomponentsjs/webcomponents.min.js"><\/script>');
+    
+      </script>
+
+<html>
+  <head>
+    <title>Luke Weber</title>
+
+    <script>
+
+        // if ('registerElement' in document &&
+        //   'createShadowRoot' in HTMLElement.prototype &&
+        //   'import' in document.createElement('link') &&
+        //   'import' in document.createElement('link')) console.log('Woohoo! Browser has native WC support!');
+        // else document.write('<script src="bower_components/webcomponentsjs/webcomponents.min.js"><\/script>');
+    
+      </script>
+
+    <!-- <script>this.customElements||document.write('<script src="//unpkg.com/document-register-element"><\x2fscript>');</script>
+    <script src="//unpkg.com/@ungap/custom-elements-builtin"></script> -->
+
+    <!--<link id="dynamic-favicon" rel="icon" href="res/images/mugshot_32.png" type="image/png">-->
+    <!-- <link rel="icon" href="res/images/mugshot_32.png" type="image/png"> -->
+    <link rel="icon" href="res/images/favicon.ico" type="image/png">
+
+    <!-- Libraries -->
+    <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="js/lib/jquery.csv.min.js" ></script>
+    <script type="text/javascript" src="js/lib/git_api.js" ></script>
+
+    <!-- Source -->
+    <script type="text/javascript" src="js/util.js" ></script>
+    <script type="text/javascript" src="js/grid.js" ></script>
+    <script type="text/javascript" src="js/landscape.js" ></script>
+    <script type="text/javascript" src="js/shape.js" ></script>
+    <script type="text/javascript" src="js/follower_shape.js" ></script>
+    <script type="text/javascript" src="js/board.js" ></script>
+    <script type="text/javascript" src="js/engine.js" ></script>
+    <script type="text/javascript" src="js/page.js" ></script>
+    <script type="text/javascript" src="js/init.js" ></script>
+
+    <!-- Static styling -->
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/title.css">
+    <link rel="stylesheet" href="css/side.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/foot.css">
+  </head>
+  <body>
+    <div id="page">
+      <div id="title"></div>
+      <div id="side"></div>
+
+      <div id="board">
+        <div id="morgue"></div>
+
+        <!-- Conway animation -->
+        <div id="doodle"></div>
+
+        <!-- Text content of side links -->
+        <div id="content"></div>
+
+        <div id="ranks"></div>
+      </div>
+      <div id="foot"></div>
+    </div>
+  </body>
+</html>

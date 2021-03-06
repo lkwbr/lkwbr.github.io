@@ -10,7 +10,7 @@
   </head>
   <body>
     <div style='width: 25rem; margin: auto; left: 0; right: 0; margin-top: 5rem; padding: 1rem;'>
-        <h1>lkwbr</h1>
+        <h1 id='alias'></h1>
         <p style='padding-bottom: 1rem;'>we're just getting started, baby</p>
 
         <div style='margin-top: 1rem; pointer-events: none; color: #aaa;'>
@@ -19,10 +19,6 @@
     
         <div style='margin-top: 1rem; pointer-events: none; color: #aaa;'>
             <a href='/blog.html'>Blog (not yet)</a>
-        </div>
-
-        <div style='margin-top: 1rem; pointer-events: none; color: #aaa;'>
-            <a href='/cv.pdf'>C/V (not yet)</a>
         </div>
 
         <div style='margin-top: 1rem;'>
@@ -45,6 +41,25 @@
                 <a href='https://pypi.org/user/lukedottec/'>PyPI</a>
             </div>
         </div>
+
+        <div style='margin-top: 1rem; pointer-events: none; color: #aaa;'>
+            <a href='/cv.pdf'>C/V (not yet)</a>
+        </div>
     </div>
+
+    <script>
+        const alias = 'lkwbr'
+        const name = 'Luke Weber'
+        const el = document.getElementById('alias')
+
+        const childrenHtml = [...name.toLowerCase()].map((e, i) => 
+            (alias.includes(e))
+            ? ('<span style="color: #555">' + e + '</span>')
+            : ('<span style="color: #ccc">' + e + '</span>')
+        ).join('')
+        console.log(childrenHtml)
+        el.innerHTML = childrenHtml
+    </script>
+
   </body>
 </html>

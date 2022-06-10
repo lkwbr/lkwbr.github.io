@@ -12,7 +12,7 @@ class Page {
     constructor() {
 
         // Color palette
-        this.paletteLoc = "res/palettes/palette_0.csv";
+        this.paletteLoc = "res/palettes/palette_2.csv";
         this.palette = null;
 
         // Main page elements
@@ -29,9 +29,9 @@ class Page {
         this.footE = $("#foot");
 
         // Environment properties
-        this.boardSize = 30;    // cells
-        this.cellSize = 1.5;      // em
-        this.renderRate = 5000; // ms
+        this.boardSize = 25;    // cells
+        this.cellSize = 0.5;      // em
+        this.renderRate = 1000; // ms
 
         // Objects
         this.board = null;
@@ -65,6 +65,8 @@ class Page {
     }
 
     loadFriendishWord() {
+
+        /*
 
         let friendishLoc = "res/content/words/friendish.csv";
 
@@ -101,6 +103,7 @@ class Page {
 
             $("#friendish").text(noun).attr("title", lang);
         });
+        */
 
     }
 
@@ -385,11 +388,13 @@ class Page {
     }
 
     center(el) {
+        /*
         el.css({
             position: "absolute",
             left: ($(window).width() - el.outerWidth()) / 2,
             //top: ($(window).height() - el.outerHeight()) / 2
         });
+        */
     }
 
     loadBoard() {
@@ -518,108 +523,9 @@ class Page {
         });
     }
 
-    loadMugshot(mugshot) {
+    loadMugshot(mugshot) {}
 
-        var imgWrapper = createDOMObject("<div></div>");
-        // var img = createDOMObject("<img src='res/images/mugshot.png' />");
-        var img = createDOMObject("<img src='res/images/mugshot.png' style='border-radius: 1rem' />");
-        imgWrapper.width("12em");
-        img.css({
-            "width": "12em",
-            "display": "block",
-            "margin": "auto",
-            "opacity": "1"
-        });
-        imgWrapper.append(img);
-        mugshot.append(imgWrapper);
+    loadSide() {}
 
-        mugshot.css({
-            "color": "gray",
-            "font-style": "italic"
-        }).attr("title", "Hiding under the floorboards, I have finally found you...");
-    }
-
-    loadSide() {
-        // Create nav
-        var navString = "<div id='nav'></div>";
-        var nav = createDOMObject(navString);
-
-        // Create fragment top
-        var fragStr = "<div></div>";
-        var numFrag = 10;
-        for (var i = 0; i < numFrag; i++) {
-            var frag = createDOMObject(fragStr);
-            frag.css("width", this.cellSize + "em");
-            frag.css("height", this.cellSize + "em");
-            frag.addClass("frag");
-
-            nav.append(frag);
-        }
-        this.sideE.append(nav);
-
-        // Create link body
-        var linksString = "<div id='links'></div>";
-        var links = createDOMObject(linksString);
-
-        // Write links
-        // TODO: Automatically pull these from /res/content
-        var linkTopics = ["home", "blog", "projects", "events", "research", "academics"];
-        linkTopics.forEach(function (item) {
-            var ls = "<d-a href='./" + item + "'>" + item + "</d-a>";
-            var l = createDOMObject(ls);
-            links.append(l);
-        });
-        this.sideE.append(links);
-
-        // Social media
-        var tableStr = "<table></table";
-        var tableRowStr = "<tr></tr>";
-        var tableColStr = "<td></td>";
-        var linkStr = "<d-a></d-a>";
-        var imgStr = "<img>";
-
-        var imgLinkMap = {
-            "row1": {
-                "res/images/github.png": "https://github.com/lukedottec",
-                "res/images/linkedin.png": "https://www.linkedin.com/in/lukedottec",
-            },
-            "row2": {
-                "res/images/facebook.png": "https://www.facebook.com/lukedottec",
-                "res/images/email.png": "mailto:lukedottec@gmail.com"
-            },
-            "row3": {
-                "res/images/soundcloud.png": "https://soundcloud.com/lukedottec"
-            }
-        };
-
-        var table = createDOMObject(tableStr);
-        for (var r in imgLinkMap) {
-            var o = imgLinkMap[r];
-            var row = createDOMObject(tableRowStr);
-
-            for (var l in o) {
-                var url = o[l];
-                var col = createDOMObject(tableColStr);
-
-                var link = createDOMObject(linkStr);
-                var img = createDOMObject(imgStr);
-                link.attr("href", url);
-                img.attr("src", l);
-                img.css("width", this.cellSize * 1.5 + "em");
-                img.css("height", this.cellSize * 1.5 + "em");
-
-                link.append(img);
-                col.append(link);
-                row.append(col);
-            }
-            table.append(row);
-        }
-        this.sideE.append(table);
-
-    }
-
-    loadFoot() {
-        // Smelly
-        // this.footE.html("<div>MultiConway [<d-a href='https://github.com/lukedottec/lukedottec.github.io'>Source</d-a>]</div><div><i>Variation of Conway's Game of Life</i></div>");
-    }
+    loadFoot() {}
 }

@@ -1,7 +1,9 @@
 /* board.css */
 
 #board {
-  display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 #morgue .frag {
@@ -10,25 +12,22 @@
   margin-bottom:1em;
 }
 
-#doodle { }
+#doodle { 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
 .cell {
   /* Row cells are horizontally adjacent */
   display:inline-block;
+  margin:0;
+  padding:0;
+  margin-right: 0.5em;
 }
 
 .row {
   /* HACK: Gets rid of that pesky vertical row spacing */
-  margin-bottom:-0.25em;
-}
-
-#ranks { 
-  padding-top:1em;
-}
-
-#ranks .swatch {
-  float:left;
-  display:flex;
-
-  background-color:black; /* default */
+  margin:0;
+  padding:0;
 }

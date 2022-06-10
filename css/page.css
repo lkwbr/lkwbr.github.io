@@ -12,7 +12,7 @@ body > * {
 
 
 @media only screen and (min-width: 50em) {
-    #page {
+    #page-new {
         margin-top: 5rem;
     }
 }
@@ -23,7 +23,7 @@ body > * {
 }
 
 
-#page {
+#page-new {
     max-width: 25em;
 
     padding: 1rem;
@@ -73,9 +73,14 @@ a {
     color: #ccc;
 }
 
+.offering-group {
+    padding-top: 0em;
+}
+
 .offering {
     outline: 1px solid white; 
     border-radius: 0.5em;
+    overflow: hidden;
     padding: 1em;
     cursor: pointer;
 }
@@ -106,18 +111,25 @@ d-a:hover {
 }
 
 .pop {
+    /*
 	box-shadow:
-		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset, /* top shine */
-		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset; /* bottom shadow */ 
-
-	border-radius: 1em; /* TODO: Maybe toggle this */ 
+		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset,
+		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset; 
+    */
 }
 
+#page {
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em;
+}
+
+/*
 .pop:hover {
 	box-shadow:
-		0em 0.5em 0.5em 0em rgba(255, 255, 255, 0.15) inset, /* light */
-		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset, /* bottom shadow */ 
-		0em 0.25em 0.5em 0em rgba(0, 0, 0, 0.25); /* backdrop */
+		0em 0.5em 0.5em 0em rgba(255, 255, 255, 0.15) inset,
+		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset,
+		0em 0.25em 0.5em 0em rgba(0, 0, 0, 0.25);
 
   cursor:pointer;
 }
@@ -127,9 +139,6 @@ d-a:hover {
 		0em 1em 0em 0em rgba(0, 0, 0, 0.15) inset,
 		0em 0.35em 0em 0em rgba(0, 0, 0, 0.25) inset;
 }
-
-#page {
-  position:absolute;
-}
+*/
 
 .frag { }

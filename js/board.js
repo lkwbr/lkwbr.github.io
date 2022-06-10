@@ -265,6 +265,7 @@ class Board {
 			i--;
 		}
 
+    /*
 		// Insert at leftmost  
 		// Add new frag (if there's a body available)	
 		var newFrag = this.morgue.dequeue();
@@ -274,6 +275,7 @@ class Board {
 		} else {
 			frags[0].css("background-color", newFrag.data);
 		}
+    */
   }
 
 	width() {

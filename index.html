@@ -6,9 +6,40 @@
     <link rel="stylesheet" href="css/page.css">
     <script type="text/javascript" src="js/main.js" defer></script>
     <link rel="icon" type="image/png" href="/favicon.png">
+
+    <script>
+        if ('registerElement' in document &&
+          'createShadowRoot' in HTMLElement.prototype &&
+          'import' in document.createElement('link') &&
+          'import' in document.createElement('link')) console.log('Woohoo! Browser has native WC support!');
+        else document.write('<script src="bower_components/webcomponentsjs/webcomponents.min.js"><\/script>');
+      </script>    
+    <!-- Libraries -->
+    <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="js/lib/jquery.csv.min.js" ></script>
+    <script type="text/javascript" src="js/lib/git_api.js" ></script>
+
+    <!-- Source -->
+    <script type="text/javascript" src="js/util.js" ></script>
+    <script type="text/javascript" src="js/grid.js" ></script>
+    <script type="text/javascript" src="js/landscape.js" ></script>
+    <script type="text/javascript" src="js/shape.js" ></script>
+    <script type="text/javascript" src="js/follower_shape.js" ></script>
+    <script type="text/javascript" src="js/board.js" ></script>
+    <script type="text/javascript" src="js/engine.js" ></script>
+    <script type="text/javascript" src="js/page.js" ></script>
+    <script type="text/javascript" src="js/init.js" ></script>
+
+    <!-- Static styling -->
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/title.css">
+    <link rel="stylesheet" href="css/side.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/foot.css">
+
   </head>
   <body>
-    <div id="page">
+    <div id="page-new">
         <h1 id='name'>Luke Weber</h1>
         <a href="https://www.instagram.com/lk.wbr" id='alias'>@lkwbr</a>
 
@@ -18,5 +49,14 @@
 
             <div class="content"></div>
         </div>
+    </div> 
+
+    <div id="page">
+      <div id="board">
+        <!-- Conway animation -->
+        <div id="doodle"></div>
+      </div>
+    </div>
+
   </body>
 </html>

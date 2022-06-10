@@ -1,89 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>lkwbr</title>
-
-    <!--<link rel="icon" href="res/images/favicon.ico" type="image/png">-->
-
-    <!-- Static styling -->
+    <title>Luke Weber</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/page.css">
+    <script type="text/javascript" src="js/main.js" defer></script>
   </head>
   <body>
-    <div style='width: 25rem; margin: auto; left: 0; right: 0; margin-top: 5rem; padding: 1rem;'>
-        <h1 id='alias'></h1>
-        <p style='margin-top: -0.5rem; color: gray;'>@lkwbr</p>
+    <div id="page">
+        <h1 id='name'>Luke Weber</h1>
+        <p id='alias'>@lkwbr</p>
 
-        <p style='padding-bottom: 0rem;'>I'm a believer in human agency.  Formerly at <a href='#'>omic.ai</a> and <a href='#'>Microsoft</a>.</p>
+        <div class="header-group">
+            <h2>Services</h2>
+            <h2>About</h2>
 
-        <p style='padding-top: 1.5rem;'>For inquiries, email lkgwbr@gmail.com.</p>
-
-        <div style='margin-top: 1.5rem;'>
-            <h3 style='margin-top: 0rem'>Announcements</h2>
-            <p style='padding-bottom: 0rem;'><b>#1</b>:  I'm hustling around faster than Frank Abagnale and consequently cannot receive texts or calls to my US number.</p>
-            <p style='padding-bottom: 0rem;'><b>#2</b>:  Aliases are in the process of migrating from @lkgwbr and @lukedottec to @lkwbr.</p>
+            <div class="content"></div>
         </div>
-
-
-        <div style='margin-top: 1.5rem;'>
-            <h3 style='margin-top: 0rem;'>Near future</h2>
-            <div style='pointer-events: none; color: #aaa; text-decoration: none;'>
-                <a href='https://blank.ai'>Company (?)</a> |
-                <a href='/software.html'>Software (?)</a> |
-                <a href='/essays.html'>Essays (?)</a> |
-                <a href='/papers.html'>Papers (?)</a> |
-                <a href='/Luke_Weber.pdf'>Vitae (?)</a>
-            </div>
-        </div>
-
-        <div style='margin-top: 1.5rem;'>
-            <h3 style='margin-top: 0rem;'>Links</h2>
-            <div style='display: block'>
-                <a href='https://scholar.google.com/lkwbr' style='pointer-events: none; color: #aaa;'>Google Scholar (?)</a> - 
-                <a href='https://github.com/lkwbr'>Github</a> - 
-                <a href='https://gitlab.com/lkwbr'>Gitlab</a> - 
-                <a href='https://medium.com/@lkwbr'>Medium</a>
-            </div>
-            <div style='display: block'>
-                <a href='https://www.joinclubhouse.com/@lkwbr'>Clubhouse</a> - 
-                <a href='https://www.strava.com/athletes/lkwbr'>Strava</a> - 
-                <a href='https://www.instagram.com/lk.wbr'>Instagram</a> - 
-                <a href='https://soundcloud.com/lkgwbr'>Soundcloud</a>
-            </div>
-            <div style='display: block'>
-                <a href='https://www.duolingo.com/profile/lkwbr'>Duolingo</a> - 
-                <a href='https://lichess.org/@/lukedottec'>Lichess</a> -
-                <a href='https://open.spotify.com/playlist/1jrQoiXQrO9Pj57idZrNz9'>Spotify</a>
-                <a href='https://www.couchsurfing.com/people/lkwbr'>Couchsurfing</a>
-            </div>
-            <div style='display: block'>
-                <a href='https://10fastfingers.com/user/2580941'>10fastfingers</a> -
-                <a href='https://play.google.com/store/apps/developer?id=lukedottec&hl=sr__%23Latn'>Google Play</a> -
-                <a href='https://www.npmjs.com/~lukedottec'>NPM</a> -
-                <a href='https://pypi.org/user/lukedottec/'>PyPI</a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const alias = 'lkwbr'
-        const name = 'Luke Weber'
-        const el = document.getElementById('alias')
-
-        const childrenHtml = [...name].map((e, i) => 
-            (alias.includes(e.toLowerCase()))
-            ? ('<span style="color: #000; text-decoration: underline">' + e + '</span>')
-            : ('<span style="color: #000">' + e + '</span>')
-        ).join('')
-        /*
-        const childrenHtml = [...name.toLowerCase()].map((e, i) => 
-            (alias.includes(e))
-            ? ('<span style="color: #555">' + e + '</span>')
-            : ('<span style="color: #ccc">' + e + '</span>')
-        ).join('')
-        */
-        console.log(childrenHtml)
-        el.innerHTML = childrenHtml
-    </script>
-
   </body>
 </html>

@@ -3,16 +3,73 @@
 /* @import url('https://fonts.googleapis.com/css?family=Quicksand'); */
 
 body {
-  background-color:#FFF;
+  background-color: #fff;
 	font-family: 'arial', sans-serif;
 	/* font-family: 'Quicksand', sans-serif; */
 	/* color:#444; */
-	color:#000;
+	color: #fff;
+	background-color: #000;
+}
+
+#page {
+    width: 25rem; 
+    margin: auto; 
+    left: 0; 
+    right: 0;
+    margin-top: 5rem;
+    padding: 1rem;
+}
+
+#alias {
+    margin-top: -0.75rem; 
+    color: #ccc;
+}
+
+.header-group {
+    padding-top: 0.5em;
+}
+
+.header-group > h1,h2,h3 {
+    display: inline;
+    color: #666;
+    cursor: pointer;
+    padding-right: 0.1em;
+}
+
+.header-group > h1:hover, h2:hover, h3:hover {
+    color: #aaa;
+}
+
+.header-group > .selected {
+    color: #fff;
+}
+
+a {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.subcost { 
+    display: block;
+    color: #ccc;
+}
+
+.offering {
+    outline: 1px solid white; 
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+}
+
+.offering:hover {
+    outline: 2px solid #00aaff; 
+    background-color: #00aaff22;
 }
 
 d-a {
   display:inline;
-	color:#428BCA;
+	color: #428BCA;
   text-decoration:underline;
 }
 
@@ -21,7 +78,7 @@ d-a:hover {
 }
 
 .sep {
-  color:#A1A1A1;
+  color: #A1A1A1;
   display:inline;
 }
 

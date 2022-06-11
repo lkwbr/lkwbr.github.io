@@ -31,7 +31,7 @@ class Page {
         // Environment properties
         this.boardSize = 25;    // cells
         this.cellSize = 0.5;      // em
-        this.renderRate = 1000; // ms
+        this.renderRate = 5000; // ms
 
         // Objects
         this.board = null;
@@ -399,7 +399,7 @@ class Page {
 
     loadBoard() {
         this.board = new Board(this.boardE, this.doodleE, this.morgueE, this.ranksE,
-            this.cellSize, this.boardSize / 2, this.boardSize, this.palette);
+            this.cellSize, this.boardSize / 4, this.boardSize, this.palette);
         this.engine = new Engine(this.board, this.renderRate);
 
         // Kick 'em in the balls

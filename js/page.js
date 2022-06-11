@@ -399,7 +399,7 @@ class Page {
 
     loadBoard() {
         this.board = new Board(this.boardE, this.doodleE, this.morgueE, this.ranksE,
-            this.cellSize, this.boardSize / 4, this.boardSize, this.palette);
+            this.cellSize, this.boardSize, this.boardSize, this.palette);
         this.engine = new Engine(this.board, this.renderRate);
 
         // Kick 'em in the balls
@@ -519,8 +519,8 @@ class Page {
         var self = this;
         this.titleE.mousemove(function (e) {
             //console.log("mouse over landscape");
-            self.shape.draw();
-        });
+            self.shape.draw()
+        })
     }
 
     loadMugshot(mugshot) {}

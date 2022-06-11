@@ -86,7 +86,7 @@ class Board {
     this.cellWidth = this.cellHeight = cellSize; // em
     this.numRows = numRows;
     this.numCols = numCols;
-    this.population = 0.85; // density
+    this.population = 1.0; // density
 
 		// Event stuff
 		this.setupEvents();
@@ -112,7 +112,9 @@ class Board {
           // Create & add cell with random color 
           rand = Math.floor(Math.random() * this.palette.length);
           var color = this.palette[rand];
-          cells.push(new Cell(color, this.cellWidth, this.cellHeight, i, j));  
+          const newCell = new Cell(color, this.cellWidth, this.cellHeight, i, j)
+          console.log(i, j, color, newCell)
+          cells.push(newCell)  
         } else {
           cells.push(null);  
         }
@@ -264,18 +266,6 @@ class Board {
 
 			i--;
 		}
-
-    /*
-		// Insert at leftmost  
-		// Add new frag (if there's a body available)	
-		var newFrag = this.morgue.dequeue();
-		if (newFrag == null) {
-			// Set cell empty	
-			frags[0].css("background-color", "rgba(255, 255, 255, 0)");
-		} else {
-			frags[0].css("background-color", newFrag.data);
-		}
-    */
   }
 
 	width() {
@@ -388,6 +378,7 @@ class Board {
 			for (var i = 0; i < this.numRows; i++) {
 				for (var j = 0; j < this.numCols; j++) {
 					var objCell = this.getCell(i, j);
+          console.log('objCell', objCell)
 					var id = this.getCellID(i, j);
 					var uiCell = $("#" + id); 
 
@@ -429,6 +420,7 @@ class Board {
 
 					// Display
 					uiCell.text(text);
+          console.log('color', color, i, j) 
 					uiCell.css("background-color", color);
 					uiCell.css("width", width + "em");
 					uiCell.css("height", height + "em");

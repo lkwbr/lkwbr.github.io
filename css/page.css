@@ -110,17 +110,35 @@ d-a:hover {
   cursor:pointer;
 }
 
+.row {
+    width: 100%;
+    overflow: hidden;
+}
+
 .sep {
   color: #A1A1A1;
   display:inline;
 }
 
 .pop {
+    border-radius: 100%;
     /*
 	box-shadow:
 		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset,
 		0em -0.25em 0em 0em rgba(0, 0, 0, 0.1) inset; 
     */
+}
+
+#doodle {
+    margin-top: 1em; 
+    margin-bottom: 1em; 
+
+    overflow: visible;
+    
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: fit-content;
 }
 
 #page {
@@ -147,3 +165,14 @@ d-a:hover {
 */
 
 .frag { }
+
+#copyright {
+    font-size: 0.75em;
+    opacity: 0.25;
+
+    margin-top: 2em;
+    margin-bottom: 3em;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

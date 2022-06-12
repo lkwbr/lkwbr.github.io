@@ -16,20 +16,21 @@ class Page {
         this.palette = null;
 
         // Main page elements
-        this.pageE = $("#page");
+        //this.pageE = $("#page");
         this.titleE = $("#title");
         this.landscapeE = null; // dynamically created
         this.mugshotE = null;   // " "
         this.sideE = $("#side");
         this.contentE = $("#content");
-        this.boardE = $("#board");
+        //this.boardE = $("#board");
+        this.boardE = null 
         this.doodleE = $("#doodle");
         this.morgueE = $("#morgue");
         this.ranksE = $("#ranks");
         this.footE = $("#foot");
 
         // Environment properties
-        this.boardSize = 23;    // cells
+        this.boardSize = 15;    // cells
         this.cellSize = 0.5;      // em
         this.renderRate = 5000; // ms
 
@@ -267,7 +268,7 @@ class Page {
         var sw = this.sideE.width();
         var pw = $(bw + sw).toEm();
 
-        this.pageE.width(pw);
+        //this.pageE.width(pw);
         this.contentE.width(bw);
         this.footE.width(bw);
     }

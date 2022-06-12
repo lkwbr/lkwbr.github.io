@@ -55,7 +55,14 @@ function processHeaders(par) {
 		}
 }
 
+function writeCopyright() {
+    const copyrightElement = document.querySelector('#copyright')
+    const currentYear = new Date().getFullYear()
+    copyrightElement.innerHTML = `&copy; Copyright ${currentYear} Luke Weber`
+}
+
 function main() {
+    writeCopyright()
 		processHeaders()
 		processOfferings()
 }

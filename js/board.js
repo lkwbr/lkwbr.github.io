@@ -76,7 +76,7 @@ class Board {
     this.init = true;
 
 		// UI stuff
-    this.panel = panel; 
+    //this.panel = panel; 
     this.el = el; 
     this.title = title;
     this.info = info;

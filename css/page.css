@@ -12,7 +12,7 @@ body {
 }
 
 body > * {
-    animation: fadeIn 2s;
+    animation: fadeIn 3s; 
 }
 
 
@@ -23,8 +23,12 @@ body > * {
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { 
+      opacity: 0; 
+  }
+  100% { 
+      opacity: 1; 
+  }
 }
 
 
@@ -88,6 +92,10 @@ a {
     overflow: hidden;
     padding: 1em;
     cursor: pointer;
+}
+
+.examples > a {
+    margin: 0.5em;
 }
 
 .offering:hover {

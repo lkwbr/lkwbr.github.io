@@ -1,14 +1,18 @@
 /* page.css */
 
-body {
-	font-family: 'arial', sans-serif;
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
 
-  /*
-	color: #000;
+body {
+	/* font-family: 'arial', sans-serif; */
+  font-family: 'Open Sans', sans-serif;
+
+	color: #333;
 	background-color: #fff;
-  */
+	margin: 0;
+  /*
 	color: #fff;
 	background-color: #000;
+  */
 }
 
 body > * {
@@ -58,7 +62,7 @@ body > * {
 
 .header-group > h1,h2,h3 {
     display: inline;
-    color: #666;
+    color: #DDD;
     cursor: pointer;
     padding-right: 0.1em;
 }
@@ -68,7 +72,7 @@ body > * {
 }
 
 .header-group > .selected {
-    color: #fff;
+    color: #333;
 }
 
 a {
@@ -87,7 +91,7 @@ a {
 }
 
 .offering {
-    outline: 1px solid white; 
+    outline: 1px solid #DDD; 
     border-radius: 0.5em;
     overflow: hidden;
     padding: 1em;
@@ -96,6 +100,15 @@ a {
 
 .examples > a {
     margin: 0.5em;
+    opacity: 0.5;
+}
+
+.examples > a:hover {
+    opacity: 1;
+}
+
+.examples {
+    margin-bottom: 1.5em;
 }
 
 .offering:hover {
@@ -155,6 +168,37 @@ d-a:hover {
     width: 25em;
 }
 
+#wohnung {
+		background: black;
+    color: white; 
+		margin: 1em;
+		border-radius: 1em;
+		overflow: hidden;
+    /*min-height:1080px;
+    min-width:606px;
+*/
+
+		height: 1080px;
+    position: relative;
+}
+
+#wohnung video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Just styling the content of the div, the *magic* in the previous rules */
+#wohnung .caption {
+  z-index: 1;
+	height: 100%;
+  position: relative;
+  text-align: center;
+  padding: 2em;
+}
+
 /*
 .pop:hover {
 	box-shadow:
@@ -172,9 +216,23 @@ d-a:hover {
 }
 */
 
+#landlord-button {
+	color: white;
+	background: black;	
+	font-size: 1.5em;
+	padding: 0.1em;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
 .frag { }
 
 #copyright {
+
     font-size: 0.75em;
     opacity: 0.25;
 

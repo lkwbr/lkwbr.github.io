@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wohnungssuche!</title>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/page.css">
+    <script type="text/javascript" src="js/main.js" defer></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <script>
+        if ('registerElement' in document &&
+          'createShadowRoot' in HTMLElement.prototype &&
+          'import' in document.createElement('link') &&
+          'import' in document.createElement('link')) console.log('Woohoo! Browser has native WC support!');
+        else document.write('<script src="bower_components/webcomponentsjs/webcomponents.min.js"><\/script>');
+      </script>    
+    <!-- Libraries -->
+    <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="js/lib/jquery.csv.min.js" ></script>
+    <script type="text/javascript" src="js/lib/git_api.js" ></script>
+
+  </head>
+  <body>
+        <div id="wohnung">
+						<video autoplay muted loop>
+								<source id='us-video' src="res/video/us.mp4" type="video/mp4">
+						</video>
+						<div class="caption">
+								<br />
+								<br />
+								<br />
+								<h1 style='font-size: 3.5em; margin: 0; line-height: 1em; font-weight: 600;'>WOHNUNGS SUCHE</h1>
+								<h1 style='font-size: 2em; margin: 0; padding-top: 0.5em; font-weight: 10;'>JUNGES PAAR</h1>
+								<h1 style='font-size: 4em; margin: 0;'>IN BERLIN</h1>
+
+								<h1 style='font-size: 1em; font-style: italic;'>1 ZIMMER, UNTER 800€, 30-50 M^2 BEVORZUGT</h1>
+								<p>Wenn Sie Vermieter sind oder jemanden kennen, der es ist, senden Sie ihm bitte diesen Link, um uns bei der Wohnungssuche zu helfen!</p>
+
+
+							<br />
+							<a id="landlord-button">JA, ICH WERDE IHR VERMIETER!</a>
+							<br />
+							<br />
+
+								<div>
+										<a href="https://www.instagram.com/lk.wbr">@lkwbr</a> / 
+										<a href="https://www.instagram.com/emilialuisah">@emilialuisah</a>
+										<br />
+										<a href="mailto:lkgwbr@gmail.com">lkgwbr@gmail.com</a> /
+										<a href="https://api.whatsapp.com/send?phone=19167994473&text=Hey Luke, I have a place for you!">+1 (916) 799-4473</a>
+								</div>
+
+						</div>
+
+            
+        </div>
+  </body>
+</html>

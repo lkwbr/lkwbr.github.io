@@ -172,7 +172,6 @@ d-a:hover {
 		background: black;
     color: white; 
 		margin: 1em;
-		border-radius: 1em;
 		overflow: hidden;
     /*min-height:1080px;
     min-width:606px;
@@ -197,6 +196,7 @@ d-a:hover {
   position: relative;
   text-align: center;
   padding: 2em;
+	margin-top: 1em;
 }
 
 /*

@@ -177,6 +177,8 @@ d-a:hover {
     min-width:606px;
 */
 
+		max-width:606px;
+
 		height: 1080px;
     position: relative;
 }

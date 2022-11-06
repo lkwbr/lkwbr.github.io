@@ -30,7 +30,7 @@ class Page {
         this.footE = $("#foot");
 
         // Environment properties
-        this.boardSize = 15;    // cells
+        this.boardSize = 16;    // cells
         this.cellSize = 0.5;      // em
         this.renderRate = 5000; // ms
 

@@ -25,6 +25,13 @@ body > * {
     }
 }
 
+#pixelmug {
+    margin-top: 2em;
+    margin-left: -1em;
+    width: 10em;
+    display: block;
+}
+
 @keyframes fadeIn {
   0% { 
       opacity: 0; 
@@ -141,7 +148,7 @@ d-a:hover {
 }
 
 .pop {
-    border-radius: 100%;
+    border-radius: 0%;
     /*
 	box-shadow:
 		0em 0.125em 0em 0em rgba(255, 255, 255, 0.1) inset,

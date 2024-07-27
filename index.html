@@ -1,79 +1,173 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Luke Weber</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/page.css">
-    <script type="text/javascript" src="js/main.js" defer></script>
-    <!-- <link rel="icon" type="image/png" href="/favicon.png"> -->
+    <title>Luke Weber</title>
     <link rel="icon" type="image/png" href="res/images/favicon.png">
-
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-RLM10NKPV7');
-		</script>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
     <script>
-        if ('registerElement' in document &&
-          'createShadowRoot' in HTMLElement.prototype &&
-          'import' in document.createElement('link') &&
-          'import' in document.createElement('link')) console.log('Woohoo! Browser has native WC support!');
-        else document.write('<script src="bower_components/webcomponentsjs/webcomponents.min.js"><\/script>');
-      </script>
-    <!-- Libraries -->
-    <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
-    <script type="text/javascript" src="js/lib/jquery.csv.min.js" ></script>
-    <script type="text/javascript" src="js/lib/git_api.js" ></script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-RLM10NKPV7');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-    <!-- Source -->
-    <script type="text/javascript" src="js/util.js" ></script>
-    <script type="text/javascript" src="js/grid.js" ></script>
-    <script type="text/javascript" src="js/landscape.js" ></script>
-    <script type="text/javascript" src="js/shape.js" ></script>
-    <script type="text/javascript" src="js/follower_shape.js" ></script>
-    <script type="text/javascript" src="js/board.js" ></script>
-    <script type="text/javascript" src="js/engine.js" ></script>
-    <script type="text/javascript" src="js/page.js" ></script>
-    <script type="text/javascript" src="js/init.js" ></script>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <div class="container mx-auto p-6">
+        <header class="mb-12 flex flex-col items-center">
+            <img class="rounded-full w-32 border-4 border-gray-200 shadow-lg" src="/res/images/me.jpg" alt="Profile Picture"/>
+            <h1 class="text-4xl font-bold text-center mt-6">Luke Weber</h1>
+            <p class="text-center mt-2 text-gray-600">29 year-old programmer and entrepreneur living in Berlin. Previously based in Seattle.</p>
+            <div class="flex justify-center mt-4 space-x-4">
+                <a href="res/pdf/CV.pdf" class="text-gray-800 hover:text-gray-500">CV</a>
+                <a href="https://www.github.com/lkwbr" class="text-gray-800 hover:text-gray-500">Public Code</a>
+                <a href="https://www.instagram.com/lk.wbr" class="text-gray-800 hover:text-gray-500">Fake Life</a>
+            </div>
+            <p class="text-center mt-4 text-gray-600">For inquiries, please contact me at <a href="mailto:lkgwbr@gmail.com"
+                    class="text-gray-800 hover:text-gray-500">lkgwbr@gmail.com</a>.</p>
+        </header>
 
-    <!-- Static styling -->
-    <link rel="stylesheet" href="css/page.css">
-    <link rel="stylesheet" href="css/title.css">
-    <link rel="stylesheet" href="css/side.css">
-    <link rel="stylesheet" href="css/board.css">
-    <link rel="stylesheet" href="css/foot.css">
+        <main>
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Blogs</h2>
+                <ul class="list-disc ml-5 text-gray-700">
+                    <li><a href="/page/blog/gapyear.html" class="text-gray-800 hover:underline">The Human Torch was Denied a Bank Loan</a></li>
+                </ul>
+            </section>
 
-  </head>
-  <body>
-    <div id="page-new">
-        <!-- <img id="pixelmug" src="res/images/pixel_mug.png" /> -->
-       	<div>
-            <h1 id='name'>Luke Weber</h1>
-						<p>
-                            American programmer and entreprenuer living in Berlin.
-<!-- [<a href="res/pdf/CV.pdf">CV</a>]  -->
-[<a href="https://www.github.com/lkwbr">code</a>]
-<!-- [<a href="/page/blog/gapyear.html">blog</a>] -->
-						</p>
-						<p>
-								For inquiries, please contact me at <a href="mailto:lkgwbr@gmail.com">lkgwbr@gmail.com</a>.
-						</p>
-				<div>
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Work</h2>
+                <ul class="list-disc ml-5 text-gray-700">
+                    <li>
+                        Consulting: top 1% of Upwork ("expert-vetted"), world's #1 freelance site
+                        <ul class="list-disc ml-5">
+                            <li>onley.ai</li>
+                            <li>Intervance</li>
+                            <li>smile.ai</li>
+                            <li>finden.ai</li>
+                            <li>caide.io</li>
+                            <li>flowium.io</li>
+                        </ul>
+                    </li>
+                    <li>Senior engineer: AI privacy startup based in Berlin</li>
+                    <li>Research scientist -> Co-founder and chief engineer: <a href="https://omic.ai" class="text-gray-800 hover:underline">omic.ai</a>, multi-omic and AI startup based in Seattle</li>
+                    <li>Research engineer: ...</li>
+                    <li>Software engineer, contract: Microsoft</li>
+                </ul>
+            </section>
 
-        <!--
-        <div class="header-group">
-            <h2>About</h2>
-            <h2>Services</h2>
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Projects</h2>
+                <ul class="list-disc ml-5 text-gray-700">
+                    <li><a href="https://punk5.com" class="text-gray-800 hover:underline">PUNK5</a> - AI gaming experiment</li>
+                </ul>
+            </section>
 
-            <div class="content"></div>
-        </div>
-        -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Education</h2>
+                <div class="mb-4">
+                    <h3 class="text-2xl font-semibold">University</h3>
+                    <ul class="list-disc ml-5 text-gray-700">
+                        <li>B.S. Computer Science - Cum Laude - Washington State University (...)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold">MOOC</h3>
+                    <ul class="list-disc ml-5 text-gray-700">
+                        <li>Robotics thing</li>
+                        <li>Deep reinforcement learning thing</li>
+                        <li>Deep learning thing</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Travel</h2>
+                <ul class="list-disc ml-5 text-gray-700">
+                    <li>United States - roadtrip from Boston to LA, ...</li>
+                    <li>Canada - Vancouver, Bowen Island, Toronto</li>
+                    <li>Iceland - Partied in Reykjavik, Blue Lagoon, hiked active volcano [volcano name]</li>
+                    <li>Ireland - Dublin, 2x road trip, summit Carrauntoohil</li>
+                    <li>United Kingdom - London, Liverpool</li>
+                    <li>Germany - Berghain, KitKat, Kater Blau, Sisyphos, etc.; Leipzig, Hamburg, Dresden, Oktoberfest in Munich, ...</li>
+                    <li>Austria - Salzburg, Vienna</li>
+                    <li>Poland - Warsaw, Krakow, Zakopane</li>
+                    <li>Hungary - Budapest, ruin bars, ...</li>
+                    <li>France - Paris</li>
+                    <li>Netherlands - Amsterdam</li>
+                    <li>Ukraine - Kyiv</li>
+                    <li>Moldova - Chișinău</li>
+                    <li>Romania - Vampires and shit</li>
+                    <li>Bulgaria - Sofia, ...</li>
+                    <li>Croatia - Zagreb, Split, ...</li>
+                    <li>Greece - Athens</li>
+                    <li>Morocco - Marrakech</li>
+                    <li>Brazil - Rio de Janeiro, São Paulo, Tres Fronteras</li>
+                    <li>Argentina - Buenos Aires, hitchhiked entire Patagonia, Ushuaia</li>
+                    <li>Uruguay - Colonia del Sacramento, Montevideo, Punta del Este</li>
+                    <li>Peru - Lima, Machu Picchu, Iquitos, ayahuasca in the Amazon</li>
+                    <li>Thailand - Phuket, Bangkok, ...</li>
+                    <li>Philippines - Manila, PADI scuba diver's license in Puerto Galera, Chocolate Hills, etc.</li>
+                    <li>Australia - Sydney, roadtrip from Sydney to Uluru, Gold Coast</li>
+                    <li>South Korea - Seoul, Busan, strict quarantine</li>
+                </ul>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Languages</h2>
+                <ul class="list-disc ml-5 text-gray-700">
+                    <li>Spanish - ??</li>
+                    <li>German - ??</li>
+                    <li>Japanese - ??</li>
+                    <li>English - native</li>
+                </ul>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Running</h2>
+                <ul class="list-disc ml-5 text-gray-700">
+                    <li>4:00:00 - Salzburg Marathon, Austria (...)</li>
+                    <li>4:00:00 - Kyiv City Marathon, Ukraine (...)</li>
+                    <li>3:50:00 - Irving Marathon, Texas (...)</li>
+                    <li>... - Manastash Ridge, Boyscout trail, Ellensburg, WA, USA (...)</li>
+                </ul>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Jiu-jitsu</h2>
+                <div class="mb-4">
+                    <h3 class="text-xl font-semibold">Competitions</h3>
+                    <ul class="list-disc ml-5 text-gray-700">
+                        <li>Gold - 6 fights - White Belt, 175 lbs - Grappling Industries, Berlin (June 2024)</li>
+                        <li>Win - Superfight in a cage - Fenriz Groundhug, Berlin (June 2024)</li>
+                        <li>2nd place - 2 fights - White Belt, absolute division - American Grappling Federation, Berlin (??)</li>
+                        <li>10th place?? - 3 fights - White Belt, 175 lbs - Grappling Industries, Berlin (??)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Teaching</h3>
+                    <ul class="list-disc ml-5 text-gray-700">
+                        <li>Served as uke for multi-part Martino Sacchi's instructionals at BJJ Dojo Berlin:
+                            <ul class="list-disc ml-5">
+                                <li>Mount attacks</li>
+                                <li>Mount escapes</li>
+                                <li>Front headlock</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <div id="doodle"></div>
+                <p id="copyright" class="text-center text-gray-500 text-sm">© 2024 Luke Weber. All rights reserved.</p>
+            </section>
+        </main>
     </div>
-    <div id="doodle"></div>
-    <p id="copyright"></p>
-  </body>
+</body>
+
 </html>

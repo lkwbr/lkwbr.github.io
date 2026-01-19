@@ -13,210 +13,724 @@
         gtag('js', new Date());
         gtag('config', 'G-RLM10NKPV7');
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .fade-in { animation: fadeIn 0.8s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hover-lift { transition: transform 0.2s ease; }
-        .hover-lift:hover { transform: translateY(-2px); }
-        .section-card { background: white; border-radius: 8px; padding: 24px; border: 1px solid #e5e7eb; transition: border-color 0.3s ease; }
-        .section-card:hover { border-color: #000; }
+        :root {
+            --bg: #fafafa;
+            --bg-alt: #f0f0f0;
+            --text: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --link: #5ba3c0;
+            --link-hover: #3d8aab;
+            --border: #e0e0e0;
+            --accent: #1a1a1a;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a0a0a;
+                --bg-alt: #151515;
+                --text: #f0f0f0;
+                --text-muted: #8a8a8a;
+                --link: #7ec8e3;
+                --link-hover: #a3daf0;
+                --border: #2a2a2a;
+                --accent: #f0f0f0;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+        a {
+            color: var(--link);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+        /* header */
+        header {
+            margin-bottom: 48px;
+        }
+        .name {
+            font-size: 2.25rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        .roles {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .role {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .role-title {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .role-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+        }
+        .highlight {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        .social-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+            font-size: 0.875rem;
+        }
+        /* sections */
+        .sections {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+        section {
+            border-top: 1px solid var(--border);
+            padding-top: 18px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            cursor: pointer;
+            user-select: none;
+            gap: 16px;
+        }
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .section-summary {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+            transition: opacity 0.2s ease;
+        }
+        .expand-icon {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        section.expanded .expand-icon {
+            transform: rotate(45deg);
+        }
+        section.expanded .section-summary {
+            display: none;
+        }
+        .section-content {
+            display: none;
+            margin-top: 12px;
+        }
+        section.expanded .section-content {
+            display: block;
+        }
+        .section-content ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .section-content li {
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+        .item-title {
+            font-weight: 500;
+        }
+        .item-sub {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+        .nested-list {
+            margin-top: 6px;
+            padding-left: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .nested-list li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        /* testimonials */
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .testimonial-group-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .testimonial {
+            border-left: 2px solid var(--border);
+            padding-left: 12px;
+        }
+        .testimonial-quote {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .testimonial-meta {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        /* travel grid */
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 16px;
+        }
+        .travel-region h4 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .travel-region ul {
+            gap: 3px !important;
+        }
+        .travel-region li {
+            font-size: 0.85rem !important;
+        }
+        .europe-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px !important;
+        }
+        /* responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px 64px;
+            }
+            .name {
+                font-size: 1.85rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .travel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
-<body class="bg-white text-black font-sans">
-    <div class="container mx-auto p-6">
-
-        <div class="text-black mb-6">
-            <!-- <img class="w-8 mr-3" src="/res/images/usa.png" alt="USA Flag"/> -->
-            <div class="flex items-center mb-3">
-                <h1 class="text-6xl font-bold">luke weber</h1>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Luke Weber</h1>
+            <p class="tagline">Trying to be great.</p>
+            <div class="roles">
+                <div class="role">
+                    <span class="role-title">Co-founder & CTO @ <a href="https://eisberg.ai" target="_blank" rel="noreferrer">Eisberg.ai</a></span>
+                    <span class="role-desc">the app that builds apps</span>
+                </div>
+                <div class="role">
+                    <span class="role-title">CTO @ <a href="https://wyldsociety.io" target="_blank" rel="noreferrer">Wyld Society</a></span>
+                    <span class="role-desc">creator PR app</span>
+                </div>
+                <div class="role">
+                    <span class="role-title">AI Advisor @ <a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></span>
+                    <span class="role-desc">genomics AI startup against cancer</span>
+                </div>
             </div>
-            <!-- <p class="text-black mb-2">currently in bali, indonesia</p> -->
-            <div class="flex space-x-6 mb-6">
-                <a href="mailto:lkgwbr@gmail.com" class="text-blue-400">email</a>
-                <a href="https://www.github.com/lkwbr" class="text-blue-400">github</a>
-                <a href="https://www.instagram.com/lk.wbr" class="text-blue-400">ig [fake life]</a>
+            <div class="highlights">
+                <span class="highlight">Top 1% AI talent with perfect rating on <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">Upwork</a></span>
+                <span class="highlight">Over a decade of experience across AI, academia, startups, and Big Tech</span>
+                <span class="highlight">Jiu-jitsu purple belt under <a href="https://www.instagram.com/sacchimartino/?hl=en" target="_blank" rel="noreferrer">Martino Sacchi</a></span>
+                <span class="highlight">30+ jiu-jitsu wins (<a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">Smoothcomp</a>) and 3 marathons (<a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">Strava</a>) across the world</span>
+                <span class="highlight">Traveled to 30+ countries across 6/7 continents</span>
+                <span class="highlight">Past: Co-founder and Chief Engineer at <a href="https://omic.ai" target="_blank" rel="noreferrer">omic.ai</a> (crashed and burned, AMA)</span>
+                <span class="highlight">English native, German conversational (B1 on <a href="https://www.duolingo.com/profile/lkwbr" target="_blank" rel="noreferrer">Duolingo</a>), Spanish survival</span>
+                <span class="highlight">CS (<em>cum laude</em>) + ML research under <a href="http://eecs.wsu.edu/~jana/" target="_blank" rel="noreferrer">Jana Doppa</a></span>
             </div>
+            <div class="social-links">
+                    <a href="https://www.github.com/lkwbr" target="_blank" rel="noreferrer">github</a>
+                    <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noreferrer">instagram</a>
+                    <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">upwork</a>
+                    <a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">smoothcomp</a>
+                </div>
+            </header>
 
-            <ul class="list-disc ml-5 text-black">
-                <!-- <li>founder at <a href="http://lkwbr.github.io/kern" class="text-blue-400">kern agents</a></li> -->
-                <li>founder at <b>kern agents</b></li>
-                <li>creator of <b>punk5</b> and <b>gpyr</b></li>
-                <li>data science advisor for <a href="https://www.intervance.com" class="text-blue-400">intervance</a> (seeking funding)</li>
-                <li>top 1% ai talent on world's #1 freelance site <a href="https://www.upwork.com/freelancers/lkwbr" class="text-blue-400">upwork</a></li>
-                <li>jiu-jitsu purple belt; <a href="https://smoothcomp.com/en/profile/1082353" class="text-blue-400">competitor profile</a></li>
-                <li>10+ years across academia, industry, and startups; <a href="res/pdf/CV.pdf" class="text-blue-400">cv</a></li>
-                <li>30+ countries visited, 6/7 continents, 3 spoken languages</li>
-            </ul>
-        </div>
-
-        <!-- <main>
-
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Summary</h2>
-                <p class="text-black mb-4">
-                    I'm currently living in Berlin doing AI consulting for startups around the globe. I serve as data science advisor for biotech startup Intervance and at any given time am helping 3-5 startups build their IP and get to market.
-
-                    What time remains goes to become a world-ranked jiu-jitsu athlete.
-                </p>
-                <p class="text-black">
-                    Currently based in Berlin, I combine technical expertise with practical business acumen to help companies leverage AI effectively while maintaining data privacy and security.
-                </p>
-            </section>
-
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Blogs</h2>
-                <ul class="list-disc ml-5 text-black">
-                    <li><a href="/page/blog/gapyear.html" class="text-black hover:text-gray-600">The Human Torch was Denied a Bank Loan</a></li>
-                </ul>
-            </section>
-
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Work</h2>
-                <div class="grid md:grid-cols-2 gap-6">
+        <div class="sections">
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
                     <div>
-                        <ul class="list-disc ml-5 text-black">
-                            <li>
-                                <span class="font-semibold">Consulting:</span> top 1% of Upwork ("expert-vetted"), world's #1 freelance site
-                                <ul class="list-disc ml-5 mt-2">
-                                    <li>onley.ai</li>
-                                    <li>Intervance</li>
-                                    <li>smile.ai</li>
-                                    <li>finden.ai</li>
-                                    <li>caide.io</li>
-                                    <li>flowium.io</li>
+                        <h2 class="section-title">Work</h2>
+                        <p class="section-summary">From Microsoft to founding AI startups — building products across Seattle, Berlin, and beyond.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>
+                            <span class="item-title">AI consultant (global)</span>
+                            <ul class="nested-list">
+                                    <li>Helped launch: intervance.com, thesmile.ai, finden.ai, caide.io, flowium.io, flirtflow.ai, next-play.co</li>
                                 </ul>
                             </li>
-                            <li><span class="font-semibold">Senior engineer:</span> AI privacy startup based in Berlin</li>
-                            <li><span class="font-semibold">Research scientist → Co-founder and chief engineer:</span> <a href="https://omic.ai" class="text-black hover:text-gray-600">omic.ai</a>, multi-omic and AI startup based in Seattle</li>
-                            <li><span class="font-semibold">Research engineer:</span> ...</li>
-                            <li><span class="font-semibold">Software engineer, contract:</span> Microsoft</li>
+                            <li>Senior engineer · brighter.ai · Berlin, Germany</li>
+                        <li>Research scientist → co-founder & chief engineer · omic.ai · Seattle, WA</li>
+                            <li>Research engineer · WSU · Project Vizinet / AIRPACT-Fire · Pullman, WA</li>
+                            <li>Software engineer (contract) · Microsoft · Redmond, WA</li>
                         </ul>
-                    </div>
-                    <div class="border border-black p-6 rounded-lg">
-                        <h3 class="text-lg font-semibold mb-3">Current Focus</h3>
-                        <p class="text-black">AI consulting & privacy tech in Berlin's startup scene</p>
-                    </div>
                 </div>
             </section>
 
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Projects</h2>
-                <ul class="list-disc ml-5 text-black">
-                    <li><a href="https://punk5.com" class="text-black hover:text-gray-600">PUNK5</a> - AI gaming experiment</li>
-                </ul>
-            </section>
-
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Education</h2>
-                <div class="mb-4">
-                    <h3 class="text-2xl font-semibold">University</h3>
-                    <ul class="list-disc ml-5 text-black">
-                        <li>B.S. Computer Science - Cum Laude - Washington State University (...)</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold">MOOC</h3>
-                    <ul class="list-disc ml-5 text-black">
-                        <li>Robotics thing</li>
-                        <li>Deep reinforcement learning thing</li>
-                        <li>Deep learning thing</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Favorite Books</h2>
-                <p class="text-black mb-4">Books that have actually changed how I think about the world:</p>
-                <ul class="list-disc ml-5 text-black">
-                    <li>The Selfish Gene</li>
-                    <li>The Coddling of the American Mind</li>
-                    <li>The Martian</li>
-                    <li>The Hobbit</li>
-                    <li>Deep Work</li>
-                    <li>The Game</li>
-                    <li>Abundance</li>
-                    <li>Zero-to-one</li>
-                    <li>Zen Mind, Beginner's Mind</li>
-                </ul>
-            </section>
-
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Travel</h2>
-                <div class="grid md:grid-cols-2 gap-6">
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
                     <div>
-                        <div class="border border-black p-6 rounded-lg mb-4">
-                            <h3 class="text-lg font-semibold mb-2">25+ Countries Visited</h3>
-                            <p class="text-black">From hitchhiking Patagonia to scuba diving in the Philippines</p>
+                        <h2 class="section-title">Testimonials</h2>
+                        <p class="section-summary">What clients and collaborators say — short, specific, and verifiable.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <div class="testimonials">
+                        <div class="testimonial-group-title">Collaborators</div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke was a great engineer.”</div>
+                            <div class="testimonial-meta">— Senior Executive, Brighter AI</div>
                         </div>
-                        <ul class="list-disc ml-5 text-black space-y-1">
-                            <li><span class="font-semibold">Americas:</span> US, Canada, Brazil, Argentina, Uruguay, Peru</li>
-                            <li><span class="font-semibold">Europe:</span> Iceland, Ireland, UK, Germany, Austria, Poland, Hungary, France, Netherlands, Ukraine, Moldova, Romania, Bulgaria, Croatia, Greece</li>
-                            <li><span class="font-semibold">Asia:</span> Thailand, Philippines, South Korea</li>
-                            <li><span class="font-semibold">Africa:</span> Morocco</li>
-                            <li><span class="font-semibold">Oceania:</span> Australia</li>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“He’s a 10x contributor … we were very lucky.”</div>
+                            <div class="testimonial-meta">— CEO, Omic, Inc.</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke was great … really a fast learner.”</div>
+                            <div class="testimonial-meta">— Senior Engineer, Microsoft</div>
+                        </div>
+
+                        <div class="testimonial-group-title">Clients (Upwork)</div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke has been exceptional not only on the data science front but in his communication skills. He keeps meticulous records of his work and demonstrates integrity with his approach throughout the project. He is receptive to suggestions and provides his own insights in return. A pleasure to work with. 100% would recommend.”</div>
+                            <div class="testimonial-meta">— Upwork Client (Gene Expression MVP)</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke did a fantastic job with helping us source our new Technical Lead… He was able to pinpoint exactly what we were looking for in a very short amount of time… The post-interview debrief as well as typed report on the candidate were hugely valuable… I would absolutely work with Luke again.”</div>
+                            <div class="testimonial-meta">— Upwork Client (CTO screening)</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke is an amazing developer to work with. Highly skillful and professional (I interviewed 16 devs for this job). He’s very transparent and always maintains the timelines he promised. Makes sure to communicate at every step of the way. Will definitely work with him again if he’ll be free available.”</div>
+                            <div class="testimonial-meta">— Upwork Client (Chrome extension)</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke was highly professional and proficient. He came with detailed knowledge in the domain we were exploring and he went over and above to give us the guidance needed. He works fast as well which demonstrated his domain knowledge.”</div>
+                            <div class="testimonial-meta">— Upwork Client (Architecture / Cloud / AI)</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke was a capable and energetic colleague who used his good experience in backend development to resolve bottlenecks in our request handling while at the same time improving the fairness in how our platform handles request load by different customers.”</div>
+                            <div class="testimonial-meta">— Client / Colleague (Senior cloud engineering)</div>
+                        </div>
+
+                        <p style="margin-top: 6px; font-size: 0.875rem;">
+                            <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">More reviews on Upwork →</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Projects</h2>
+                        <p class="section-summary">Side ventures in AI gaming and global travel optimization.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li><span class="item-title">punk5</span> — AI-first gaming MMORPG experiment, top 10% in YC Winter 202?</li>
+                        <li><span class="item-title">gpyr</span> — global travel routing engine solving multi-continent itineraries</li>
                         </ul>
-                    </div>
-                    <div class="border border-black rounded-lg p-4 flex items-center justify-center">
-                        <div class="text-center">
-                            <p class="text-black">Interactive map coming soon</p>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Languages</h2>
-                <ul class="list-disc ml-5 text-black">
-                    <li>Spanish - ??</li>
-                    <li>German - ??</li>
-                    <li>Japanese - ??</li>
-                    <li>English - native</li>
-                </ul>
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Education</h2>
+                        <p class="section-summary">CS degree from WSU, plus deep dives into deep learning, autonomous systems, and reinforcement learning.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                            <li>B.S. Computer Science · Washington State University · <em>cum laude</em></li>
+                            <li>Research in automated task assignment under <a href="http://eecs.wsu.edu/~jana/" target="_blank" rel="noreferrer">Jana Doppa</a></li>
+                            <li>
+                            <span class="item-title">MOOCs and residencies</span>
+                            <ul class="nested-list">
+                                    <li>Flying Car and Autonomous Flight Engineer · Udacity</li>
+                                    <li>Deep Reinforcement Learning Nanodegree · Udacity</li>
+                                    <li>Deep Learning Specialization · DeepLearning.AI (Andrew Ng)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                </div>
             </section>
 
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Running</h2>
-                <ul class="list-disc ml-5 text-black">
-                    <li>4:00:00 - Salzburg Marathon, Austria (...)</li>
-                    <li>4:00:00 - Kyiv City Marathon, Ukraine (...)</li>
-                    <li>3:50:00 - Irving Marathon, Texas (...)</li>
-                    <li>... - Manastash Ridge, Boyscout trail, Ellensburg, WA, USA (...)</li>
-                </ul>
-            </section>
-
-            <section class="mb-12 section-card fade-in hover-lift">
-                <h2 class="text-3xl font-semibold border-b-2 border-[#e5e7eb] pb-2 mb-4">Jiu-jitsu</h2>
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold">Competitions</h3>
-                    <ul class="list-disc ml-5 text-black">
-                        <li>Gold - 6 fights - White Belt, 175 lbs - Grappling Industries, Berlin (June 2024)</li>
-                        <li>Win - Superfight in a cage - Fenriz Groundhug, Berlin (June 2024)</li>
-                        <li>2nd place - 2 fights - White Belt, absolute division - American Grappling Federation, Berlin (??)</li>
-                        <li>10th place?? - 3 fights - White Belt, 175 lbs - Grappling Industries, Berlin (??)</li>
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Grappling</h2>
+                        <p class="section-summary">Purple belt competitor — gold and silver across European opens, plus superfight wins in Berlin.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li><span class="item-title">Competition highlights</span></li>
+                        <li>1st — Cologne Summer Open Championship 2025 | European Cup · Cologne, Germany</li>
+                        <li>2nd (blue) — ILLCS Germany Summer 2025 · Hannover, Germany</li>
+                        <li>2nd (blue) — ADCC Suisse Open 2025 · Zurich, Switzerland</li>
+                        <li>1st (blue) — BJJ Dojo Internal Comp · December 2024</li>
+                        <li>Win — Caged Superfight (blue) · Fenriz Groundhug · Berlin · December 2024</li>
+                        <li>2nd (blue) — 2024 Amsterdam Open · Netherlands</li>
+                        <li>2nd (blue) — 2024 Prague Open · Czechia</li>
+                        <li>1st (white) — Grappling Industries Berlin · June 2024</li>
+                        <li>Win — Caged Superfight (white) · Fenriz Groundhug · Berlin · May 2024</li>
                     </ul>
+                    <ul style="margin-top: 14px;">
+                        <li><span class="item-title">Uke & teaching</span></li>
+                        <li>BJJ Dojo Berlin — uke for instructionals</li>
+                        <li>no_bs_jj — seminar support</li>
+                        <li>sayyato — seminar support</li>
+                        </ul>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold">Teaching</h3>
-                    <ul class="list-disc ml-5 text-black">
-                        <li>Served as uke for multi-part Martino Sacchi's instructionals at BJJ Dojo Berlin:
-                            <ul class="list-disc ml-5">
-                                <li>Mount attacks</li>
-                                <li>Mount escapes</li>
-                                <li>Front headlock</li>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Running</h2>
+                        <p class="section-summary">Three marathons across three countries — Salzburg, Kyiv, and Texas.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>4:00:00 · Salzburg Marathon · Austria</li>
+                        <li>4:00:00 · Kyiv City Marathon · Ukraine</li>
+                        <li>3:50:00 · Irving Marathon · Texas <em>(course ran short)</em></li>
+                        </ul>
+                    <p style="margin-top: 10px; font-size: 0.875rem;">
+                        <a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">Strava profile →</a>
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Lifts</h2>
+                        <p class="section-summary">Strength training PRs — heavy dumbbell work and compound lifts.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                            <li>120 lbs dumbbell bench (each arm)</li>
+                            <li>315 lbs barbell squat</li>
+                            <li>245 lbs barbell bench</li>
+                        </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Travel</h2>
+                        <p class="section-summary">25+ countries — hitchhiking Patagonia, ayahuasca in the Amazon, road trips across continents.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li><span class="item-title">Top adventures</span></li>
+                                <li>Hitchhiking across Patagonia</li>
+                                <li>Road-tripping Ireland, the USA, and Australia (Sydney → Melbourne → Adelaide → Uluru)</li>
+                                <li>Couchsurfing in dozens of countries and trading photography for meals</li>
+                                <li>Ayahuasca ceremony deep in the Amazon jungle</li>
                             </ul>
-                        </li>
+                    <div class="travel-grid">
+                        <div class="travel-region">
+                            <h4>Americas</h4>
+                            <ul>
+                                        <li>United States</li>
+                                        <li>Canada</li>
+                                        <li>Argentina</li>
+                                        <li>Uruguay</li>
+                                        <li>Peru</li>
+                                        <li>Chile</li>
+                                        <li>Brazil</li>
+                                    </ul>
+                                </div>
+                        <div class="travel-region">
+                            <h4>Asia</h4>
+                            <ul>
+                                        <li>Japan</li>
+                                        <li>South Korea</li>
+                                        <li>Philippines</li>
+                                        <li>Thailand</li>
+                                        <li>Indonesia</li>
+                                    </ul>
+                                </div>
+                        <div class="travel-region">
+                            <h4>Oceania</h4>
+                            <ul>
+                                        <li>Australia</li>
+                                    </ul>
+                                </div>
+                        <div class="travel-region">
+                            <h4>Africa</h4>
+                            <ul>
+                                        <li>Morocco</li>
+                                    </ul>
+                                </div>
+                        <div class="travel-region" style="grid-column: span 2;">
+                            <h4>Europe</h4>
+                            <ul class="europe-list">
+                                        <li>Germany</li>
+                                        <li>Austria</li>
+                                        <li>Iceland</li>
+                                        <li>Netherlands</li>
+                                        <li>France</li>
+                                        <li>Poland</li>
+                                        <li>Ukraine</li>
+                                        <li>Moldova</li>
+                                        <li>Romania</li>
+                                        <li>Bulgaria</li>
+                                        <li>Croatia</li>
+                                <li>UK</li>
+                                        <li>Ireland</li>
+                                        <li>Czechia</li>
+                                        <li>Hungary</li>
+                                        <li>Greece</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Hackathons</h2>
+                        <p class="section-summary">Multiple finalist finishes at WSU hackathons including an ML fake news classifier.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                            <li>Finalist — Crimson Code (WSU, Pullman, WA)</li>
+                            <li>Finalist — Crimson Code (WSU) · ML-based fake news classifier</li>
+                            <li>Def() Hacks</li>
+                            <li>WSU Hackathon (Pullman, WA)</li>
+                        </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Languages</h2>
+                        <p class="section-summary">Native English, conversational German, and beginner Spanish.</p>
+                        </div>
+                    <span class="expand-icon">+</span>
+                        </div>
+                <div class="section-content">
+                    <ul>
+                            <li>English — native</li>
+                            <li>German — B1</li>
+                            <li>Spanish — A1</li>
+                        </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Certifications</h2>
+                        <p class="section-summary">PADI certified for open water diving.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>PADI Open Water Scuba Diver</li>
                     </ul>
                 </div>
             </section>
 
-            <section class="mb-12">
-                <div id="doodle"></div>
-                <p id="copyright" class="text-center text-black text-sm">© 2024 Luke Weber. All rights reserved.</p>
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Selected Books</h2>
+                        <p class="section-summary">Favorites spanning evolution, entrepreneurship, sci-fi, and mindfulness.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                            <li>The Selfish Gene</li>
+                            <li>Abundance</li>
+                            <li>The Martian</li>
+                            <li>The Hobbit</li>
+                            <li>Zero to One</li>
+                            <li>Zen Mind, Beginner's Mind</li>
+                            <li>Deep Work</li>
+                        </ul>
+                    <p style="margin-top: 10px; font-size: 0.875rem;">
+                            <a href="https://www.goodreads.com/user/show/12134138-luke" target="_blank" rel="noreferrer">Goodreads →</a>
+                        </p>
+                </div>
             </section>
-        </main> -->
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Selected Poems</h2>
+                        <p class="section-summary">Bukowski's relentless ambition and Dylan Thomas on mortality.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                            <li>Going All the Way — Charles Bukowski</li>
+                            <li>Do Not Go Gentle into That Good Night — Dylan Thomas</li>
+                        </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Selected Films</h2>
+                        <p class="section-summary">Action thrillers, psychological intensity, and sharp dialogue.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                            <li>The Bourne Identity</li>
+                            <li>Casino Royale</li>
+                            <li>Iron Man</li>
+                            <li>Fight Club</li>
+                            <li>Whiplash</li>
+                            <li>Inglorious Basterds</li>
+                            <li>The Girl with the Dragon Tattoo</li>
+                        </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Selected Quotes</h2>
+                        <p class="section-summary">Lines on excellence, resilience, fear, and getting punched in the face.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>"There are no two words in the English language more harmful than 'good job.'" — Fletcher, <em>Whiplash</em> (2014)</li>
+                            <li>"It's only after disaster that we can be resurrected." — Tyler Durden, <em>Fight Club</em> (1999)</li>
+                            <li>"Fear is the mind-killer. Fear is the little-death that brings total obliteration." — Paul Atreides, <em>Dune</em> (1965)</li>
+                            <li>"Everybody has a plan until they get punched in the face." — Mike Tyson</li>
+                        </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header" onclick="toggleSection(this.parentElement)">
+                    <div>
+                        <h2 class="section-title">Misc</h2>
+                        <p class="section-summary">Berlin nightlife credentials and fraternity honors earned the hard way.</p>
+                    </div>
+                    <span class="expand-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>Stamped at Berghain, KitKat, Sysophos, Tresor, Watergate, Katerblau</li>
+                        <li>"Honorary Sigma Nu" by partying so hard</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
     </div>
+
+    <script>
+        function toggleSection(section) {
+            section.classList.toggle('expanded');
+        }
+    </script>
 </body>
 
 </html>

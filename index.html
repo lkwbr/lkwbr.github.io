@@ -147,7 +147,7 @@
             background: var(--bg-alt);
             color: var(--text);
         }
-        .tab-btn:focus {
+        .tab-btn:focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: 2px;
         }
@@ -221,6 +221,23 @@
             border: 1px solid var(--border);
             border-radius: 999px;
             padding: 4px 8px;
+        }
+        .xp-tag.tech-lang {
+            background: var(--bg-alt);
+            border-color: var(--border);
+        }
+        .xp-tag.tech-infra {
+            border-style: dashed;
+        }
+        .xp-tag.tech-data {
+            border-radius: 4px;
+        }
+        .xp-tag.tech-ml {
+            background: transparent;
+            border-width: 1.5px;
+        }
+        .xp-tag.tech-workflow {
+            font-style: italic;
         }
         /* sections */
         .sections {
@@ -301,6 +318,40 @@
             color: var(--text-muted);
             font-size: 0.85rem;
             margin-top: 3px;
+        }
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 32px;
+            row-gap: 18px;
+            margin-top: 8px;
+        }
+        .works-subsection h4 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .works-subsection ul {
+            gap: 4px !important;
+        }
+        .works-subsection li {
+            font-size: 0.85rem !important;
+        }
+        .works-subsection.quotes {
+            grid-column: 1 / -1;
+        }
+        .works-subsection.quotes li {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        @media (max-width: 600px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+                row-gap: 16px;
+            }
         }
         .nested-list {
             margin-top: 6px;
@@ -431,7 +482,7 @@
     <div class="container">
 <header>
             <h1 class="name">Luke Weber</h1>
-            <p class="tagline">Trying to be great and good.</p>
+            <p class="tagline">Trying to be great.</p>
             <div class="roles">
                 <div class="role">
                     <span class="role-title">Co-founder & CTO @ <a href="https://eisberg.ai" target="_blank" rel="noreferrer">eisberg.ai</a></span>
@@ -439,11 +490,11 @@
                 </div>
                 <div class="role">
                     <span class="role-title">CTO @ <a href="https://wyldsociety.io" target="_blank" rel="noreferrer">Wyld Society</a></span>
-                    <span class="role-desc">creator PR app</span>
+                    <span class="role-desc">where venues meet creators</span>
                 </div>
                 <div class="role">
                     <span class="role-title">Researcher & AI Advisor @ <a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></span>
-                    <span class="role-desc">genomics AI startup against cancer</span>
+                    <span class="role-desc">interpretable AI against cancer</span>
                 </div>
             </div>
             <div class="highlights">
@@ -461,1040 +512,56 @@
 
         <div class="tabs" aria-label="Primary navigation">
             <button class="tab-btn active" type="button" data-tab="work" onclick="setTab('work')">Experience</button>
-            <button class="tab-btn" type="button" data-tab="projects" onclick="setTab('projects')">Projects</button>
             <button class="tab-btn" type="button" data-tab="sport" onclick="setTab('sport')">Sports</button>
             <button class="tab-btn" type="button" data-tab="life" onclick="setTab('life')">Life</button>
         </div>
 
         <div class="tab-panels">
-            <div class="tab-panel active" data-tab="work">
-                <div class="sections">
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Work</h2>
-                        <p class="section-summary">From Microsoft to founding AI startups — building products across Seattle, Berlin, and beyond.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <div class="experience-list">
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">AI consultant</div>
-                                    <div class="xp-meta">Worldwide · Jun 2023 - Nov 2025</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Became a <strong>top 1% talent</strong> on Upwork with a <strong>perfect rating</strong> within months.</li>
-                                <li><strong>Prometheus</strong> <span style="color: var(--text-muted);">(San Diego, USA)</span> — Built a custom LLM-powered cybersecurity chat app using RAG to accelerate compliance testing.</li>
-                                <li><strong>Intervance</strong> <span style="color: var(--text-muted);">(Yale, USA)</span> — Delivered novel ML models and full production stack from raw gene expression to risk scores and tissue subtype predictions.</li>
-                                <li><strong>Caide</strong> <span style="color: var(--text-muted);">(Netherlands)</span> — Conducted CTO technical screenings for the AI-driven sales automation SaaS.</li>
-                                <li><strong>TheSmileAI</strong> <span style="color: var(--text-muted);">(UAE)</span> — Created an AI-powered medical platform for dentists.</li>
-                                <li><strong>Flowium</strong> <span style="color: var(--text-muted);">(Brazil)</span> — Engineered the entire AI-first content management system.</li>
-                                <li><strong>DealMatch</strong> <span style="color: var(--text-muted);">(Israel)</span> — Developed the initial Facebook-scraping Chrome extension to surface similar Marketplace deals.</li>
-                                <li><strong>Mallawa Intelligent Canal Systems</strong> <span style="color: var(--text-muted);">(Australia)</span> — Built and debugged MQTT scripts for IoT irrigation automation.</li>
-                                <li><strong>Finden</strong> <span style="color: var(--text-muted);">(UK)</span> — Architected an AI-enhanced cross-platform omni-search application.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">consulting</span>
-                                <span class="xp-tag">delivery</span>
-                                <span class="xp-tag">automation</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Senior engineer</div>
-                                    <div class="xp-meta"><span class="xp-company">brighter.ai</span> · Berlin, Germany · Jan 2023 - Jun 2023</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Engineered a secure Azure-based IoT data streaming and analytics platform with ML deanonymization pipelines using Terraform and Kubernetes for a 56B € client.</li>
-                                <li>Built a modular batch submission and stress-testing package that surfaced cost, compute, scalability, and speed insights.</li>
-                                <li>Reduced wait times 10x by improving fair request scheduling for every client and shipping the accompanying test suite.</li>
-                                <li>Spearheaded the roadmap for the backend v2.0 release.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">azure</span>
-                                <span class="xp-tag">privacy</span>
-                                <span class="xp-tag">mlops</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Co-founder and Chief Engineer</div>
-                                    <div class="xp-meta"><span class="xp-company"><a href="https://omic.ai" target="_blank" rel="noreferrer">omic.ai</a></span> · Seattle, WA · Feb 2020 - Mar 2021</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Co-designed and deployed a collaborative AI platform supporting treatment of 7,000+ diseases with multi-omics data and ML (AlphaFold, DRL, CNNs, GANs, BERT) for small-molecule drug discovery.</li>
-                                <li>Invented a portable workflow engine that paired with a UI, serverless backend, and knowledge graph to process ~15 TB/week.</li>
-                                <li>Constructed a 1B+ node knowledge graph fed by scientific articles and biological/clinical data for continuous insight mining.</li>
-                                <li>Led 12+ specialists across biologists, engineers, data scientists, and designers across 25+ bioinformatics and AI projects.</li>
-                                <li>Facilitated demos to clients and partners with a collective market cap over $350B.</li>
-                                <li>Contributed to ideation and execution of 200+ high-impact scientific and product features.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">bioinformatics</span>
-                                <span class="xp-tag">multi-omics</span>
-                                <span class="xp-tag">leadership</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Research Scientist</div>
-                                    <div class="xp-meta"><span class="xp-company"><a href="https://omic.ai" target="_blank" rel="noreferrer">omic.ai</a></span> · Seattle, WA · Apr 2019 - Feb 2020</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Built an immunotherapy efficacy assessment pipeline for somatic cancer tissue genomes.</li>
-                                <li>Co-developed pharmacogenomics pipelines and personalized patient health reports.</li>
-                                <li>Tripled development speed by enforcing stable test and production environments.</li>
-                                <li>Prototyped DNA compression, DRL/KG search, and a patient cost-spike prediction deep learning model (~0.72 AUROC).</li>
-                                <li>Built a state machine-based conversational assistant for doctor-facing workflows.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">immunotherapy</span>
-                                <span class="xp-tag">deeplearning</span>
-                                <span class="xp-tag">healthtech</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Research Engineer</div>
-                                    <div class="xp-meta"><span class="xp-company">Vizinet</span> · Seattle, WA · Sep 2018 - Apr 2019</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Developed a CNN to predict Air Quality Index and reduce reliance on $10k+ hardware sensors.</li>
-                                <li>Prototyped a webcrawler that retrieved ~20k images plus another 30.1k through audits from webcams and public sensors.</li>
-                                <li>Directed pre-production testing with 14 academic, government, and lay users.</li>
-                                <li>Productionized the website/app with dozens of usability fixes.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">computer vision</span>
-                                <span class="xp-tag">air quality</span>
-                                <span class="xp-tag">productization</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Software Engineer, Contract</div>
-                                    <div class="xp-meta"><span class="xp-company">Microsoft Corp.</span> · Redmond, WA · Dec 2017 - Sep 2018</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Maintained privacy-critical Azure workloads processing petabytes of data.</li>
-                                <li>Built packages to handle 2M+ daily requests, weekly hard-delete scripts for 2B+ bytes, and tracking services that processed deletes 32x faster.</li>
-                                <li>Implemented the team’s test infrastructure and APIs consumed by 1k+ Microsoft service teams.</li>
-                                <li>Resolved high-severity incidents with internal PMs and senior staff.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">privacy</span>
-                                <span class="xp-tag">azureservices</span>
-                                <span class="xp-tag">infra</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Undergraduate Researcher</div>
-                                    <div class="xp-meta"><span class="xp-company">WSU EECS</span> · Pullman, WA · Jan 2017 - May 2017</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Developed an AI task-assignment framework and prototype for developer teams using SCRUM and Git.</li>
-                                <li>Worked with advisors Jana Doppa and Venera Arnaoudova in collaboration with the WSU SaaS club.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">research</span>
-                                <span class="xp-tag">optimization</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Software Engineer Intern</div>
-                                    <div class="xp-meta"><span class="xp-company">WSU Department of Civil & Environmental Engineering</span> · Pullman, WA · May 2016 - Aug 2016</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Co-created a scalable computer vision platform predicting PM2.5 to study wildfire-induced visibility impacts.</li>
-                                <li>Developed an Android app for researchers to crowdsourced images, sensor readings, and observational data.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">android</span>
-                                <span class="xp-tag">computer vision</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Software Engineer Consultant</div>
-                                    <div class="xp-meta"><span class="xp-company">Central Washington University</span> · Ellensburg, WA · Jan 2013 - Mar 2013</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Built a multi-platform desktop reader to help learning-disabled students tackle 50+ textbooks.</li>
-                                <li>Applied PDF2Text conversion to improve display accessibility and implemented text-to-speech for ADHD and blind users.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">accessibility</span>
-                                <span class="xp-tag">desktop</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Software Engineer Consultant</div>
-                                    <div class="xp-meta"><span class="xp-company">Jim Caputo / Google</span> · Ellensburg, WA · Jul 2012 - Aug 2012</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Designed a mobile-first web app on Google App Engine to report accurate weather data to Mount Baker visitors.</li>
-                                <li>Parsed, stored, queried, and analyzed 1M+ NOAA XML data points using Java Server Pages, MySQL, and GCP.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">weather</span>
-                                <span class="xp-tag">appengine</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Testimonials</h2>
-                        <p class="section-summary">What clients and collaborators say — short, specific, and verifiable.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <div class="testimonials">
-                        <div class="testimonial-group-title">Collaborators</div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“Luke was a great engineer.”</div>
-                            <div class="testimonial-meta">— Senior Executive, Brighter AI</div>
-                        </div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“He’s a 10x contributor … we were very lucky.”</div>
-                            <div class="testimonial-meta">— CEO, Omic, Inc.</div>
-                        </div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“Luke was great … really a fast learner.”</div>
-                            <div class="testimonial-meta">— Senior Engineer, Microsoft</div>
-                        </div>
-
-                        <div class="testimonial-group-title">Clients (Upwork)</div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“Luke has been exceptional not only on the data science front but in his communication skills. He keeps meticulous records of his work and demonstrates integrity with his approach throughout the project. He is receptive to suggestions and provides his own insights in return. A pleasure to work with. 100% would recommend.”</div>
-                            <div class="testimonial-meta">— Upwork Client (Gene Expression MVP)</div>
-                        </div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“Luke did a fantastic job with helping us source our new Technical Lead… He was able to pinpoint exactly what we were looking for in a very short amount of time… The post-interview debrief as well as typed report on the candidate were hugely valuable… I would absolutely work with Luke again.”</div>
-                            <div class="testimonial-meta">— Upwork Client (CTO screening)</div>
-                        </div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“Luke is an amazing developer to work with. Highly skillful and professional (I interviewed 16 devs for this job). He’s very transparent and always maintains the timelines he promised. Makes sure to communicate at every step of the way. Will definitely work with him again if he’ll be free available.”</div>
-                            <div class="testimonial-meta">— Upwork Client (Chrome extension)</div>
-                        </div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“Luke was highly professional and proficient. He came with detailed knowledge in the domain we were exploring and he went over and above to give us the guidance needed. He works fast as well which demonstrated his domain knowledge.”</div>
-                            <div class="testimonial-meta">— Upwork Client (Architecture / Cloud / AI)</div>
-                        </div>
-
-                        <div class="testimonial">
-                            <div class="testimonial-quote">“Luke was a capable and energetic colleague who used his good experience in backend development to resolve bottlenecks in our request handling while at the same time improving the fairness in how our platform handles request load by different customers.”</div>
-                            <div class="testimonial-meta">— Client / Colleague (Senior cloud engineering)</div>
-                        </div>
-
-                        <p style="margin-top: 6px; font-size: 0.875rem;">
-                            <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">More reviews on Upwork →</a>
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Education</h2>
-                        <p class="section-summary">CS degree from WSU, plus deep dives into deep learning, autonomous systems, and reinforcement learning.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <div class="experience-list">
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">B.S. Computer Science <em>(cum laude)</em></div>
-                                    <div class="xp-meta"><span class="xp-company">Washington State University</span> · Pullman, WA</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>focus: applied machine learning + systems-minded engineering</li>
-                                <li>relevant coursework: machine learning (graduate-level), structured prediction (graduate-level), artificial intelligence, operating systems, SDE I/II, databases</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">computer science</span>
-                                <span class="xp-tag">machine learning</span>
-                                <span class="xp-tag">systems</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Research</div>
-                                    <div class="xp-meta">automated task assignment · advised by <a href="http://eecs.wsu.edu/~jana/" target="_blank" rel="noreferrer">Jana Doppa</a></div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>worked on research problems in learning + optimization (agent/task allocation)</li>
-                                <li>built experiments with clean baselines and reproducible pipelines</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">research</span>
-                                <span class="xp-tag">learning</span>
-                                <span class="xp-tag">optimization</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Selected programs</div>
-                                    <div class="xp-meta">deep learning, reinforcement learning, autonomy</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Flying Car and Autonomous Flight Engineer · Udacity
-                                    <ul class="nested-list">
-                                        <li>Built drone motion planning solutions and tuned EKF-based attitude/position estimation.</li>
-                                        <li>Implemented nonlinear controllers for a Unity-simulated quadrotor.</li>
-                                    </ul>
-                                </li>
-                                <li>Deep Reinforcement Learning Nanodegree · Udacity
-                                    <ul class="nested-list">
-                                        <li>Multi-agent RL, actor-critic, DDPG, TRPO, PPO, GAE, REINFORCE.</li>
-                                    </ul>
-                                </li>
-                                <li>Deep Learning Specialization · DeepLearning.AI (Andrew Ng)
-                                    <ul class="nested-list">
-                                        <li>Sequence models, CNNs, hyperparameter tuning, regularization, and optimization.</li>
-                                        <li>Projects from neural style transfer to self-driving cars.</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">deep learning</span>
-                                <span class="xp-tag">reinforcement learning</span>
-                                <span class="xp-tag">autonomy</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Additional coursework (2021)</div>
-                                    <div class="xp-meta">Stanford, Columbia, UW, MIT, SPbU</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Compilers · Stanford University</li>
-                                <li>Game Theory · Stanford University</li>
-                                <li>Causal Inference · Columbia University</li>
-                                <li>Computational Neuroscience · University of Washington</li>
-                                <li>Quantum Computing · Saint Petersburg State University</li>
-                                <li>Differential Equations · MIT</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">coursework</span>
-                                <span class="xp-tag">systems</span>
-                                <span class="xp-tag">math</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-            <div class="tab-panel" data-tab="projects">
-                <div class="sections">
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Projects</h2>
-                        <p class="section-summary">Gap-year travel graphs, generative games, and playful currencies.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <div class="experience-list">
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Project Gap Year</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Crawled and processed <strong>500k+ multimodal routes</strong> <span style="color: var(--text-muted);">(bus, train, flight)</span> from Omio and Kayak into a travel graph, with fault-tolerant CAPTCHA solvers to optimize my own low-cost route planning.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">travel</span>
-                                <span class="xp-tag">optimization</span>
-                                <span class="xp-tag">webscraping</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">PUNK5</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li><strong>Top 10% YC Winter applicant</strong>; designed a fully generative 2D AI game with embodied agents and engineered a custom real-time Python multiplayer engine <span style="color: var(--text-muted);">(networking, concurrency, state sync)</span>.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">gaming</span>
-                                <span class="xp-tag">ai agents</span>
-                                <span class="xp-tag">multiplayer</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Webercoin</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Implemented a <strong>Haskell-based cryptocurrency</strong> inspired by the Bitcoin whitepaper, including core blockchain and networking.</li>
-                                <li>Used the coin with family for chores and holiday gifting after a two-day build sprint.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">haskell</span>
-                                <span class="xp-tag">blockchain</span>
-                                <span class="xp-tag">prototype</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p style="margin-top: 16px; font-size: 0.875rem;">
-                        <a href="https://www.github.com/lkwbr" target="_blank" rel="noreferrer">GitHub →</a>
-                    </p>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Products & Projects</h2>
-                        <p class="section-summary">Longer-build systems, experiments, and family prototypes.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <div class="experience-list">
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Weberpunks (2022)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>A family NFT collection designed and shipped as Christmas gifts.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">nft</span>
-                                <span class="xp-tag">family</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Omic OS (2021)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Computational biology and AI platform used to identify oncology targets and generate candidate drugs.</li>
-                                <li>Multi-omics workflows, collaboration tooling, and scalable compute pipelines.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">bioinformatics</span>
-                                <span class="xp-tag">platform</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Vizinet (2021)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>End-to-end data collection and ML platform for inferring particulate matter from smartphone images.</li>
-                                <li>Mobile data capture, backend orchestration, and model delivery pipeline.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">ml</span>
-                                <span class="xp-tag">mobile</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">A Very Weber Christmas (2018)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Pygame-based ECS game where each Weber family member has unique powers.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">pygame</span>
-                                <span class="xp-tag">game</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Passive metabolism tracker (2017)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Portable BLE app connected to a CO2 sensor; achieved ~90% accuracy for fuel-source estimation under stable conditions.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">ble</span>
-                                <span class="xp-tag">healthtech</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Automated task assignment (2016)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Prototype ML system for SCRUM work-item assignment based on developer experience signals.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">ml</span>
-                                <span class="xp-tag">productivity</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Fake news classifier (2016)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Chrome extension + AWS backend using Bayesian learning with crowdsourced signals; surpassed 95% testing accuracy.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">chrome</span>
-                                <span class="xp-tag">bayesian</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Newtonian physics simulator (2015)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>JavaScript physics engine for planning object trajectories.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">javascript</span>
-                                <span class="xp-tag">physics</span>
-                            </div>
-                        </div>
-                        <div class="xp-item">
-                            <div class="xp-header">
-                                <div>
-                                    <div class="xp-role">Winter sport weather tracker (2012)</div>
-                                </div>
-                            </div>
-                            <ul class="xp-bullets">
-                                <li>Java/JSP app for parsing government sensor feeds and visualizing weather data.</li>
-                            </ul>
-                            <div class="xp-tags">
-                                <span class="xp-tag">java</span>
-                                <span class="xp-tag">weather</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Hackathons</h2>
-                        <p class="section-summary">Multiple finalist finishes at WSU hackathons including an ML fake news classifier.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>Finalist — Crimson Code (WSU, Pullman, WA)</li>
-                        <li>Finalist — Crimson Code (WSU) · ML-based fake news classifier</li>
-                        <li>Def() Hacks</li>
-                        <li>WSU Hackathon (Pullman, WA)</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
-
-            <div class="tab-panel" data-tab="sport">
-                <div class="sections">
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Grappling</h2>
-                        <p class="section-summary">Purple belt competitor — gold and silver across European opens, plus superfight wins in Berlin.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <div class="item-title">Competition highlights</div>
-                    <table class="comp-table">
-                        <thead>
-                            <tr>
-                                <th>Result</th>
-                                <th>Event</th>
-                                <th>Location</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="medal">1st</td>
-                                <td>
-                                    Cologne Summer Open Championship
-                                    <div class="division">European Cup</div>
-                                </td>
-                                <td class="location">Cologne, Germany</td>
-                                <td class="date">2025</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">2nd</td>
-                                <td>
-                                    ILLCS Germany Summer
-                                    <div class="division">Blue belt</div>
-                                </td>
-                                <td class="location">Hannover, Germany</td>
-                                <td class="date">2025</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">2nd</td>
-                                <td>
-                                    ADCC Suisse Open
-                                    <div class="division">Blue belt</div>
-                                </td>
-                                <td class="location">Zurich, Switzerland</td>
-                                <td class="date">2025</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">1st</td>
-                                <td>
-                                    BJJ Dojo Internal Comp
-                                    <div class="division">Blue belt</div>
-                                </td>
-                                <td class="location"></td>
-                                <td class="date">Dec 2024</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">Win</td>
-                                <td>
-                                    Caged Superfight — Fenriz Groundhug
-                                    <div class="division">Blue belt</div>
-                                </td>
-                                <td class="location">Berlin</td>
-                                <td class="date">Dec 2024</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">2nd</td>
-                                <td>
-                                    Amsterdam Open
-                                    <div class="division">Blue belt</div>
-                                </td>
-                                <td class="location">Netherlands</td>
-                                <td class="date">2024</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">2nd</td>
-                                <td>
-                                    Prague Open
-                                    <div class="division">Blue belt</div>
-                                </td>
-                                <td class="location">Czechia</td>
-                                <td class="date">2024</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">1st</td>
-                                <td>
-                                    Grappling Industries
-                                    <div class="division">White belt</div>
-                                </td>
-                                <td class="location">Berlin</td>
-                                <td class="date">Jun 2024</td>
-                            </tr>
-                            <tr>
-                                <td class="medal">Win</td>
-                                <td>
-                                    Caged Superfight — Fenriz Groundhug
-                                    <div class="division">White belt</div>
-                                </td>
-                                <td class="location">Berlin</td>
-                                <td class="date">May 2024</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <ul style="margin-top: 14px;">
-                        <li><span class="item-title">Uke & teaching</span></li>
-                        <li>BJJ Dojo Berlin — uke for instructionals</li>
-                        <li>no_bs_jj — seminar support</li>
-                        <li>sayyato — seminar support</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Running</h2>
-                        <p class="section-summary">Three marathons across three countries — Salzburg, Kyiv, and Texas.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>4:00:00 · Salzburg Marathon · Austria</li>
-                        <li>4:00:00 · Kyiv City Marathon · Ukraine</li>
-                        <li>3:50:00 · Irving Marathon · Texas <em>(course ran short)</em></li>
-                    </ul>
-                    <p style="margin-top: 10px; font-size: 0.875rem;">
-                        <a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">Strava profile →</a>
-                    </p>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Lifts</h2>
-                        <p class="section-summary">Strength training PRs — heavy dumbbell work and compound lifts.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>120 lbs dumbbell bench (each arm)</li>
-                        <li>315 lbs barbell squat</li>
-                        <li>245 lbs barbell bench</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
-
-            <div class="tab-panel" data-tab="life">
-                <div class="sections">
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Travel</h2>
-                        <p class="section-summary">30+ countries — hitchhiking Patagonia, ayahuasca in the Amazon, road trips across continents.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li><span class="item-title">Top adventures</span></li>
-                        <li>Solo hitchhiked 1,300+ miles across Patagonia (San Carlos de Bariloche to Ushuaia) in the Winter of 2022</li>
-                        <li>Road-tripping: entire perimeter of Ireland, the USA (Boston -> Los Angeles), and Australia (Sydney → Melbourne → Adelaide → Uluru)</li>
-                        <li>Couchsurfing in dozens of countries and trading photography for meals</li>
-                        <li>Ayahuasca ceremony deep in the Amazon jungle</li>
-                    </ul>
-                    <div class="travel-grid">
-                        <div class="travel-region">
-                            <h4>Americas</h4>
-                            <ul>
-                                <li>United States</li>
-                                <li>Canada</li>
-                                <li>Argentina</li>
-                                <li>Uruguay</li>
-                                <li>Peru</li>
-                                <li>Chile</li>
-                                <li>Brazil</li>
-                            </ul>
-                        </div>
-                        <div class="travel-region" style="grid-row: span 4;">
-                            <h4>Europe</h4>
-                            <ul class="europe-list">
-                                <li>Germany</li>
-                                <li>Austria</li>
-                                <li>Iceland</li>
-                                <li>Netherlands</li>
-                                <li>France</li>
-                                <li>Poland</li>
-                                <li>Ukraine</li>
-                                <li>Moldova</li>
-                                <li>Romania</li>
-                                <li>Bulgaria</li>
-                                <li>Croatia</li>
-                                <li>UK</li>
-                                <li>Ireland</li>
-                                <li>Czechia</li>
-                                <li>Hungary</li>
-                                <li>Greece</li>
-                                <li>Spain</li>
-                                <li>Italy</li>
-                            </ul>
-                        </div>
-                        <div class="travel-region">
-                            <h4>Asia</h4>
-                            <ul>
-                                <li>Japan</li>
-                                <li>South Korea</li>
-                                <li>Philippines</li>
-                                <li>Thailand</li>
-                                <li>Indonesia</li>
-                            </ul>
-                        </div>
-                        <div class="travel-region">
-                            <h4>Oceania</h4>
-                            <ul>
-                                <li>Australia</li>
-                            </ul>
-                        </div>
-                        <div class="travel-region">
-                            <h4>Africa</h4>
-                            <ul>
-                                <li>Morocco</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Languages</h2>
-                        <p class="section-summary">Native English, conversational German, and beginner Spanish.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>English — native</li>
-                        <li>German — B1</li>
-                        <li>Spanish — A1</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Skills</h2>
-                        <p class="section-summary">Deep learning, bioinformatics, distributed systems, and practical product delivery.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>Deep Learning (Attention Networks, CNNs, GANs, DRL)</li>
-                        <li>Bioinformatics (AlphaFold, NextFlow, WDL)</li>
-                        <li>Mobile App Development (Android)</li>
-                        <li>Embedded Systems (ARM)</li>
-                        <li>Software Architecture & Product Design</li>
-                        <li>Public Speaking & Technical Writing</li>
-                        <li>Automated Driving and Flying Systems</li>
-                        <li>Python (NumPy, TensorFlow, PyTorch, Pandas, Seaborn)</li>
-                        <li>JavaScript (React, Angular, Node, jQuery)</li>
-                        <li>Cloud Computing (AWS, GCP, Azure)</li>
-                        <li>Secondary languages: Java, C#, C/C++, Julia</li>
-                        <li>Infrastructure as Code (Terraform, CloudFormation)</li>
-                        <li>Batch Processing (WDL, Nextflow, Airflow, Docker, Kubernetes)</li>
-                        <li>Linux/Unix tooling (Bash, Vim, TMUX)</li>
-                        <li>Databases (MongoDB, MySQL, Neo4j, Grakn, Redis)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Certifications & Awards</h2>
-                        <p class="section-summary">Competition results, certifications, and tech foundations.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li><strong>Google Code Jam 2021</strong> — in progress</li>
-                        <li><strong>Crimson Code 2017</strong> — finalist</li>
-                        <li><strong>Crimson Code 2015</strong> — finalist — built an aggregated conversational AI assistant</li>
-                        <li><strong>MTA: Software Development Fundamentals</strong> <span style="color: var(--text-muted);">(2012)</span></li>
-                        <li><strong>MTA: Networking Fundamentals</strong> <span style="color: var(--text-muted);">(2012)</span></li>
-                        <li><strong>MTA: Web Development Fundamentals</strong> <span style="color: var(--text-muted);">(2012)</span></li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Hobbies & Misc</h2>
-                        <p class="section-summary">Concrete milestones outside of work.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>Ran Irving Marathon in 3:51:00 to raise money for childhood obesity.</li>
-                        <li>Mount Si run in 2:05:00; Manashtash Ridge in 33:04.</li>
-                        <li>Traveled to 25+ countries in 8 months.</li>
-                        <li>Released 26 experimental tracks on Soundcloud.</li>
-                        <li>Released 8 experimental short films on YouTube.</li>
-                        <li>Chess ELO 880 on 5+0 Blitz.</li>
-                        <li>Learning German; Duolingo fluency: beginner.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Selected Books</h2>
-                        <p class="section-summary">Favorites spanning evolution, entrepreneurship, sci-fi, and mindfulness.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>The Selfish Gene</li>
-                        <li>Abundance</li>
-                        <li>The Martian</li>
-                        <li>The Hobbit</li>
-                        <li>Zero to One</li>
-                        <li>Zen Mind, Beginner's Mind</li>
-                        <li>Deep Work</li>
-                    </ul>
-                    <p style="margin-top: 10px; font-size: 0.875rem;">
-                        <a href="https://www.goodreads.com/user/show/12134138-luke" target="_blank" rel="noreferrer">Goodreads →</a>
-                    </p>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Selected Poems</h2>
-                        <p class="section-summary">Bukowski's relentless ambition and Dylan Thomas on mortality.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>Going All the Way — Charles Bukowski</li>
-                        <li>Do Not Go Gentle into That Good Night — Dylan Thomas</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Selected Films</h2>
-                        <p class="section-summary">Action thrillers, psychological intensity, and sharp dialogue.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>The Bourne Identity</li>
-                        <li>Casino Royale</li>
-                        <li>Iron Man</li>
-                        <li>Fight Club</li>
-                        <li>Whiplash</li>
-                        <li>Inglorious Basterds</li>
-                        <li>The Girl with the Dragon Tattoo</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Selected Quotes</h2>
-                        <p class="section-summary">Lines on excellence, resilience, fear, and getting punched in the face.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>"There are no two words in the English language more harmful than 'good job.'" — Fletcher, <em>Whiplash</em> (2014)</li>
-                        <li>"It's only after disaster that we can be resurrected." — Tyler Durden, <em>Fight Club</em> (1999)</li>
-                        <li>"Fear is the mind-killer. Fear is the little-death that brings total obliteration." — Paul Atreides, <em>Dune</em> (1965)</li>
-                        <li>"Everybody has a plan until they get punched in the face." — Mike Tyson</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header" onclick="toggleSection(this.parentElement)">
-                    <div>
-                        <h2 class="section-title">Misc</h2>
-                        <p class="section-summary">Berlin nightlife credentials and fraternity honors earned the hard way.</p>
-                    </div>
-                    <span class="expand-icon">+</span>
-                </div>
-                <div class="section-content">
-                    <ul>
-                        <li>Stamped at Berghain, KitKat, Sysophos, Tresor, Watergate, Katerblau</li>
-                        <li>"Honorary Sigma Nu" by partying so hard</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
-            </div>
+            <div class="tab-panel active" data-tab="work" data-src="tabs/work.html"></div>
+            <div class="tab-panel" data-tab="sport" data-src="tabs/sport.html"></div>
+            <div class="tab-panel" data-tab="life" data-src="tabs/life.html"></div>
         </div>
     </div>
 
     <script>
+        async function loadTabPanels() {
+            const panels = Array.from(document.querySelectorAll('.tab-panel'));
+            await Promise.all(
+                panels.map(async (panel) => {
+                    const src = panel.dataset.src;
+                    if (!src) {
+                        return;
+                    }
+                    try {
+                        const response = await fetch(src, { cache: 'no-cache' });
+                        if (!response.ok) {
+                            throw new Error(`Failed to load ${src}`);
+                        }
+                        panel.innerHTML = await response.text();
+                    } catch (error) {
+                        panel.innerHTML = '<p class="highlight">Content failed to load.</p>';
+                    }
+                })
+            );
+        }
+
         function toggleSection(section) {
-            section.classList.toggle('expanded');
+            const isExpanded = section.classList.contains('expanded');
+
+            if (isExpanded) {
+                // just close this section
+                section.classList.remove('expanded');
+            } else {
+                // close all other sections in the current tab
+                const currentPanel = section.closest('.tab-panel');
+                if (currentPanel) {
+                    currentPanel.querySelectorAll('section.expanded').forEach(s => {
+                        s.classList.remove('expanded');
+                    });
+                }
+                // open this section
+                section.classList.add('expanded');
+            }
         }
 
         function setTab(tab) {
@@ -1518,9 +585,10 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadTabPanels();
             const hash = (window.location.hash || '').replace('#', '').trim();
-            const valid = new Set(['work', 'projects', 'sport', 'life']);
+            const valid = new Set(['work', 'sport', 'life']);
             if (valid.has(hash)) {
                 setTab(hash);
             }

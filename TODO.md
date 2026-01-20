@@ -1,3 +1,37 @@
 # todo
 - [ ] add details to testimonials, remove old ones
 - [ ]
+
+- [ ] photos of countries i've been to:
+  - [ ] United States
+  - [ ] Canada
+  - [ ] Argentina
+  - [ ] Uruguay
+  - [ ] Peru
+  - [ ] Chile
+  - [ ] Brazil
+  - [ ] Germany
+  - [x] Austria
+  - [x] Iceland
+  - [x] Netherlands
+  - [x] France
+  - [x] Poland
+  - [x] Ukraine
+  - [x] Moldova
+  - [x] Romania
+  - [x] Bulgaria
+  - [x] Croatia
+  - [x] UK
+  - [x] Ireland
+  - [x] Czechia
+  - [x] Hungary
+  - [x] Greece
+  - [x] Spain
+  - [x] Italy
+  - [ ] Japan
+  - [ ] South Korea
+  - [ ] Philippines
+  - [ ] Thailand
+  - [ ] Indonesia
+  - [ ] Australia
+  - [ ] Morocco

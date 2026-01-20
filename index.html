@@ -71,6 +71,17 @@
         header {
             /* margin-bottom: 48px; */
             margin-bottom: 24px;
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        .header-content {
+            flex: 1;
+        }
+        .header-image {
+            flex-shrink: 0;
+            width: 180px;
+            height: auto;
         }
         .name {
             font-size: 2.25rem;
@@ -208,6 +219,20 @@
             list-style: disc;
             font-size: 0.9rem;
             line-height: 1.45;
+        }
+        .xp-summary {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+        .xp-bullets .num {
+            color: #000;
+            font-weight: 600;
+        }
+        @media (prefers-color-scheme: dark) {
+            .xp-bullets .num {
+                color: #fff;
+            }
         }
         .xp-tags {
             display: flex;
@@ -465,6 +490,17 @@
             .container {
                 padding: 40px 20px 64px;
             }
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .header-image {
+                order: -1;
+                width: 150px;
+                height: auto;
+                margin-bottom: 16px;
+            }
             .name {
                 font-size: 1.75rem;
             }
@@ -484,33 +520,36 @@
 
 <body>
     <div class="container">
-<header>
-            <h1 class="name">Luke Weber</h1>
-            <p class="tagline">Trying to be great.</p>
-            <div class="roles">
-                <div class="role">
-                    <span class="role-title">Co-founder & CTO @ <a href="https://eisberg.ai" target="_blank" rel="noreferrer">eisberg.ai</a></span>
-                    <span class="role-desc">the app that builds apps</span>
+        <header>
+            <div class="header-content">
+                <h1 class="name">Luke Weber</h1>
+                <p class="tagline">Trying to be great.</p>
+                <div class="roles">
+                    <div class="role">
+                        <span class="role-title">Co-founder & CTO @ <a href="https://eisberg.ai" target="_blank" rel="noreferrer">eisberg.ai</a></span>
+                        <span class="role-desc">the app that builds apps</span>
+                    </div>
+                    <div class="role">
+                        <span class="role-title">CTO @ <a href="https://wyldsociety.io" target="_blank" rel="noreferrer">Wyld Society</a></span>
+                        <span class="role-desc">where venues meet creators</span>
+                    </div>
+                    <div class="role">
+                        <span class="role-title">Researcher & AI Advisor @ <a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></span>
+                        <span class="role-desc">interpretable AI against cancer</span>
+                    </div>
                 </div>
-                <div class="role">
-                    <span class="role-title">CTO @ <a href="https://wyldsociety.io" target="_blank" rel="noreferrer">Wyld Society</a></span>
-                    <span class="role-desc">where venues meet creators</span>
-                </div>
-                <div class="role">
-                    <span class="role-title">Researcher & AI Advisor @ <a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></span>
-                    <span class="role-desc">interpretable AI against cancer</span>
+                <div class="highlights">
+                    <span class="highlight">Top 1% AI talent with perfect rating on <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">Upwork</a></span>
+                    <span class="highlight">Jiu-jitsu purple belt with <a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">30+ competition wins</a></span>
+                    <span class="highlight"><a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">3 marathons</a> across the world</span>
+                    <span class="highlight">Traveled to <a href="#travelgallery" rel="noreferrer">30+ countries</a> across 6/7 continents</a></span>
+                    <span class="highlight">2x startup founder with <a href="#work#work" rel="noreferrer">10+ years of experience</a> across AI and tech</span>
+                    <span class="highlight">Conversational in <a href="#life#languages" rel="noreferrer">3 languages</a></span>
+                    <span class="highlight">Graduated <a href="#work#education" rel="noreferrer"><em>cum laude</em> in CS</a> and did silly ML research</span>
+                    <span class="highlight">Being generally unhinged on <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noreferrer">Instagram</a></span>
                 </div>
             </div>
-            <div class="highlights">
-                <span class="highlight">Top 1% AI talent with perfect rating on <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">Upwork</a></span>
-                <span class="highlight">Jiu-jitsu purple belt with <a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">30+ competition wins</a></span>
-                <span class="highlight"><a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">3 marathons</a> across the world</span>
-                <span class="highlight">Traveled to <a href="#travelgallery" rel="noreferrer">30+ countries</a> across 6/7 continents</a></span>
-                <span class="highlight">2x startup founder with <a href="#work#work" rel="noreferrer">10+ years of experience</a> across AI and tech</span>
-                <span class="highlight">Conversational in <a href="#life#languages" rel="noreferrer">3 languages</a></span>
-                <span class="highlight">Graduated <a href="#work#education" rel="noreferrer"><em>cum laude</em> in CS</a> and did silly ML research</span>
-                <span class="highlight">Being generally unhinged on <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noreferrer">Instagram</a></span>
-            </div>
+            <img src="res/images/me.png" alt="Luke Weber" class="header-image">
         </header>
 
         <div class="tabs" aria-label="Primary navigation">

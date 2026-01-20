@@ -286,7 +286,7 @@
             color: var(--text-muted);
             transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
             flex-shrink: 0;
-            margin-top: 2px;
+            margin-top: -2px;
         }
         section.expanded .expand-icon {
             transform: rotate(45deg);
@@ -368,7 +368,7 @@
         .testimonials {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 0;
         }
         .testimonial-group-title {
             font-size: 0.75rem;
@@ -379,16 +379,20 @@
             margin-top: 4px;
         }
         .testimonial {
-            border-left: none;
-            padding-left: 0;
+            border-left: 3px solid var(--border);
+            padding-left: 16px;
+            margin: 0 0 18px 0;
         }
         .testimonial-quote {
             font-size: 0.9rem;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-style: italic;
+            color: var(--text);
         }
         .testimonial-meta {
-            margin-top: 6px;
+            margin-top: 8px;
             font-size: 0.85rem;
+            font-style: normal;
             color: var(--text-muted);
         }
         /* travel grid */
@@ -499,14 +503,13 @@
             </div>
             <div class="highlights">
                 <span class="highlight">Top 1% AI talent with perfect rating on <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">Upwork</a></span>
-                <span class="highlight">Over a decade of experience across AI, academia, startups, and Big Tech</span>
-                <span class="highlight">Jiu-jitsu purple belt under <a href="https://www.instagram.com/sacchimartino/?hl=en" target="_blank" rel="noreferrer">Martino Sacchi</a></span>
-                <span class="highlight">30+ jiu-jitsu wins (<a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">Smoothcomp</a>) and 3 marathons (<a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">Strava</a>) across the world</span>
-                <span class="highlight">Traveled to 30+ countries across 6/7 continents</span>
-                <span class="highlight">Past: Co-founder and Chief Engineer at <a href="https://omic.ai" target="_blank" rel="noreferrer">omic.ai</a> (crashed and burned, AMA)</span>
-                <span class="highlight">English native, German conversational (B1 on <a href="https://www.duolingo.com/profile/lkwbr" target="_blank" rel="noreferrer">Duolingo</a>), Spanish survival</span>
-                <span class="highlight">CS (<em>cum laude</em>) + ML research under <a href="http://eecs.wsu.edu/~jana/" target="_blank" rel="noreferrer">Jana Doppa</a></span>
-                <span class="highlight">Living an unhinged life on <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noreferrer">Instagram</a></span>
+                <span class="highlight">Jiu-jitsu purple belt with <a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">30+ competition wins</a></span>
+                <span class="highlight"><a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">3 marathons</a> across the world</span>
+                <span class="highlight">Traveled to <a href="#travelgallery" rel="noreferrer">30+ countries</a> across 6/7 continents</a></span>
+                <span class="highlight">2x startup founder with <a href="#work#work" rel="noreferrer">10+ years of experience</a> across AI and tech</span>
+                <span class="highlight">Conversational in <a href="#life#languages" rel="noreferrer">3 languages</a></span>
+                <span class="highlight">Graduated <a href="#work#education" rel="noreferrer"><em>cum laude</em> in CS</a> and did silly ML research</span>
+                <span class="highlight">Being generally unhinged on <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noreferrer">Instagram</a></span>
             </div>
         </header>
 
@@ -547,13 +550,18 @@
 
         function toggleSection(section) {
             const isExpanded = section.classList.contains('expanded');
+            const currentPanel = section.closest('.tab-panel');
+            const currentTab = currentPanel ? currentPanel.dataset.tab : '';
 
             if (isExpanded) {
                 // just close this section
                 section.classList.remove('expanded');
+                // update url to just the tab
+                if (currentTab && history.replaceState) {
+                    history.replaceState(null, '', `#${currentTab}`);
+                }
             } else {
                 // close all other sections in the current tab
-                const currentPanel = section.closest('.tab-panel');
                 if (currentPanel) {
                     currentPanel.querySelectorAll('section.expanded').forEach(s => {
                         s.classList.remove('expanded');
@@ -561,6 +569,11 @@
                 }
                 // open this section
                 section.classList.add('expanded');
+                // update url with tab and section stub
+                const sectionStub = section.dataset.stub;
+                if (currentTab && sectionStub && history.replaceState) {
+                    history.replaceState(null, '', `#${currentTab}#${sectionStub}`);
+                }
             }
         }
 
@@ -585,14 +598,51 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', async () => {
-            await loadTabPanels();
+        function handleHash() {
             const hash = (window.location.hash || '').replace('#', '').trim();
+
+            // handle travel gallery redirect
+            if (hash === 'travelgallery') {
+                window.location.href = 'gallery.html';
+                return;
+            }
+
+            // handle nested navigation like #life#favoriteworks
+            if (hash.includes('#')) {
+                const parts = hash.split('#');
+                const tab = parts[0];
+                const sectionStub = parts[1];
+
+                const valid = new Set(['work', 'sport', 'life']);
+                if (valid.has(tab)) {
+                    setTab(tab);
+                    // wait for tab content to load, then open the section
+                    setTimeout(() => {
+                        const activePanel = document.querySelector('.tab-panel.active');
+                        if (activePanel) {
+                            const section = activePanel.querySelector(`section[data-stub="${sectionStub}"]`);
+                            if (section) {
+                                toggleSection(section);
+                            }
+                        }
+                    }, 100);
+                }
+                return;
+            }
+
+            // handle regular tab navigation
             const valid = new Set(['work', 'sport', 'life']);
             if (valid.has(hash)) {
                 setTab(hash);
             }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadTabPanels();
+            handleHash();
         });
+
+        window.addEventListener('hashchange', handleHash);
     </script>
 </body>
 

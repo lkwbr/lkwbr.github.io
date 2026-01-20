@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Gallery - Luke Weber</title>
+    <link rel="icon" type="image/png" href="res/images/favicon.webp">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-RLM10NKPV7');
+    </script>
+    <style>
+:root {
+            --bg: #fafafa;
+            --bg-alt: #f0f0f0;
+            --text: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --link: #5ba3c0;
+            --link-hover: #3d8aab;
+            --border: #e0e0e0;
+            --accent: #1a1a1a;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --bg-alt: #1a1a1a;
+                --text: #f0f0f0;
+                --text-muted: #8a8a8a;
+                --link: #7ec8e3;
+                --link-hover: #a3daf0;
+                --border: #2a2a2a;
+                --accent: #f0f0f0;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+        a {
+            color: var(--link);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+        .gallery-container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+        .gallery-header {
+            margin-bottom: 32px;
+        }
+        .gallery-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .gallery-back {
+            font-size: 0.875rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .gallery-item {
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-2px);
+        }
+        .gallery-item img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .gallery-caption {
+            padding: 12px;
+            background: var(--bg-alt);
+        }
+        .gallery-description {
+            font-size: 0.875rem;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+        .gallery-location {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        .lightbox-info {
+            text-align: center;
+            color: #fff;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.2s ease;
+        }
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        @media (max-width: 600px) {
+            .gallery-container {
+                padding: 40px 20px 64px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h1 class="gallery-title">Travel Gallery</h1>
+            <p class="gallery-back">one random pic from every country I've visited</p>
+        </div>
+        <div class="gallery-grid" id="gallery"></div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()">×</div>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image" id="lightbox-img">
+            <div class="lightbox-info">
+                <div class="gallery-description" id="lightbox-desc"></div>
+                <div class="gallery-location" id="lightbox-loc"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const travelImages = [
+            {
+                src: 'res/images/travel/Travel Catalog - 1 of 31.webp',
+                description: 'Exploring the land of fire and ice',
+                location: 'Reykjavik, Iceland'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 10 of 31.webp',
+                description: 'Island hopping along the Adriatic coast',
+                location: 'Preko, Croatia'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 11 of 31.webp',
+                description: 'Hiking in the Atlas Mountains',
+                location: 'Asni, Morocco'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 12 of 31.webp',
+                description: 'Road trip around the Emerald Isle',
+                location: 'Ireland'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 13 of 31.webp',
+                description: 'Exploring the historic capital',
+                location: 'London, UK'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 14 of 31.webp',
+                description: 'Ancient ruins and Mediterranean vibes',
+                location: 'Athens, Greece'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 15 of 31.webp',
+                description: 'Street food and temples in Southeast Asia',
+                location: 'Bangkok, Thailand'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 16 of 31.webp',
+                description: 'High-tech city meets traditional culture',
+                location: 'Seoul, South Korea'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 17 of 31.webp',
+                description: 'TODO: Add description',
+                location: 'TODO: Add location'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 18 of 31.webp',
+                description: 'Red desert and ancient rock formations',
+                location: 'Uluru, Australia'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 19 of 31.webp',
+                description: 'Beach life and carnival spirit',
+                location: 'Rio de Janeiro, Brazil'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 2 of 31.webp',
+                description: 'Exploring the Tatra Mountains',
+                location: 'Slovakia'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 20 of 31.webp',
+                description: 'Beach town on the Atlantic coast',
+                location: 'Manantiales, Uruguay'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 21 of 31.webp',
+                description: 'Hitchhiking through the southern wilderness',
+                location: 'Patagonia, Argentina'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 22 of 31.webp',
+                description: 'Monuments and museums in the capital',
+                location: 'Washington DC, USA'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 23 of 31.webp',
+                description: 'TODO: Add description',
+                location: 'TODO: Add location'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 24 of 31.webp',
+                description: 'Urban exploration in Canada\'s largest city',
+                location: 'Toronto, Canada'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 25 of 31.webp',
+                description: 'TODO: Add description',
+                location: 'TODO: Add location'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 26 of 31.webp',
+                description: 'Medieval architecture and Czech beer',
+                location: 'Prague, Czechia'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 27 of 31.webp',
+                description: 'Canals, bikes, and Dutch culture',
+                location: 'Amsterdam, Netherlands'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 28 of 31.webp',
+                description: 'Training jiu-jitsu in the German capital',
+                location: 'Berlin, Germany'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 29 of 31.webp',
+                description: 'Tropical paradise and surf spots',
+                location: 'Bali, Indonesia'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 3 of 31.webp',
+                description: 'Thermal baths and ruin bars',
+                location: 'Budapest, Hungary'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 30 of 31.webp',
+                description: 'Mediterranean coast and Spanish sun',
+                location: 'Estepona, Spain'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 31 of 31.webp',
+                description: 'The world\'s smallest country',
+                location: 'Vatican City'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 4 of 31.webp',
+                description: 'Imperial palaces and coffee culture',
+                location: 'Vienna, Austria'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 5 of 31.webp',
+                description: 'City of lights and endless baguettes',
+                location: 'Paris, France'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 6 of 31.webp',
+                description: 'Historic capital on the Dnieper River',
+                location: 'Kyiv, Ukraine'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 7 of 31.webp',
+                description: 'Discovering Eastern Europe\'s hidden gem',
+                location: 'Chisinau, Moldova'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 8 of 31.webp',
+                description: 'Medieval town in the Carpathian Mountains',
+                location: 'Brasov, Romania'
+            },
+            {
+                src: 'res/images/travel/Travel Catalog - 9 of 31.webp',
+                description: 'Mountain town near Sofia',
+                location: 'Samokov, Bulgaria'
+            }
+        ];
+
+        function loadGallery() {
+            const gallery = document.getElementById('gallery');
+            travelImages.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(index);
+                item.innerHTML = `
+                    <img src="${img.src}" alt="${img.description}" onerror="this.style.display='none'">
+                    <div class="gallery-caption">
+                        <div class="gallery-description">${img.description}</div>
+                        <div class="gallery-location">${img.location}</div>
+                    </div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function openLightbox(index) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const desc = document.getElementById('lightbox-desc');
+            const loc = document.getElementById('lightbox-loc');
+            
+            img.src = travelImages[index].src;
+            img.alt = travelImages[index].description;
+            desc.textContent = travelImages[index].description;
+            loc.textContent = travelImages[index].location;
+            
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        loadGallery();
+    </script>
+</body>
+
+</html>

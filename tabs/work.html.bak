@@ -19,15 +19,15 @@
                             <ul class="xp-bullets">
                                 <li>Became a <strong>top 1% talent</strong> on Upwork with a <strong>perfect rating</strong> within months.</li>
                                 <li><strong>Prometheus</strong> <span style="color: var(--text-muted);">(San Diego, USA)</span> — Built a custom LLM-powered cybersecurity chat app using RAG to accelerate compliance testing.</li>
-                                <li><strong><a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></strong> <span style="color: var(--text-muted);">(Yale, USA)</span> — Delivered novel ML models and full production stack from raw gene expression to risk scores and tissue subtype predictions.</li>
+                                <li><strong>Intervance</strong> <span style="color: var(--text-muted);">(Yale, USA)</span> — Delivered novel ML models and full production stack from raw gene expression to risk scores and tissue subtype predictions.</li>
                                 <li><strong>NextPlay</strong> <span style="color: var(--text-muted);">(Denver, USA)</span> — Enabled the first useable product feature for customers to analyze game footage with computer vision.</li>
                                 <li><strong>Caide</strong> <span style="color: var(--text-muted);">(Netherlands)</span> — Conducted CTO technical screenings for the AI-driven sales automation SaaS.</li>
+                                <li><strong>TheSmileAI</strong> <span style="color: var(--text-muted);">(UAE)</span> — Created an AI-powered medical platform for dentists.</li>
                                 <li><strong>Flowium</strong> <span style="color: var(--text-muted);">(Brazil)</span> — Engineered the entire AI-first content management system.</li>
+                                <li><strong>DealMatch</strong> <span style="color: var(--text-muted);">(Israel)</span> — Developed the initial Facebook-scraping Chrome extension to surface similar Marketplace deals.</li>
+                                <li><strong>Mallawa Intelligent Canal Systems</strong> <span style="color: var(--text-muted);">(Australia)</span> — Built and debugged MQTT scripts for IoT irrigation automation.</li>
                                 <li><strong>Finden</strong> <span style="color: var(--text-muted);">(London, UK)</span> — Architected an AI-enhanced cross-platform omni-search application.</li>
                             </ul>
-                            <p style="margin-top: 6px; font-size: 0.875rem;">
-                                <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">See more on Upwork →</a>
-                            </p>
                             <div class="xp-tags">
                                 <span class="xp-tag">consulting</span>
                                 <span class="xp-tag">delivery</span>
@@ -39,7 +39,7 @@
                             <div class="xp-header">
                                 <div>
                                     <div class="xp-role">Senior engineer</div>
-                                    <div class="xp-meta"><span class="xp-company"><a href="https://brighter.ai" target="_blank" rel="noreferrer">brighter.ai</a></span> · Berlin, Germany · Jan 2023 - Jun 2023</div>
+                                    <div class="xp-meta"><span class="xp-company">brighter.ai</span> · Berlin, Germany · Jan 2023 - Jun 2023</div>
                                 </div>
                             </div>
                             <ul class="xp-bullets">
@@ -126,7 +126,7 @@
                             <div class="xp-header">
                                 <div>
                                     <div class="xp-role">Research Engineer</div>
-                                    <div class="xp-meta"><span class="xp-company">WSU Department of Civil & Environmental Engineering</span> · Seattle, WA · Sep 2018 - Apr 2019</div>
+                                    <div class="xp-meta"><span class="xp-company">Vizinet</span> · Seattle, WA · Sep 2018 - Apr 2019</div>
                                 </div>
                             </div>
                             <ul class="xp-bullets">
@@ -198,40 +198,55 @@
                 </div>
                 <div class="section-content">
                     <div class="testimonials">
+                        <div class="testimonial-group-title">Collaborators</div>
+
                         <div class="testimonial">
-                            <div class="testimonial-quote">"Luke has been exceptional not only on the data science front but in his communication skills. He keeps meticulous records of his work and demonstrates integrity with his approach throughout the project. He is receptive to suggestions and provides his own insights in return. A pleasure to work with. 100% would recommend."</div>
-                            <div class="testimonial-meta">— Jacky Yueng, MD (Yale Neurosurgeon), <a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></div>
+                            <div class="testimonial-quote">“Luke was a great engineer.”</div>
+                            <div class="testimonial-meta">— Senior Executive, Brighter AI</div>
                         </div>
 
                         <div class="testimonial">
-                            <div class="testimonial-quote">"Luke was a capable and energetic colleague who used his good experience in backend development to resolve bottlenecks in our request handling while at the same time improving the fairness in how our platform handles request load by different customers."</div>
-                            <div class="testimonial-meta">— Georg Koester (VP Engineering), <a href="https://brighter.ai" target="_blank" rel="noreferrer">brighter.ai</a></div>
+                            <div class="testimonial-quote">“He’s a 10x contributor … we were very lucky.”</div>
+                            <div class="testimonial-meta">— CEO, Omic, Inc.</div>
                         </div>
 
                         <div class="testimonial">
-                            <div class="testimonial-quote">"Luke did great work with a beast of a project. I brought him a messy code base and a very choppy pipeline, and in a short time he was able to refactor for cleanliness, containerize for future development ease, and ultimately deploy to the cloud. He took my project from prototype to customers hands in a matter of days. What I appreciate most about working with Luke as that he knows how to grind, and is invested in doing good/successful work. He cared about the project as if it were his own."</div>
-                            <div class="testimonial-meta">— Maghee McMullen (Founder/CEO), <a href="https://next-play.co" target="_blank" rel="noreferrer">next-play.co</a></div>
+                            <div class="testimonial-quote">“Luke was great … really a fast learner.”</div>
+                            <div class="testimonial-meta">— Senior Engineer, Microsoft</div>
+                        </div>
+
+                        <div class="testimonial-group-title">Clients (Upwork)</div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke has been exceptional not only on the data science front but in his communication skills. He keeps meticulous records of his work and demonstrates integrity with his approach throughout the project. He is receptive to suggestions and provides his own insights in return. A pleasure to work with. 100% would recommend.”</div>
+                            <div class="testimonial-meta">— Upwork Client (Gene Expression MVP)</div>
                         </div>
 
                         <div class="testimonial">
-                            <div class="testimonial-quote">"Luke did a fantastic job with helping us source our new Technical Lead… He was able to pinpoint exactly what we were looking for in a very short amount of time… The post-interview debrief as well as typed report on the candidate were hugely valuable… I would absolutely work with Luke again."</div>
-                            <div class="testimonial-meta">— Seb Vissers (Founder/CEO), <a href="https://caide.io" target="_blank" rel="noreferrer">caide.io</a></div>
+                            <div class="testimonial-quote">“Luke did a fantastic job with helping us source our new Technical Lead… He was able to pinpoint exactly what we were looking for in a very short amount of time… The post-interview debrief as well as typed report on the candidate were hugely valuable… I would absolutely work with Luke again.”</div>
+                            <div class="testimonial-meta">— Upwork Client (CTO screening)</div>
                         </div>
 
                         <div class="testimonial">
-                            <div class="testimonial-quote">"Luke is an amazing developer to work with. Highly skillful and professional (I interviewed 16 devs for this job). He's very transparent and always maintains the timelines he promised. Makes sure to communicate at every step of the way. Will definitely work with him again if he'll be free available."</div>
-                            <div class="testimonial-meta">— <a href="https://il.linkedin.com/in/boris-zlatkin-47407839" target="_blank" rel="noreferrer">Boris Zlatkin</a></div>
+                            <div class="testimonial-quote">“Luke is an amazing developer to work with. Highly skillful and professional (I interviewed 16 devs for this job). He’s very transparent and always maintains the timelines he promised. Makes sure to communicate at every step of the way. Will definitely work with him again if he’ll be free available.”</div>
+                            <div class="testimonial-meta">— Upwork Client (Chrome extension)</div>
                         </div>
 
                         <div class="testimonial">
-                            <div class="testimonial-quote">"Luke was highly professional and proficient. He came with detailed knowledge in the domain we were exploring and he went over and above to give us the guidance needed. He works fast as well which demonstrated his domain knowledge."</div>
-                            <div class="testimonial-meta">— Randeep Wilkhu (Founder), <a href="https://finden.me" target="_blank" rel="noreferrer">finden.me</a></div>
+                            <div class="testimonial-quote">“Luke was highly professional and proficient. He came with detailed knowledge in the domain we were exploring and he went over and above to give us the guidance needed. He works fast as well which demonstrated his domain knowledge.”</div>
+                            <div class="testimonial-meta">— Upwork Client (Architecture / Cloud / AI)</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-quote">“Luke was a capable and energetic colleague who used his good experience in backend development to resolve bottlenecks in our request handling while at the same time improving the fairness in how our platform handles request load by different customers.”</div>
+                            <div class="testimonial-meta">— Client / Colleague (Senior cloud engineering)</div>
                         </div>
 
                         <p style="margin-top: 6px; font-size: 0.875rem;">
                             <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">More reviews on Upwork →</a>
                         </p>
                     </div>
+                </div>
             </section>
 
             <section data-stub="education">
@@ -434,7 +449,7 @@
                         <div class="xp-item">
                             <div class="xp-header">
                                 <div>
-                                    <div class="xp-role">WSU Department of Civil & Environmental Engineering (2021)</div>
+                                    <div class="xp-role">Vizinet (2021)</div>
                                 </div>
                             </div>
                             <ul class="xp-bullets">

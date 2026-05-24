@@ -94,6 +94,37 @@
       flex-wrap: wrap;
     }
     .head-bio, .head-now { display: flex; flex-direction: column; gap: 2px; }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      margin: 18px 0 0;
+      padding: 8px 12px;
+      border: 1px dashed var(--rule);
+      background: rgba(127, 127, 127, 0.06);
+      font-size: 13px;
+    }
+    .cta.hidden { display: none; }
+    .cta-link {
+      grid-column: 2;
+      color: var(--text);
+      border-bottom: none;
+      text-align: center;
+    }
+    .cta-close { grid-column: 3; justify-self: end; }
+    .cta-link:hover { color: #c4a6e8; font-weight: 700; border-bottom: none; }
+    .cta-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font: inherit;
+      font-size: 16px;
+      line-height: 1;
+      padding: 2px 6px;
+      cursor: none;
+    }
+    .cta-close:hover { color: #c4a6e8; }
     .head-now { text-align: right; align-items: flex-end; }
     @media (max-width: 600px) {
       .head { flex-direction: column; gap: 10px; }
@@ -223,6 +254,11 @@
       <div class="now-line">building <a class="r" href="https://eisberg.ai" data-tip="ai product studio; pre-launch" target="_blank" rel="noopener noreferrer">eisberg</a></div>
       <div class="now-line">AI advisor and researcher at <a class="r" href="https://www.intervance.com" data-tip="interpretable AI against cancer" target="_blank" rel="noopener noreferrer">intervance</a></div>
     </div>
+  </div>
+
+  <div class="cta" id="cta">
+    <a class="cta-link" href="mailto:luke@eisberg.ai">[ got talent? work for me ]</a>
+    <button class="cta-close" id="cta-close" aria-label="close">×</button>
   </div>
 
   <!-- <div class="section">░▒▓░▒▓░▒▓ career ░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓</div> -->
@@ -401,6 +437,13 @@
     // copyright year
     var cy = document.getElementById('copyright-year');
     if (cy) cy.textContent = new Date().getFullYear();
+
+    // closable CTA banner
+    var ctaClose = document.getElementById('cta-close');
+    var cta = document.getElementById('cta');
+    if (ctaClose && cta) {
+      ctaClose.addEventListener('click', function(){ cta.classList.add('hidden'); });
+    }
 
     // glitch in all text on page load (cascades top-down by vertical position)
     (function(){

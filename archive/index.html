@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke Weber</title>
+    <link rel="icon" type="image/png" href="../res/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-RLM10NKPV7');
+    </script>
+    <style>
+:root {
+            --bg: #fafafa;
+            --bg-alt: #f0f0f0;
+            --text: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --link: #5ba3c0;
+            --link-hover: #3d8aab;
+            --border: #e0e0e0;
+            --accent: #1a1a1a;
+            --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --bg-alt: #1a1a1a;
+                --text: #f0f0f0;
+                --text-muted: #8a8a8a;
+                --link: #7ec8e3;
+                --link-hover: #a3daf0;
+                --border: #2a2a2a;
+                --accent: #f0f0f0;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: var(--font-serif);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.55;
+            min-height: 100vh;
+        }
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+        a {
+            color: var(--link);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+        /* header */
+        header {
+            /* margin-bottom: 48px; */
+            margin-bottom: 24px;
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        .header-content {
+            flex: 1;
+        }
+        .header-image {
+            flex-shrink: 0;
+            width: 180px;
+            height: auto;
+        }
+        .name {
+            font-size: 2.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 18px;
+        }
+        .roles {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .role {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .role-title {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .role-desc {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+        }
+        .highlight {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .social-links {
+            font-family: var(--font-sans);
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+            font-size: 0.875rem;
+        }
+        /* tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            /* margin-top: 18px; */
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+        }
+        .tab-btn {
+            font-family: var(--font-sans);
+            appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+        .tab-btn:hover {
+            background: var(--bg-alt);
+            color: var(--text);
+        }
+        .tab-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        .tab-btn.active {
+            border-color: var(--accent);
+            background: var(--bg-alt);
+            color: var(--text);
+        }
+        .tab-panels {
+            /* margin-top: 28px; */
+            margin-top: 18px;
+        }
+        .tab-panel {
+            display: none;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        /* experience */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .xp-item {
+            border: none;
+            border-radius: 0;
+            padding: 2px 0;
+            background: transparent;
+        }
+        .xp-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .xp-role {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .xp-company {
+            font-weight: 500;
+        }
+        .xp-meta {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .xp-bullets {
+            margin-top: 10px;
+            margin-left: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            list-style: disc;
+        }
+        .xp-bullets li {
+            list-style: disc;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+        .xp-summary {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+        .xp-bullets .num {
+            color: #000;
+            font-weight: 600;
+        }
+        @media (prefers-color-scheme: dark) {
+            .xp-bullets .num {
+                color: #fff;
+            }
+        }
+        .xp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .xp-tag {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px 8px;
+        }
+        .xp-tag.tech-lang {
+            background: var(--bg-alt);
+            border-color: var(--border);
+        }
+        .xp-tag.tech-infra {
+            border-style: dashed;
+        }
+        .xp-tag.tech-data {
+            border-radius: 4px;
+        }
+        .xp-tag.tech-ml {
+            background: transparent;
+            border-width: 1.5px;
+        }
+        .xp-tag.tech-workflow {
+            font-style: italic;
+        }
+        /* sections */
+        .sections {
+            display: flex;
+            flex-direction: column;
+            /* gap: 36px; */
+            gap: 24px;
+        }
+        section {
+            border-top: 1px dashed var(--border);
+            padding-top: 20px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            cursor: pointer;
+            user-select: none;
+            gap: 16px;
+            transition: opacity 0.15s ease;
+        }
+        .section-header:hover {
+            opacity: 0.8;
+        }
+        .section-header:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+        .section-title {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .section-summary {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+            transition: opacity 0.2s ease;
+        }
+        .expand-icon {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+            flex-shrink: 0;
+            margin-top: -2px;
+        }
+        section.expanded .expand-icon {
+            transform: rotate(45deg);
+        }
+        section.expanded .section-summary {
+            display: none;
+        }
+        .section-content {
+            display: none;
+            margin-top: 12px;
+        }
+        section.expanded .section-content {
+            display: block;
+        }
+        .section-content ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .section-content li {
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+        .item-title {
+            font-weight: 500;
+        }
+        .item-sub {
+            font-family: var(--font-sans);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 32px;
+            row-gap: 18px;
+            margin-top: 8px;
+        }
+        .works-subsection h4 {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .works-subsection ul {
+            gap: 4px !important;
+        }
+        .works-subsection li {
+            font-size: 0.85rem !important;
+        }
+        .works-subsection.quotes {
+            grid-column: 1 / -1;
+        }
+        .works-subsection.quotes li {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        @media (max-width: 600px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+                row-gap: 16px;
+            }
+        }
+        .nested-list {
+            margin-top: 6px;
+            padding-left: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .nested-list li {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        /* testimonials */
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .testimonial-group-title {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .testimonial {
+            border-left: 3px solid var(--border);
+            padding-left: 16px;
+            margin: 0 0 18px 0;
+        }
+        .testimonial-quote {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-style: italic;
+            color: var(--text);
+        }
+        .testimonial-meta {
+            font-family: var(--font-sans);
+            margin-top: 8px;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-muted);
+        }
+        /* travel grid */
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 24px;
+            row-gap: 12px;
+            margin-top: 16px;
+        }
+        .travel-region h4 {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .travel-region ul {
+            gap: 3px !important;
+        }
+        .travel-region li {
+            font-size: 0.85rem !important;
+        }
+        .europe-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px !important;
+        }
+        /* competition table */
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .comp-table th {
+            font-family: var(--font-sans);
+            text-align: left;
+            font-weight: 600;
+            padding: 8px 12px 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+        }
+        .comp-table td {
+            padding: 10px 12px 10px 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.4;
+        }
+        .comp-table tr:last-child td {
+            border-bottom: none;
+        }
+        .comp-table .medal {
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .comp-table .division {
+            font-family: var(--font-sans);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .comp-table .location {
+            font-family: var(--font-sans);
+            color: var(--text-muted);
+        }
+        .comp-table .date {
+            font-family: var(--font-sans);
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        /* responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px 64px;
+            }
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .header-image {
+                order: -1;
+                width: 150px;
+                height: auto;
+                margin-bottom: 16px;
+            }
+            .name {
+                font-size: 1.75rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .comp-table {
+                font-size: 0.85rem;
+            }
+            .comp-table th,
+            .comp-table td {
+                padding: 8px 8px 8px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1 class="name">Luke Weber</h1>
+                <p class="tagline">Trying to be great.</p>
+                <div class="roles">
+                    <div class="role">
+                        <span class="role-title">Co-founder & CTO @ <a href="https://eisberg.ai" target="_blank" rel="noreferrer">eisberg.ai</a></span>
+                        <span class="role-desc">the app that builds apps</span>
+                    </div>
+                    <div class="role">
+                        <span class="role-title">CTO @ <a href="https://wyldsociety.io" target="_blank" rel="noreferrer">Wyld Society</a></span>
+                        <span class="role-desc">where venues meet creators</span>
+                    </div>
+                    <div class="role">
+                        <span class="role-title">Researcher & AI Advisor @ <a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></span>
+                        <span class="role-desc">interpretable AI against cancer</span>
+                    </div>
+                </div>
+                <div class="highlights">
+                    <span class="highlight">Top 1% AI talent with perfect rating on <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">Upwork</a></span>
+                    <span class="highlight">Jiu-jitsu purple belt with <a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">30+ competition wins</a></span>
+                    <span class="highlight"><a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">3 marathons</a> across the world</span>
+                    <span class="highlight">Traveled to <a href="#travelgallery" rel="noreferrer">30+ countries</a> across 6/7 continents</a></span>
+                    <span class="highlight">2x startup founder with <a href="#work#work" rel="noreferrer">10+ years of experience</a> across AI and tech</span>
+                    <span class="highlight">Conversational in <a href="#life#languages" rel="noreferrer">3 languages</a></span>
+                    <span class="highlight">Graduated <a href="#work#education" rel="noreferrer"><em>cum laude</em> in CS</a> and did silly ML research</span>
+                    <span class="highlight">Being generally unhinged on <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noreferrer">Instagram</a></span>
+                </div>
+            </div>
+            <img src="../res/images/me.png" alt="Luke Weber" class="header-image">
+        </header>
+
+        <div class="tabs" aria-label="Primary navigation">
+            <button class="tab-btn active" type="button" data-tab="work" onclick="setTab('work')">Experience</button>
+            <button class="tab-btn" type="button" data-tab="sport" onclick="setTab('sport')">Sports</button>
+            <button class="tab-btn" type="button" data-tab="life" onclick="setTab('life')">Life</button>
+        </div>
+
+        <div class="tab-panels">
+            <div class="tab-panel active" data-tab="work" data-src="tabs/work.html"></div>
+            <div class="tab-panel" data-tab="sport" data-src="tabs/sport.html"></div>
+            <div class="tab-panel" data-tab="life" data-src="tabs/life.html"></div>
+        </div>
+    </div>
+
+    <script>
+        async function loadTabPanels() {
+            const panels = Array.from(document.querySelectorAll('.tab-panel'));
+            await Promise.all(
+                panels.map(async (panel) => {
+                    const src = panel.dataset.src;
+                    if (!src) {
+                        return;
+                    }
+                    try {
+                        const response = await fetch(src, { cache: 'no-cache' });
+                        if (!response.ok) {
+                            throw new Error(`Failed to load ${src}`);
+                        }
+                        panel.innerHTML = await response.text();
+                    } catch (error) {
+                        panel.innerHTML = '<p class="highlight">Content failed to load.</p>';
+                    }
+                })
+            );
+        }
+
+        function toggleSection(section) {
+            const isExpanded = section.classList.contains('expanded');
+            const currentPanel = section.closest('.tab-panel');
+            const currentTab = currentPanel ? currentPanel.dataset.tab : '';
+
+            if (isExpanded) {
+                // just close this section
+                section.classList.remove('expanded');
+                // update url to just the tab
+                if (currentTab && history.replaceState) {
+                    history.replaceState(null, '', `#${currentTab}`);
+                }
+            } else {
+                // close all other sections in the current tab
+                if (currentPanel) {
+                    currentPanel.querySelectorAll('section.expanded').forEach(s => {
+                        s.classList.remove('expanded');
+                    });
+                }
+                // open this section
+                section.classList.add('expanded');
+                // update url with tab and section stub
+                const sectionStub = section.dataset.stub;
+                if (currentTab && sectionStub && history.replaceState) {
+                    history.replaceState(null, '', `#${currentTab}#${sectionStub}`);
+                }
+            }
+        }
+
+        function setTab(tab) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            buttons.forEach((btn) => {
+                btn.classList.toggle('active', btn.dataset.tab === tab);
+            });
+
+            panels.forEach((panel) => {
+                panel.classList.toggle('active', panel.dataset.tab === tab);
+            });
+
+            document.querySelectorAll('.tab-panel section.expanded').forEach((s) => s.classList.remove('expanded'));
+
+            if (history.replaceState) {
+                history.replaceState(null, '', `#${tab}`);
+            } else {
+                window.location.hash = tab;
+            }
+        }
+
+        function handleHash() {
+            const hash = (window.location.hash || '').replace('#', '').trim();
+
+            // handle travel gallery redirect
+            if (hash === 'travelgallery') {
+                window.location.href = 'gallery.html';
+                return;
+            }
+
+            // handle nested navigation like #life#favoriteworks
+            if (hash.includes('#')) {
+                const parts = hash.split('#');
+                const tab = parts[0];
+                const sectionStub = parts[1];
+
+                const valid = new Set(['work', 'sport', 'life']);
+                if (valid.has(tab)) {
+                    setTab(tab);
+                    // wait for tab content to load, then open the section
+                    setTimeout(() => {
+                        const activePanel = document.querySelector('.tab-panel.active');
+                        if (activePanel) {
+                            const section = activePanel.querySelector(`section[data-stub="${sectionStub}"]`);
+                            if (section) {
+                                toggleSection(section);
+                            }
+                        }
+                    }, 100);
+                }
+                return;
+            }
+
+            // handle regular tab navigation
+            const valid = new Set(['work', 'sport', 'life']);
+            if (valid.has(hash)) {
+                setTab(hash);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadTabPanels();
+            handleHash();
+        });
+
+        window.addEventListener('hashchange', handleHash);
+    </script>
+</body>
+
+</html>

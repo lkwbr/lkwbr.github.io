@@ -1,688 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luke Weber</title>
-    <link rel="icon" type="image/png" href="res/images/favicon.png">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-RLM10NKPV7');
-    </script>
-    <style>
-:root {
-            --bg: #fafafa;
-            --bg-alt: #f0f0f0;
-            --text: #1a1a1a;
-            --text-muted: #6b6b6b;
-            --link: #5ba3c0;
-            --link-hover: #3d8aab;
-            --border: #e0e0e0;
-            --accent: #1a1a1a;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #121212;
-                --bg-alt: #1a1a1a;
-                --text: #f0f0f0;
-                --text-muted: #8a8a8a;
-                --link: #7ec8e3;
-                --link-hover: #a3daf0;
-                --border: #2a2a2a;
-                --accent: #f0f0f0;
-            }
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            min-height: 100vh;
-        }
-        a {
-            color: var(--link);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        a:hover {
-            color: var(--link-hover);
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 48px 24px 80px;
-        }
-        /* header */
-        header {
-            /* margin-bottom: 48px; */
-            margin-bottom: 24px;
-            display: flex;
-            gap: 32px;
-            align-items: flex-start;
-        }
-        .header-content {
-            flex: 1;
-        }
-        .header-image {
-            flex-shrink: 0;
-            width: 180px;
-            height: auto;
-        }
-        .name {
-            font-size: 2.25rem;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            margin-bottom: 6px;
-        }
-        .tagline {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 18px;
-        }
-        .roles {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .role {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .role-title {
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        .role-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-        .highlights {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding-top: 18px;
-            border-top: 1px dashed var(--border);
-        }
-        .highlight {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-        .social-links {
-            display: flex;
-            gap: 18px;
-            margin-top: 20px;
-            font-size: 0.875rem;
-        }
-        /* tabs */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            /* margin-top: 18px; */
-            padding-top: 18px;
-            border-top: 1px dashed var(--border);
-        }
-        .tab-btn {
-            appearance: none;
-            -webkit-appearance: none;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-muted);
-            padding: 8px 10px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-        }
-        .tab-btn:hover {
-            background: var(--bg-alt);
-            color: var(--text);
-        }
-        .tab-btn:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-        .tab-btn.active {
-            border-color: var(--accent);
-            background: var(--bg-alt);
-            color: var(--text);
-        }
-        .tab-panels {
-            /* margin-top: 28px; */
-            margin-top: 18px;
-        }
-        .tab-panel {
-            display: none;
-        }
-        .tab-panel.active {
-            display: block;
-        }
-        /* experience */
-        .experience-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .xp-item {
-            border: none;
-            border-radius: 0;
-            padding: 2px 0;
-            background: transparent;
-        }
-        .xp-header {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .xp-role {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .xp-company {
-            font-weight: 500;
-        }
-        .xp-meta {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-        .xp-bullets {
-            margin-top: 10px;
-            margin-left: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            list-style: disc;
-        }
-        .xp-bullets li {
-            list-style: disc;
-            font-size: 0.9rem;
-            line-height: 1.45;
-        }
-        .xp-summary {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            line-height: 1.45;
-        }
-        .xp-bullets .num {
-            color: #000;
-            font-weight: 600;
-        }
-        @media (prefers-color-scheme: dark) {
-            .xp-bullets .num {
-                color: #fff;
-            }
-        }
-        .xp-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-        }
-        .xp-tag {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 4px 8px;
-        }
-        .xp-tag.tech-lang {
-            background: var(--bg-alt);
-            border-color: var(--border);
-        }
-        .xp-tag.tech-infra {
-            border-style: dashed;
-        }
-        .xp-tag.tech-data {
-            border-radius: 4px;
-        }
-        .xp-tag.tech-ml {
-            background: transparent;
-            border-width: 1.5px;
-        }
-        .xp-tag.tech-workflow {
-            font-style: italic;
-        }
-        /* sections */
-        .sections {
-            display: flex;
-            flex-direction: column;
-            /* gap: 36px; */
-            gap: 24px;
-        }
-        section {
-            border-top: 1px dashed var(--border);
-            padding-top: 20px;
-        }
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            cursor: pointer;
-            user-select: none;
-            gap: 16px;
-            transition: opacity 0.15s ease;
-        }
-        .section-header:hover {
-            opacity: 0.8;
-        }
-        .section-header:focus {
-            outline: 2px solid var(--accent);
-            outline-offset: 4px;
-        }
-        .section-title {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-        .section-summary {
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.45;
-            transition: opacity 0.2s ease;
-        }
-        .expand-icon {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
-            flex-shrink: 0;
-            margin-top: -2px;
-        }
-        section.expanded .expand-icon {
-            transform: rotate(45deg);
-        }
-        section.expanded .section-summary {
-            display: none;
-        }
-        .section-content {
-            display: none;
-            margin-top: 12px;
-        }
-        section.expanded .section-content {
-            display: block;
-        }
-        .section-content ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .section-content li {
-            font-size: 0.9rem;
-            line-height: 1.45;
-        }
-        .item-title {
-            font-weight: 500;
-        }
-        .item-sub {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 3px;
-        }
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            column-gap: 32px;
-            row-gap: 18px;
-            margin-top: 8px;
-        }
-        .works-subsection h4 {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-        .works-subsection ul {
-            gap: 4px !important;
-        }
-        .works-subsection li {
-            font-size: 0.85rem !important;
-        }
-        .works-subsection.quotes {
-            grid-column: 1 / -1;
-        }
-        .works-subsection.quotes li {
-            font-style: italic;
-            color: var(--text-muted);
-        }
-        @media (max-width: 600px) {
-            .works-grid {
-                grid-template-columns: 1fr;
-                row-gap: 16px;
-            }
-        }
-        .nested-list {
-            margin-top: 6px;
-            padding-left: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .nested-list li {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        /* testimonials */
-        .testimonials {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        .testimonial-group-title {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .testimonial {
-            border-left: 3px solid var(--border);
-            padding-left: 16px;
-            margin: 0 0 18px 0;
-        }
-        .testimonial-quote {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            font-style: italic;
-            color: var(--text);
-        }
-        .testimonial-meta {
-            margin-top: 8px;
-            font-size: 0.85rem;
-            font-style: normal;
-            color: var(--text-muted);
-        }
-        /* travel grid */
-        .travel-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            column-gap: 24px;
-            row-gap: 12px;
-            margin-top: 16px;
-        }
-        .travel-region h4 {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }
-        .travel-region ul {
-            gap: 3px !important;
-        }
-        .travel-region li {
-            font-size: 0.85rem !important;
-        }
-        .europe-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 14px !important;
-        }
-        /* competition table */
-        .comp-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-        .comp-table th {
-            text-align: left;
-            font-weight: 600;
-            padding: 8px 12px 8px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.8rem;
-            letter-spacing: 0.02em;
-        }
-        .comp-table td {
-            padding: 10px 12px 10px 0;
-            border-bottom: 1px solid var(--border);
-            line-height: 1.4;
-        }
-        .comp-table tr:last-child td {
-            border-bottom: none;
-        }
-        .comp-table .medal {
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .comp-table .division {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        .comp-table .location {
-            color: var(--text-muted);
-        }
-        .comp-table .date {
-            color: var(--text-muted);
-            white-space: nowrap;
-        }
-        /* responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 40px 20px 64px;
-            }
-            header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .header-image {
-                order: -1;
-                width: 150px;
-                height: auto;
-                margin-bottom: 16px;
-            }
-            .name {
-                font-size: 1.75rem;
-            }
-            .tagline {
-                font-size: 1rem;
-            }
-            .comp-table {
-                font-size: 0.85rem;
-            }
-            .comp-table th,
-            .comp-table td {
-                padding: 8px 8px 8px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>luke weber</title>
+  <meta name="description" content="luke weber. 31. american.">
+  <link rel="icon" type="image/png" href="res/images/favicon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date()); gtag('config', 'G-RLM10NKPV7');
+  </script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --rule: #d4d4d4;
+      --tip-bg: #1a1a1a;
+      --tip-fg: #fafafa;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e0e0e;
+        --text: #ededed;
+        --muted: #a3a3a3;
+        --rule: #2a2a2a;
+        --tip-bg: #ededed;
+        --tip-fg: #0e0e0e;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--text); }
+    html, body, a, .r, button, input, textarea, select { cursor: none; }
+    html, body { -webkit-user-select: none; -ms-user-select: none; user-select: none; }
+    body {
+      font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: 36px 24px 28px;
+      min-height: 100vh;
+    }
+    main { max-width: 660px; margin: 0 auto; }
+
+    .banner {
+      font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 10px;
+      line-height: 1.0;
+      letter-spacing: 0;
+      color: var(--text);
+      background: rgba(127, 127, 127, 0.08);
+      white-space: pre;
+      overflow: hidden;
+      user-select: none;
+      cursor: none;
+      margin: 0 0 18px;
+      padding: 0;
+      font-variant-ligatures: none;
+      display: block;
+      width: 100%;
+      position: relative;
+    }
+
+    .orb {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-9999px, -9999px);
+      pointer-events: none;
+      z-index: 9999;
+      font-family: ui-monospace, monospace;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--text);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+      will-change: transform;
+    }
+    .orb.on { opacity: 1; }
+    .orb .glyph {
+      display: inline-block;
+    }
+    @media (max-width: 600px) { .banner { font-size: 8px; } }
+
+    .head {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .head-bio, .head-now { display: flex; flex-direction: column; gap: 2px; }
+    .head-now { text-align: right; align-items: flex-end; }
+    @media (max-width: 600px) {
+      .head { flex-direction: column; gap: 10px; }
+      .head-now { text-align: left; align-items: flex-start; }
+    }
+    .name { font-weight: 600; }
+    .muted { color: var(--muted); }
+
+    .lede { margin-top: 10px; margin-bottom: 4px; }
+
+    .now {
+      border-left: 2px solid var(--text);
+      padding: 4px 0 4px 14px;
+      margin: 14px 0 6px;
+    }
+    .now p { margin: 0 0 6px; }
+    .now p:last-child { margin: 0; }
+
+    p { margin: 0 0 12px; }
+    p:last-of-type { margin-bottom: 0; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted var(--muted);
+      transition: border-color 0.15s ease;
+    }
+    a:hover, .r:hover {
+      color: #c4a6e8;
+      font-weight: 700;
+      border-bottom-color: #c4a6e8;
+    }
+    a:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
+
+    /* receipt triggers — works on <a> and <span class="r"> */
+    .r {
+      border-bottom: 1px dotted var(--muted);
+    }
+    span.r:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
+
+    /* single shared tooltip element, positioned by JS */
+    .tip {
+      position: fixed;
+      top: -9999px;
+      left: 0;
+      background: var(--tip-bg);
+      color: var(--tip-fg);
+      padding: 6px 9px;
+      font-size: 12px;
+      line-height: 1.35;
+      max-width: 320px;
+      width: max-content;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-2px);
+      transition: opacity 0.12s ease, transform 0.12s ease;
+      z-index: 100;
+      white-space: normal;
+    }
+    .tip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 600px) {
+      .tip { max-width: calc(100vw - 32px); }
+    }
+
+    .section {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 22px 0 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      font-variant-ligatures: none;
+      letter-spacing: 0;
+    }
+    .section { text-overflow: clip; }
+
+    .links {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .links a { border-bottom-style: solid; }
+    .links .sep { color: var(--rule); }
+    .links .break { flex-basis: 100%; height: 0; }
+    .links .break-m { display: none; flex-basis: 100%; height: 0; }
+    @media (max-width: 600px) {
+      .links .break { display: none; }
+      .links .break-m { display: block; }
+    }
+
+    .updated {
+      margin-top: 36px;
+      font-size: 11px;
+      color: var(--rule);
+      letter-spacing: 0.08em;
+      text-align: center;
+      opacity: 0.75;
+    }
+    .updated .sep { margin: 0 6px; }
+
+    @media (max-width: 600px) {
+      body { padding: 28px 18px 24px; font-size: 13px; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <h1 class="name">Luke Weber</h1>
-                <p class="tagline">Trying to be great.</p>
-                <div class="roles">
-                    <div class="role">
-                        <span class="role-title">Co-founder & CTO @ <a href="https://eisberg.ai" target="_blank" rel="noreferrer">eisberg.ai</a></span>
-                        <span class="role-desc">the app that builds apps</span>
-                    </div>
-                    <div class="role">
-                        <span class="role-title">CTO @ <a href="https://wyldsociety.io" target="_blank" rel="noreferrer">Wyld Society</a></span>
-                        <span class="role-desc">where venues meet creators</span>
-                    </div>
-                    <div class="role">
-                        <span class="role-title">Researcher & AI Advisor @ <a href="https://www.intervance.com" target="_blank" rel="noreferrer">Intervance</a></span>
-                        <span class="role-desc">interpretable AI against cancer</span>
-                    </div>
-                </div>
-                <div class="highlights">
-                    <span class="highlight">Top 1% AI talent with perfect rating on <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noreferrer">Upwork</a></span>
-                    <span class="highlight">Jiu-jitsu purple belt with <a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noreferrer">30+ competition wins</a></span>
-                    <span class="highlight"><a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noreferrer">3 marathons</a> across the world</span>
-                    <span class="highlight">Traveled to <a href="#travelgallery" rel="noreferrer">30+ countries</a> across 6/7 continents</a></span>
-                    <span class="highlight">2x startup founder with <a href="#work#work" rel="noreferrer">10+ years of experience</a> across AI and tech</span>
-                    <span class="highlight">Conversational in <a href="#life#languages" rel="noreferrer">3 languages</a></span>
-                    <span class="highlight">Graduated <a href="#work#education" rel="noreferrer"><em>cum laude</em> in CS</a> and did silly ML research</span>
-                    <span class="highlight">Being generally unhinged on <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noreferrer">Instagram</a></span>
-                </div>
-            </div>
-            <img src="res/images/me.png" alt="Luke Weber" class="header-image">
-        </header>
+<main>
 
-        <div class="tabs" aria-label="Primary navigation">
-            <button class="tab-btn active" type="button" data-tab="work" onclick="setTab('work')">Experience</button>
-            <button class="tab-btn" type="button" data-tab="sport" onclick="setTab('sport')">Sports</button>
-            <button class="tab-btn" type="button" data-tab="life" onclick="setTab('life')">Life</button>
-        </div>
+  <pre class="banner" id="banner" aria-hidden="true"></pre>
+  <div class="orb" id="orb" aria-hidden="true"><span class="glyph" id="orb-glyph">○</span></div>
 
-        <div class="tab-panels">
-            <div class="tab-panel active" data-tab="work" data-src="tabs/work.html"></div>
-            <div class="tab-panel" data-tab="sport" data-src="tabs/sport.html"></div>
-            <div class="tab-panel" data-tab="life" data-src="tabs/life.html"></div>
-        </div>
+  <div class="head">
+    <div class="head-bio">
+      <div class="name">LUKE WEBER</div>
+      <div class="muted">31 / AMERICAN</div>
     </div>
+    <div class="head-now">
+      <div class="now-line">building <a class="r" href="https://eisberg.ai" data-tip="ai product studio; pre-launch" target="_blank" rel="noopener noreferrer">eisberg</a></div>
+      <div class="now-line">AI advisor and researcher at <a class="r" href="https://www.intervance.com" data-tip="interpretable AI against cancer" target="_blank" rel="noopener noreferrer">intervance</a></div>
+    </div>
+  </div>
 
-    <script>
-        async function loadTabPanels() {
-            const panels = Array.from(document.querySelectorAll('.tab-panel'));
-            await Promise.all(
-                panels.map(async (panel) => {
-                    const src = panel.dataset.src;
-                    if (!src) {
-                        return;
-                    }
-                    try {
-                        const response = await fetch(src, { cache: 'no-cache' });
-                        if (!response.ok) {
-                            throw new Error(`Failed to load ${src}`);
-                        }
-                        panel.innerHTML = await response.text();
-                    } catch (error) {
-                        panel.innerHTML = '<p class="highlight">Content failed to load.</p>';
-                    }
-                })
-            );
+  <!-- <div class="section">░▒▓░▒▓░▒▓ career ░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓░▒▓</div> -->
+  <div class="section">░▒░▒░▒░▒░▒ career ░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</div>
+
+  <p>
+    <a class="r" href="https://www.upwork.com/freelancers/lkwbr" data-tip="13 jobs · 455 hrs · 5.0/5 across 9 ratings · sustained 4 years" target="_blank" rel="noopener noreferrer">top 1% AI talent on upwork</a> with 100% rating in &lt;3 mo.
+    served <span class="r" tabindex="0" data-tip="upwork + offline; clients across biotech, marketing, cybersec, govtech, sports">20+ startups</span> across 4 years.
+    <a class="r" href="res/images/yc_rejection_w24.png" data-tip='rejection email said "yours was in the top 10%"'>top 10% yc w24</a>
+    for <a class="r" href="https://punk5.com" data-tip="punk5 — custom python multiplayer engine with embodied AI agents" target="_blank" rel="noopener noreferrer">realtime generative AI multiplayer game built from scratch</a>
+    (solo founder).
+  </p>
+
+  <p>
+    senior engineer at <a class="r" href="https://brighter.ai" data-tip="berlin · jan–jun 2023 · senior engineer for a €56B client" target="_blank" rel="noopener noreferrer">brighter.ai</a> in berlin (jan–jun '23).
+    scored the <span class="r" tabindex="0" data-tip="issued feb 2023 via brighter.ai">EU blue card</span>.
+  </p>
+
+  <p>
+    co-founded AI biotech <a class="r" href="https://omic.ai" data-tip="still alive, pivoted to an AI-scientist SaaS" target="_blank" rel="noopener noreferrer">omic</a> in '19.
+    <span class="r" tabindex="0" data-tip="the wallingford incubator had peeling wood floors — splinters constantly">slept on floor for two years</span>.
+    built <span class="r" tabindex="0" data-tip="the platform, the workflow engine, the knowledge graph, a covid-mortality predictor, a drug-generation engine">all major internal IP</span>.
+    managed <span class="r" tabindex="0" data-tip="over the full tenure; ~5–6 reporting at peak">15 specialists, engineers, and interns</span>.
+    <span class="r" tabindex="0" data-tip="7,000+ diseases · 100m+ molecules generated · multi-million-node knowledge graph">AI-native drug discovery platform</span>
+    drew advisors and leadership from <span class="r" tabindex="0" data-tip="astrazeneca advisors + allen institute c-suite">the big boys</span>.
+    after cofounder issues, i <span class="r" tabindex="0" data-tip="declined cofounder's restructuring; partial vest forfeited">walked from the vest</span>.
+  </p>
+
+  <p>
+    <span class="r" tabindex="0" data-tip="azure DSR team · GDPR era · dec 2017 – sep 2018">microsoft contract</span> out of college in '17.
+    helped build <span class="r" tabindex="0" data-tip="GDPR-era hard-delete tracking, 32× faster than what was there">privacy infra</span>
+    used by 1k+ MS service teams (office, xbox, windows, skype).
+    on the side: studied <span class="r" tabindex="0" data-tip="udacity flying car nanodegree — drone motion planning, EKF state estimation">autonomous vehicles</span>,
+    robotics, deep learning, and <span class="r" tabindex="0" data-tip="udacity deep RL nanodegree + andrew ng's deep learning specialization">reinforcement learning</span>.
+    <a class="r" href="https://github.com/thewebers/coin" data-tip="christmas 2020 with my brother, based on the bitcoin whitepaper" target="_blank" rel="noopener noreferrer">co-built a cryptocurrency in haskell</a>.
+    <span class="r" tabindex="0" data-tip="Vizinet at WSU CEE; CNN trained on ~20k wildfire smartphone images to estimate PM2.5, replacing $10k+ hardware sensors">worked on computer vision models for aqi analysis</span>.
+    <span class="r" tabindex="0" data-tip="held through the cycles; sold to fund the gap year">early bitcoin investor</span>.
+  </p>
+
+  <p>
+    <span class="r" tabindex="0" data-tip="freshman year: too much partying, too little sleep — pulled it back hard">almost kicked out freshman year</span>.
+    ended up graduating <span class="r" tabindex="0" data-tip="WSU · 3.7 gpa · president's honor roll 6×">cum laude in cs</span>,
+    taking <span class="r" tabindex="0" data-tip="grad-level CS coursework while still an undergrad">grad-level coursework</span>,
+    doing ml research under <a class="r" href="https://eecs.wsu.edu/~jana/" data-tip="wsu CS prof, h-index 42; researched automated task assignment with him" target="_blank" rel="noopener noreferrer">jana doppa</a>.
+    finalist in a <span class="r" tabindex="0" data-tip="crimson code 2017 + wsu hackathon 2015 — finalist at both">few hackathons</span>.
+  </p>
+
+  <!-- <div class="section">█▓█▓█▓█▓█▓ athlete █▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓</div> -->
+  <div class="section">░▒░▒░▒░▒░▒ athlete ░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</div>
+
+  <p>
+    started <a class="r" href="https://smoothcomp.com/en/profile/1082353" data-tip="debut at grappling industries berlin, june 2023" target="_blank" rel="noopener noreferrer">grappling in '23</a>.
+    <a class="r" href="https://smoothcomp.com/en/profile/1082353" data-tip="3 gold (cologne, prague, gi berlin) + 3 silver (amsterdam, adcc suisse, illcs hannover)" target="_blank" rel="noopener noreferrer">won medals across europe</a>,
+    <span class="r" tabindex="0" data-tip="fenriz groundhug, berlin caged superfights, may + dec 2024 · video receipt pending">two cage wins</span>,
+    <a class="r" href="https://www.instagram.com/sacchimartino/?hl=en" data-tip="under martino sacchi; white → blue → purple in under 24 months" target="_blank" rel="noopener noreferrer">purple belt in &lt;2yrs</a>.
+    taught at <a class="r" href="https://nobsjj.com" data-tip="sayyato, nobsjj, and bjj dojo berlin" target="_blank" rel="noopener noreferrer">multiple gyms</a>.
+  </p>
+
+  <p>
+    ran <a class="r" href="https://www.strava.com/athletes/80004513" data-tip="irving 2021 (3:51), kyiv 2021 (4:05), salzburg 2023 (4:36) — chip times" target="_blank" rel="noopener noreferrer">a few marathons</a>.
+    trained for first in <span class="r" tabindex="0" data-tip="fit hiker baseline (already running half-marathons); foot fracture mid-block">5 weeks</span>,
+    ran <a class="r" href="https://www.strava.com/athletes/80004513" data-tip="kyiv city marathon, 2021-10-24; 123 days before the invasion" target="_blank" rel="noopener noreferrer">one in kyiv four months before russia invaded</a>.
+    <a class="r" href="https://www.strava.com/athletes/80004513" data-tip="711 activities since 2021; ~109k ft total elevation gain (≈3.7 Everest summits)" target="_blank" rel="noopener noreferrer">1,793 lifetime miles on strava</a>.
+  </p>
+
+  <p>
+    at 170lb:
+    <span class="r" tabindex="0" data-tip="1RM, summer 2025; 1.85× bodyweight; ~top 1% general male, ~top 5% competitive at 77kg">barbell bench 315 (top ~5%)</span>,
+    <span class="r" tabindex="0" data-tip="1RM; rare equipment tier — most gyms don't even stock 130 lb dumbbells">dumbbell bench 130/arm (top ~2%)</span>,
+    <span class="r" tabindex="0" data-tip="1RM; 1.85× bodyweight; ~mid-pack at 77kg class">back squat 315 (top ~40%)</span>,
+    <span class="r" tabindex="0" data-tip="1RM; 2.38× bodyweight">deadlift 405 (top ~25%)</span>.
+  </p>
+
+  <p>
+    did a year of <span class="r" tabindex="0" data-tip="sophomore year at WSU; ~12 months daily — to fix my adhd">intense mindfulness training</span> in college.
+  </p>
+
+  <!-- <div class="section">▘▖▝▗▘▖▝▗ culture ▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗▘▖▝▗</div> -->
+  <div class="section">░▒░▒░▒░▒░▒ culture ░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</div>
+
+  <p>
+    adventured <a class="r" href="archive/gallery.html" data-tip="41 unique countries, 988 cities, 6 of 7 continents — verified by ~45,000 geotagged photos">40+ countries, 988 cities, 6 continents</a>.
+    <span class="r" tabindex="0" data-tip="crawled 500k+ bus/train/flight routes from omio + kayak into an AI travel agent">wrote a program to plan my routes</span>.
+    <a class="r" href="archive/gallery.html" data-tip="bariloche → ushuaia, july 17 → aug 6 2022; slept standing up in argentinian gas stations">solo hitchhike across winter patagonia</a>,
+    1,300 miles in &lt;3 weeks.
+    <span class="r" tabindex="0" data-tip="iquitos, peru; oct 2-5, 2022">ayahuasca in the amazon</span>.
+    <span class="r" tabindex="0" data-tip="usa boston→LA · australia sydney→uluru (44 days) · thailand · ireland full perimeter">roadtrips across america, australia, thailand, and ireland</span>.
+    much more.
+  </p>
+
+  <p>
+    partied as hard as i worked. <span class="r" tabindex="0" data-tip="a uw sigma nu friend said it after enough partying during my 2017–18 seattle stay">"honorary sigma nu"</span> at uw during microsoft.
+    oktoberfest in munich.
+    stamped at <span class="r" tabindex="0" data-tip="berlin's most exclusive nightlife — during my 2023 residency">berghain, sisyphos, kitkat, tresor, katerblau</span>.
+  </p>
+
+  <p>
+    self-taught <span class="r" tabindex="0" data-tip="during sophomore year ADHD-remediation push at WSU">violin, piano, guitar</span>.
+    joined a string quartet in college.
+    also <span class="r" tabindex="0" data-tip="farm-era youtube + beat-making days as a teenager">produced a few beats</span>
+    and made some <a class="r" href="https://opensea.io/collection/weber-punks-22" data-tip="weberpunks — family christmas NFT collection, 2022" target="_blank" rel="noopener noreferrer">NFTs</a>.
+  </p>
+
+  <p>
+    conversational in english,
+    <a class="r" href="https://www.duolingo.com/profile/lkwbr" data-tip="B1; duolingo diamond league, 168-day streak" target="_blank" rel="noopener noreferrer">german</a>, and
+    <span class="r" tabindex="0" data-tip="went from barely-speaking to conversational during the 2022 patagonia trip">spanish</span>.
+  </p>
+
+  <p>
+    like to <a class="r" href="https://www.goodreads.com/user/show/12134138-luke" data-tip="181 books on goodreads; 78 read; favorites: psychology, science, sci-fi" target="_blank" rel="noopener noreferrer">read</a> when i have time.
+  </p>
+
+  <div class="section">░▒░▒░▒░▒░▒ early ░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</div>
+
+  <p>
+    born in cali to <span class="r" tabindex="0" data-tip="dad ran away from home in texas; grandfather was president of a big company in houston">texan parents</span> and <span class="r" tabindex="0" data-tip="one MIT PhD; one Haas School of Business summa cum laude turned actor">4 brothers</span>. <span class="r" tabindex="0" data-tip="boeing engineering team during the apollo program">grandfather worked on the apollo missions for boeing</span>. <span class="r" tabindex="0" data-tip="central washington; dad beat the 2008 market and decided we were getting spoiled">moved to a farm at 12</span>. got in lots of trouble. built weapons, forts, and explosives.
+    took apart electronics and collected hardware. lots of video games.
+    almost set our house on fire at 4. made our own (terrible) <span class="r" tabindex="0" data-tip="e.g., 'a winter in russia' on the family youtube · URL pending">short films</span>.
+  </p>
+
+  <p>
+    child of sports: <span class="r" tabindex="0" data-tip="freestyle + folk-style">wrestling</span>, football, baseball, basketball, soccer, and track &amp; field.
+  </p>
+
+  <p>
+    lots of manual labor growing up — <span class="r" tabindex="0" data-tip="summer farm labor, teen years">hay-baler 90hr weeks</span> one summer.
+    busted for <span class="r" tabindex="0" data-tip='unauthorized network access with my brother, HS-era'>"hacking"</span> in HS — used as leverage to start my school's
+    <span class="r" tabindex="0" data-tip="adapted from MIT intro CS; earned MTA certifications in software dev, networking, web dev fundamentals">first IT program</span>.
+    took college courses while in HS — <span class="r" tabindex="0" data-tip="did poorly in liberal arts">aced the STEM classes</span>.
+    by 17, built software for a <span class="r" tabindex="0" data-tip="Central Access (2013): 50+ textbook accessibility reader with PDF-to-text + TTS for adhd and blind students">local university</span>
+    and for <span class="r" tabindex="0" data-tip="engineering director at google; he saw my code and was impressed">my uncle @ google</span>.
+  </p>
+
+  <div class="section">█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓█▓</div>
+
+  <div class="links">
+    <a href="https://github.com/lkwbr" target="_blank" rel="noopener noreferrer">github</a>
+    <span class="sep">·</span>
+    <a href="https://x.com/lkwbr" target="_blank" rel="noopener noreferrer">x</a>
+    <span class="sep">·</span>
+    <a href="https://www.instagram.com/lk.wbr" target="_blank" rel="noopener noreferrer">instagram</a>
+    <span class="sep">·</span>
+    <a href="https://www.strava.com/athletes/80004513" target="_blank" rel="noopener noreferrer">strava</a>
+    <span class="sep">·</span>
+    <span class="break-m"></span>
+    <a href="https://smoothcomp.com/en/profile/1082353" target="_blank" rel="noopener noreferrer">smoothcomp</a>
+    <span class="sep">·</span>
+    <span class="break"></span>
+    <a href="https://www.upwork.com/freelancers/lkwbr" target="_blank" rel="noopener noreferrer">upwork</a>
+    <span class="sep">·</span>
+    <a href="https://www.goodreads.com/user/show/12134138-luke" target="_blank" rel="noopener noreferrer">goodreads</a>
+    <span class="sep">·</span>
+    <span class="break-m"></span>
+    <a href="https://open.spotify.com/user/lukedottec" target="_blank" rel="noopener noreferrer">spotify</a>
+    <span class="sep">·</span>
+    <a href="archive/gallery.html">photos</a>
+  </div>
+
+  <div class="updated">
+    <div>last updated <span id="updated-date">2026-05-23</span></div>
+    <div>© <span id="copyright-year">2026</span> luke weber</div>
+  </div>
+
+</main>
+<div class="tip" id="tip-popover" role="tooltip"></div>
+<script>
+  (function(){
+    // last-updated date
+    var d = new Date(document.lastModified);
+    if (!isNaN(d.getTime())) {
+      var pad = function(n){ return String(n).padStart(2,'0'); };
+      document.getElementById('updated-date').textContent =
+        d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+    }
+    // copyright year
+    var cy = document.getElementById('copyright-year');
+    if (cy) cy.textContent = new Date().getFullYear();
+
+    // glitch in all text on page load (cascades top-down by vertical position)
+    (function(){
+      var POOL = '░▒▓█▀▄▌▐▘▖▝▗▙▟▛▜▞▚abcdefghijklmnopqrstuvwxyz0123456789·•◆◇';
+      var main = document.querySelector('main');
+      if (!main) return;
+      var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+        acceptNode: function(n){
+          if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement && n.parentElement.closest && n.parentElement.closest('.banner')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
         }
+      }, false);
 
-        function toggleSection(section) {
-            const isExpanded = section.classList.contains('expanded');
-            const currentPanel = section.closest('.tab-panel');
-            const currentTab = currentPanel ? currentPanel.dataset.tab : '';
+      var entries = [];
+      var n;
+      while ((n = walker.nextNode())) {
+        entries.push({ node: n, final: n.nodeValue, top: 0 });
+      }
+      if (!entries.length) return;
 
-            if (isExpanded) {
-                // just close this section
-                section.classList.remove('expanded');
-                // update url to just the tab
-                if (currentTab && history.replaceState) {
-                    history.replaceState(null, '', `#${currentTab}`);
-                }
+      // measure vertical position so we can cascade top-down
+      var maxTop = 0;
+      entries.forEach(function(e){
+        var parent = e.node.parentElement;
+        if (parent) {
+          var rect = parent.getBoundingClientRect();
+          e.top = rect.top + window.scrollY;
+          if (e.top > maxTop) maxTop = e.top;
+        }
+      });
+      if (maxTop <= 0) maxTop = 1;
+
+      // assign per-character lock times, biased by vertical cascade + char index
+      var TOTAL_MS = 1100;
+      var TAIL_MS = 500;
+      var POSITION_BIAS = 600; // ms from top to bottom of page
+      entries.forEach(function(e){
+        var posDelay = (e.top / maxTop) * POSITION_BIAS;
+        var lockAt = new Array(e.final.length);
+        for (var i = 0; i < e.final.length; i++) {
+          var c = e.final[i];
+          if (c === ' ' || c === '\n' || c === '\t') { lockAt[i] = 0; continue; }
+          var charDelay = (i / Math.max(1, e.final.length)) * 150;
+          lockAt[i] = posDelay + charDelay + Math.random() * TAIL_MS;
+        }
+        e.lockAt = lockAt;
+        // initial scramble
+        var scrambled = '';
+        for (var j = 0; j < e.final.length; j++) {
+          var ch = e.final[j];
+          if (ch === ' ' || ch === '\n' || ch === '\t') scrambled += ch;
+          else scrambled += POOL[Math.floor(Math.random() * POOL.length)];
+        }
+        e.node.nodeValue = scrambled;
+      });
+
+      var start = performance.now();
+      function tick(now){
+        var t = now - start;
+        var allDone = true;
+        for (var s = 0; s < entries.length; s++) {
+          var entry = entries[s];
+          var out = '';
+          var anyUnlocked = false;
+          for (var i = 0; i < entry.final.length; i++) {
+            var c = entry.final[i];
+            if (t >= entry.lockAt[i]) {
+              out += c;
             } else {
-                // close all other sections in the current tab
-                if (currentPanel) {
-                    currentPanel.querySelectorAll('section.expanded').forEach(s => {
-                        s.classList.remove('expanded');
-                    });
-                }
-                // open this section
-                section.classList.add('expanded');
-                // update url with tab and section stub
-                const sectionStub = section.dataset.stub;
-                if (currentTab && sectionStub && history.replaceState) {
-                    history.replaceState(null, '', `#${currentTab}#${sectionStub}`);
-                }
+              anyUnlocked = true;
+              if (c === ' ' || c === '\n' || c === '\t') out += c;
+              else out += POOL[Math.floor(Math.random() * POOL.length)];
             }
+          }
+          entry.node.nodeValue = out;
+          if (anyUnlocked) allDone = false;
         }
+        if (!allDone) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
 
-        function setTab(tab) {
-            const buttons = document.querySelectorAll('.tab-btn');
-            const panels = document.querySelectorAll('.tab-panel');
+    // shared tooltip element positioned in viewport coords
+    var tipEl = document.getElementById('tip-popover');
+    if (!tipEl) return;
 
-            buttons.forEach((btn) => {
-                btn.classList.toggle('active', btn.dataset.tab === tab);
-            });
+    function showTip(triggerEl){
+      var text = triggerEl.getAttribute('data-tip');
+      if (!text) return;
+      tipEl.textContent = text;
+      // park off-screen first so we can measure rendered width
+      tipEl.style.top = '-9999px';
+      tipEl.style.left = '0px';
+      var tipRect = tipEl.getBoundingClientRect();
+      var rect = triggerEl.getBoundingClientRect();
+      var gap = 8;
+      var vp = 12;
+      var top = rect.bottom + gap;
+      var left = rect.left;
+      // clamp horizontally to viewport with padding
+      var maxLeft = window.innerWidth - tipRect.width - vp;
+      if (left > maxLeft) left = maxLeft;
+      if (left < vp) left = vp;
+      // if tooltip would extend off bottom, flip above the trigger
+      if (top + tipRect.height + vp > window.innerHeight) {
+        top = rect.top - tipRect.height - gap;
+      }
+      tipEl.style.top = top + 'px';
+      tipEl.style.left = left + 'px';
+      tipEl.classList.add('visible');
+    }
 
-            panels.forEach((panel) => {
-                panel.classList.toggle('active', panel.dataset.tab === tab);
-            });
+    function hideTip(){
+      tipEl.classList.remove('visible');
+    }
 
-            document.querySelectorAll('.tab-panel section.expanded').forEach((s) => s.classList.remove('expanded'));
+    document.querySelectorAll('.r').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ showTip(el); });
+      el.addEventListener('mouseleave', hideTip);
+      el.addEventListener('focus', function(){ showTip(el); });
+      el.addEventListener('blur', hideTip);
+    });
 
-            if (history.replaceState) {
-                history.replaceState(null, '', `#${tab}`);
-            } else {
-                window.location.hash = tab;
-            }
+    // hide on scroll/resize to avoid stale positioning
+    window.addEventListener('scroll', hideTip, { passive: true });
+    window.addEventListener('resize', hideTip);
+  })();
+
+  // game of life with multi-race breeding (gene = grayscale shade)
+  (function(){
+    var el = document.getElementById('banner');
+    if (!el) return;
+    var SHADES = [' ', '░', '▒', '▓', '█'];
+    var H = 12;
+    var W = 90;
+    var mx = null, my = null;
+    var mxActive = false;
+    var t = 0;
+    var lastFrame = 0;
+    var lastStep = 0;
+    var grid = null, nextG = null; // gene value > 0 means alive; 0 means dead
+    var PAD = 8; // simulate beyond the visible viewport so edges aren't empty
+    var WW = W + PAD * 2, HH = H + PAD * 2;
+
+    function measure(){
+      // measure cell width using a probe inside the banner itself
+      var probe = document.createElement('span');
+      probe.textContent = '0000000000';
+      probe.style.cssText = 'visibility:hidden;white-space:pre;';
+      el.appendChild(probe);
+      var cw = probe.getBoundingClientRect().width / 10 || 6;
+      el.removeChild(probe);
+      var avail = el.getBoundingClientRect().width || el.parentElement.getBoundingClientRect().width;
+      // each "cell" prints 2 chars wide so cells render visually square
+      W = Math.max(20, Math.min(120, Math.floor(avail / cw / 2)));
+    }
+    measure();
+    window.addEventListener('resize', measure);
+    // re-measure after layout settles (fonts loading can change cell width)
+    setTimeout(measure, 100);
+    setTimeout(measure, 500);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+    var orb = document.getElementById('orb');
+    document.addEventListener('mousemove', function(e){
+      var rect = el.getBoundingClientRect();
+      var inside = e.clientX >= rect.left && e.clientX <= rect.right &&
+                   e.clientY >= rect.top  && e.clientY <= rect.bottom;
+      if (inside) {
+        mx = (e.clientX - rect.left) / rect.width * W;
+        my = (e.clientY - rect.top) / rect.height * H;
+        mxActive = true;
+      } else {
+        mxActive = false;
+      }
+      if (orb) {
+        orb.style.transform = 'translate(' + (e.clientX - 11) + 'px,' + (e.clientY - 11) + 'px)';
+        orb.classList.add('on');
+      }
+    });
+    document.addEventListener('mouseleave', function(){ if (orb) orb.classList.remove('on'); });
+    document.addEventListener('mouseenter', function(){ if (orb) orb.classList.add('on'); });
+    document.addEventListener('copy', function(e){ e.preventDefault(); });
+    // headers unified to early-style
+    document.addEventListener('selectstart', function(e){ e.preventDefault(); });
+
+    // orb "hot" state when hovering interactive elements
+    var orbGlyph = document.getElementById('orb-glyph');
+    var GLYPH_DEFAULT = '○';
+    var GLYPH_HOT = '◍';
+    document.querySelectorAll('a, .r').forEach(function(node){
+      node.addEventListener('mouseenter', function(){
+        if (orb) { orb.classList.add('hot'); if (orbGlyph) orbGlyph.textContent = GLYPH_HOT; }
+      });
+      node.addEventListener('mouseleave', function(){
+        if (orb) { orb.classList.remove('hot'); if (orbGlyph) orbGlyph.textContent = GLYPH_DEFAULT; }
+      });
+    });
+    el.addEventListener('click', function(e){
+      // spawn a new race blob at click location (translate into extended grid)
+      var rect = el.getBoundingClientRect();
+      var cx = Math.floor((e.clientX - rect.left) / rect.width * W) + PAD;
+      var cy = Math.floor((e.clientY - rect.top) / rect.height * H) + PAD;
+      var gene = 0.15 + Math.random() * 0.85;
+      seedBlob(cx, cy, gene, 0.7);
+    });
+    document.addEventListener('mousedown', function(){
+      if (orbGlyph) orbGlyph.textContent = '●';
+    });
+    document.addEventListener('mouseup', function(){
+      if (orbGlyph) orbGlyph.textContent = orb && orb.classList.contains('hot') ? '◍' : '○';
+    });
+
+    function clamp01(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
+    function gauss(){ return (Math.random() + Math.random() + Math.random() - 1.5) * 0.6; }
+    function shadeFor(g){
+      if (g <= 0) return '  ';
+      // map gene in (0,1] → one of 4 square shades; print 2 chars wide for square cells
+      var idx = 1 + Math.min(3, Math.floor(g * 4));
+      var c = SHADES[idx];
+      return c + c;
+    }
+
+    function allocGrid(){
+      WW = W + PAD * 2; HH = H + PAD * 2;
+      grid = new Array(HH);
+      nextG = new Array(HH);
+      for (var y = 0; y < HH; y++) {
+        grid[y] = new Float32Array(WW);
+        nextG[y] = new Float32Array(WW);
+      }
+    }
+
+    function seedBlob(cx, cy, gene, density){
+      if (!grid) allocGrid();
+      for (var dy = -1; dy <= 1; dy++) {
+        for (var dx = -2; dx <= 2; dx++) {
+          if (Math.random() > density) continue;
+          var x = ((cx + dx) % WW + WW) % WW;
+          var y = ((cy + dy) % HH + HH) % HH;
+          grid[y][x] = clamp01(gene + (Math.random() - 0.5) * 0.04);
         }
+      }
+    }
 
-        function handleHash() {
-            const hash = (window.location.hash || '').replace('#', '').trim();
-
-            // handle travel gallery redirect
-            if (hash === 'travelgallery') {
-                window.location.href = 'gallery.html';
-                return;
-            }
-
-            // handle nested navigation like #life#favoriteworks
-            if (hash.includes('#')) {
-                const parts = hash.split('#');
-                const tab = parts[0];
-                const sectionStub = parts[1];
-
-                const valid = new Set(['work', 'sport', 'life']);
-                if (valid.has(tab)) {
-                    setTab(tab);
-                    // wait for tab content to load, then open the section
-                    setTimeout(() => {
-                        const activePanel = document.querySelector('.tab-panel.active');
-                        if (activePanel) {
-                            const section = activePanel.querySelector(`section[data-stub="${sectionStub}"]`);
-                            if (section) {
-                                toggleSection(section);
-                            }
-                        }
-                    }, 100);
-                }
-                return;
-            }
-
-            // handle regular tab navigation
-            const valid = new Set(['work', 'sport', 'life']);
-            if (valid.has(hash)) {
-                setTab(hash);
-            }
+    function seedRaces(){
+      allocGrid();
+      // scale race count by area so the larger sim still feels populated
+      var races = Math.max(10, Math.round(WW * HH / 90));
+      for (var r = 0; r < races; r++) {
+        var cx = Math.floor(Math.random() * WW);
+        var cy = Math.floor(Math.random() * HH);
+        var gene = 0.1 + (r / (races - 1)) * 0.85 + (Math.random() - 0.5) * 0.04;
+        seedBlob(cx, cy, gene, 0.85);
+      }
+      // sparse random fill across the whole extended grid
+      for (var y = 0; y < HH; y++) {
+        for (var x = 0; x < WW; x++) {
+          if (grid[y][x] === 0 && Math.random() < 0.18) {
+            grid[y][x] = 0.1 + Math.random() * 0.85;
+          }
         }
+      }
+    }
 
-        document.addEventListener('DOMContentLoaded', async () => {
-            await loadTabPanels();
-            handleHash();
-        });
+    function step(){
+      // resize grid if W changed (e.g. on resize)
+      if (!grid || grid[0].length !== W + PAD * 2) {
+        var oldG = grid, oldHH = oldG ? oldG.length : 0, oldWW = oldG ? oldG[0].length : 0;
+        allocGrid();
+        if (oldG) {
+          for (var y = 0; y < Math.min(HH, oldHH); y++)
+            for (var x = 0; x < Math.min(WW, oldWW); x++)
+              grid[y][x] = oldG[y][x];
+        } else {
+          seedRaces();
+        }
+      }
+      var liveCount = 0;
+      for (var y = 0; y < HH; y++) {
+        for (var x = 0; x < WW; x++) {
+          var n = 0;
+          var s = 0;
+          for (var dy = -1; dy <= 1; dy++) {
+            for (var dx = -1; dx <= 1; dx++) {
+              if (dx === 0 && dy === 0) continue;
+              var nx = ((x + dx) % WW + WW) % WW;
+              var ny = ((y + dy) % HH + HH) % HH;
+              var ng = grid[ny][nx];
+              if (ng > 0) { n++; s += ng; }
+            }
+          }
+          var alive = grid[y][x] > 0;
+          var v = 0;
+          if (alive && (n === 2 || n === 3)) {
+            v = clamp01(grid[y][x] + gauss() * 0.008);
+          } else if (!alive && n === 3) {
+            var mean = s / n;
+            v = clamp01(mean + gauss() * 0.05);
+            if (v <= 0) v = 0.02;
+          }
+          nextG[y][x] = v;
+          if (v > 0) liveCount++;
+        }
+      }
+      if (liveCount < WW * HH * 0.18 || Math.random() < 0.02) {
+        var cx = Math.floor(Math.random() * WW);
+        var cy = Math.floor(Math.random() * HH);
+        var g = 0.1 + Math.random() * 0.85;
+        for (var dy2 = -1; dy2 <= 1; dy2++) {
+          for (var dx2 = -1; dx2 <= 1; dx2++) {
+            if (Math.random() < 0.55) {
+              var ix = ((cx + dx2) % WW + WW) % WW;
+              var iy = ((cy + dy2) % HH + HH) % HH;
+              nextG[iy][ix] = clamp01(g + (Math.random() - 0.5) * 0.04);
+            }
+          }
+        }
+      }
+      var tmp = grid; grid = nextG; nextG = tmp;
+    }
 
-        window.addEventListener('hashchange', handleHash);
-    </script>
+    var glitchStart = performance.now();
+    var GLITCH_MS = 1100;
+    function render(now){
+      if (!grid || grid[0].length !== W + PAD * 2) seedRaces();
+      var glitchT = now - glitchStart;
+      if (glitchT < GLITCH_MS) {
+        // glitch-in: random noise that gradually settles to the conway state
+        if (now - lastFrame > 35) {
+          lastFrame = now;
+          var settleProb = glitchT / GLITCH_MS; // 0 → 1
+          var rows2 = new Array(H);
+          for (var y2 = 0; y2 < H; y2++) {
+            var line2 = '';
+            for (var x2 = 0; x2 < W; x2++) {
+              if (Math.random() < settleProb) {
+                line2 += shadeFor(grid[y2 + PAD][x2 + PAD]);
+              } else {
+                var rg = Math.random();
+                line2 += rg < 0.35 ? '  ' : shadeFor(0.1 + Math.random() * 0.85);
+              }
+            }
+            rows2[y2] = line2;
+          }
+          el.textContent = rows2.join('\n');
+        }
+        requestAnimationFrame(render);
+        return;
+      }
+      if (now - lastStep > 1800) { step(); lastStep = now; }
+      if (now - lastFrame > 50) {
+        lastFrame = now;
+        var rows = new Array(H);
+        for (var y = 0; y < H; y++) {
+          var line = '';
+          for (var x = 0; x < W; x++) line += shadeFor(grid[y + PAD][x + PAD]);
+          rows[y] = line;
+        }
+        el.textContent = rows.join('\n');
+      }
+      requestAnimationFrame(render);
+    }
+    seedRaces();
+    requestAnimationFrame(render);
+  })();
+</script>
 </body>
-
 </html>

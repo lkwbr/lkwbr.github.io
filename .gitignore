@@ -1,2 +1,6 @@
 .DS_Store
 .*.swp
+
+# local-only: claude code convention
+.claude/
+CLAUDE.md

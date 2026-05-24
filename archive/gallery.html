@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Gallery - Luke Weber</title>
-    <link rel="icon" type="image/png" href="res/images/favicon.webp">
+    <link rel="icon" type="image/png" href="../res/images/favicon.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -23,6 +26,8 @@
             --link-hover: #3d8aab;
             --border: #e0e0e0;
             --accent: #1a1a1a;
+            --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -47,10 +52,10 @@
             -moz-osx-font-smoothing: grayscale;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: var(--font-serif);
             background: var(--bg);
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.55;
             min-height: 100vh;
         }
         a {
@@ -77,6 +82,7 @@
             margin-bottom: 8px;
         }
         .gallery-back {
+            font-family: var(--font-sans);
             font-size: 0.875rem;
         }
         .gallery-grid {
@@ -110,6 +116,7 @@
             margin-bottom: 6px;
         }
         .gallery-location {
+            font-family: var(--font-sans);
             font-size: 0.8rem;
             color: var(--text-muted);
             font-weight: 500;
@@ -147,6 +154,7 @@
             color: #fff;
         }
         .lightbox-close {
+            font-family: var(--font-sans);
             position: absolute;
             top: 24px;
             right: 24px;
@@ -200,157 +208,157 @@
     <script>
         const travelImages = [
             {
-                src: 'res/images/travel/Travel Catalog - 1 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 1 of 31.webp',
                 description: 'Exploring the land of fire and ice',
                 location: 'Reykjavik, Iceland'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 10 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 10 of 31.webp',
                 description: 'Island hopping along the Adriatic coast',
                 location: 'Preko, Croatia'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 11 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 11 of 31.webp',
                 description: 'Hiking in the Atlas Mountains',
                 location: 'Asni, Morocco'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 12 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 12 of 31.webp',
                 description: 'Road trip around the Emerald Isle',
                 location: 'Ireland'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 13 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 13 of 31.webp',
                 description: 'Exploring the historic capital',
                 location: 'London, UK'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 14 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 14 of 31.webp',
                 description: 'Ancient ruins and Mediterranean vibes',
                 location: 'Athens, Greece'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 15 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 15 of 31.webp',
                 description: 'Street food and temples in Southeast Asia',
                 location: 'Bangkok, Thailand'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 16 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 16 of 31.webp',
                 description: 'High-tech city meets traditional culture',
                 location: 'Seoul, South Korea'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 17 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 17 of 31.webp',
                 description: 'TODO: Add description',
                 location: 'TODO: Add location'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 18 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 18 of 31.webp',
                 description: 'Red desert and ancient rock formations',
                 location: 'Uluru, Australia'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 19 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 19 of 31.webp',
                 description: 'Beach life and carnival spirit',
                 location: 'Rio de Janeiro, Brazil'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 2 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 2 of 31.webp',
                 description: 'Exploring the Tatra Mountains',
                 location: 'Slovakia'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 20 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 20 of 31.webp',
                 description: 'Beach town on the Atlantic coast',
                 location: 'Manantiales, Uruguay'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 21 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 21 of 31.webp',
                 description: 'Hitchhiking through the southern wilderness',
                 location: 'Patagonia, Argentina'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 22 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 22 of 31.webp',
                 description: 'Monuments and museums in the capital',
                 location: 'Washington DC, USA'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 23 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 23 of 31.webp',
                 description: 'TODO: Add description',
                 location: 'TODO: Add location'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 24 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 24 of 31.webp',
                 description: 'Urban exploration in Canada\'s largest city',
                 location: 'Toronto, Canada'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 25 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 25 of 31.webp',
                 description: 'TODO: Add description',
                 location: 'TODO: Add location'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 26 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 26 of 31.webp',
                 description: 'Medieval architecture and Czech beer',
                 location: 'Prague, Czechia'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 27 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 27 of 31.webp',
                 description: 'Canals, bikes, and Dutch culture',
                 location: 'Amsterdam, Netherlands'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 28 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 28 of 31.webp',
                 description: 'Training jiu-jitsu in the German capital',
                 location: 'Berlin, Germany'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 29 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 29 of 31.webp',
                 description: 'Tropical paradise and surf spots',
                 location: 'Bali, Indonesia'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 3 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 3 of 31.webp',
                 description: 'Thermal baths and ruin bars',
                 location: 'Budapest, Hungary'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 30 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 30 of 31.webp',
                 description: 'Mediterranean coast and Spanish sun',
                 location: 'Estepona, Spain'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 31 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 31 of 31.webp',
                 description: 'The world\'s smallest country',
                 location: 'Vatican City'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 4 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 4 of 31.webp',
                 description: 'Imperial palaces and coffee culture',
                 location: 'Vienna, Austria'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 5 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 5 of 31.webp',
                 description: 'City of lights and endless baguettes',
                 location: 'Paris, France'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 6 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 6 of 31.webp',
                 description: 'Historic capital on the Dnieper River',
                 location: 'Kyiv, Ukraine'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 7 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 7 of 31.webp',
                 description: 'Discovering Eastern Europe\'s hidden gem',
                 location: 'Chisinau, Moldova'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 8 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 8 of 31.webp',
                 description: 'Medieval town in the Carpathian Mountains',
                 location: 'Brasov, Romania'
             },
             {
-                src: 'res/images/travel/Travel Catalog - 9 of 31.webp',
+                src: '../res/images/travel/Travel Catalog - 9 of 31.webp',
                 description: 'Mountain town near Sofia',
                 location: 'Samokov, Bulgaria'
             }

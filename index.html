@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>luke weber</title>
-  <meta name="description" content="luke weber. 31. american.">
-  <link rel="icon" type="image/png" href="res/images/favicon.png">
+  <title>LUKE WEBER</title>
+  <meta name="description" content="luke weber. 31. american. building eisberg.ai. ai advisor and researcher at intervance.">
+  <link rel="icon" type="image/svg+xml" href="res/images/favicon.svg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -34,7 +34,35 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { background: var(--bg); color: var(--text); }
     html, body, a, .r, button, input, textarea, select { cursor: none; }
+    @media (hover: none) and (pointer: coarse) {
+      html, body, a, .r, button, input, textarea, select { cursor: auto; }
+      .orb { display: none !important; }
+    }
     html, body { -webkit-user-select: none; -ms-user-select: none; user-select: none; }
+
+    /* hide native scrollbar; custom unicode bar lives on the right edge */
+    html { scrollbar-width: none; }
+    html::-webkit-scrollbar { width: 0; height: 0; display: none; }
+    body::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+    .ubar {
+      position: fixed;
+      top: 0;
+      right: 6px;
+      height: 100vh;
+      font-family: ui-monospace, "JetBrains Mono", monospace;
+      font-size: 11px;
+      line-height: 1;
+      color: var(--rule);
+      pointer-events: auto;
+      z-index: 60;
+      white-space: pre;
+      padding: 10px 0;
+      cursor: none;
+    }
+    .ubar .filled { color: var(--text); }
+    .ubar:hover .filled { color: #c4a6e8; }
+    @media (hover: none) and (pointer: coarse) { .ubar { display: none; } }
     body {
       font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
       font-size: 14px;
@@ -245,6 +273,7 @@
 
   <pre class="banner" id="banner" aria-hidden="true"></pre>
   <div class="orb" id="orb" aria-hidden="true"><span class="glyph" id="orb-glyph">○</span></div>
+  <div class="ubar" id="ubar" aria-hidden="true"></div>
 
   <div class="head">
     <div class="head-bio">
@@ -274,7 +303,7 @@
   </p>
 
   <p>
-    senior engineer at <a class="r" href="https://brighter.ai" data-tip="berlin · jan–jun 2023 · senior engineer for a €56B client" target="_blank" rel="noopener noreferrer">brighter.ai</a> in berlin (jan–jun '23).
+    senior engineer at <a class="r" href="https://brighter.ai" data-tip="berlin · jan–jun 2023 · owned backend v2.0 roadmap, 10× faster request scheduling, for a €56B enterprise client" target="_blank" rel="noopener noreferrer">brighter.ai</a> in berlin (jan–jun '23).
     scored the <span class="r" tabindex="0" data-tip="issued feb 2023 via brighter.ai">EU blue card</span>.
   </p>
 
@@ -376,7 +405,7 @@
   <div class="section">░▒░▒░▒░▒░▒ early ░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</div>
 
   <p>
-    born in cali to <span class="r" tabindex="0" data-tip="dad ran away from home in texas; grandfather was president of a big company in houston">texan parents</span> and <span class="r" tabindex="0" data-tip="one MIT PhD; one Haas School of Business summa cum laude turned actor">4 brothers</span>. <span class="r" tabindex="0" data-tip="boeing engineering team during the apollo program">grandfather worked on the apollo missions for boeing</span>. <span class="r" tabindex="0" data-tip="central washington; dad beat the 2008 market and decided we were getting spoiled">moved to a farm at 12</span>. got in lots of trouble. built weapons, forts, and explosives.
+    born in cali to <span class="r" tabindex="0" data-tip="dad ran away from home in texas; grandfather was president of a big company in houston">texan parents</span> and <span class="r" tabindex="0" data-tip="one MIT PhD; one Haas School of Business summa cum laude turned actor">4 brothers</span>. <span class="r" tabindex="0" data-tip="boeing engineering team during the apollo program">grandfather worked on the apollo missions for boeing</span>. <span class="r" tabindex="0" data-tip="central washington; dad beat the 2008 market and decided we were getting spoiled">moved to a farm at 12</span>. got in lots of trouble. built weapons, forts, and explosives. jumped off cliffs.
     took apart electronics and collected hardware. lots of video games.
     almost set our house on fire at 4. made our own (terrible) <span class="r" tabindex="0" data-tip="e.g., 'a winter in russia' on the family youtube · URL pending">short films</span>.
   </p>
@@ -387,6 +416,7 @@
 
   <p>
     lots of manual labor growing up — <span class="r" tabindex="0" data-tip="summer farm labor, teen years">hay-baler 90hr weeks</span> one summer.
+    started programming at <span class="r" tabindex="0" data-tip="~2009; self-taught from books and forums before HS CS">14</span>.
     busted for <span class="r" tabindex="0" data-tip='unauthorized network access with my brother, HS-era'>"hacking"</span> in HS — used as leverage to start my school's
     <span class="r" tabindex="0" data-tip="adapted from MIT intro CS; earned MTA certifications in software dev, networking, web dev fundamentals">first IT program</span>.
     took college courses while in HS — <span class="r" tabindex="0" data-tip="did poorly in liberal arts">aced the STEM classes</span>.
@@ -445,6 +475,61 @@
     if (ctaClose && cta) {
       ctaClose.addEventListener('click', function(){ cta.classList.add('hidden'); });
     }
+
+    // custom unicode scrollbar
+    (function(){
+      var ubar = document.getElementById('ubar');
+      if (!ubar) return;
+      var EMPTY = '░';
+      var FILLED = '█';
+      var lineH = 11;
+      var pad = 10;
+
+      function rows(){
+        return Math.max(1, Math.floor((window.innerHeight - pad * 2) / lineH));
+      }
+
+      function render(){
+        var docH = document.documentElement.scrollHeight;
+        var viewH = window.innerHeight;
+        if (docH <= viewH + 4) {
+          ubar.style.display = 'none';
+          return;
+        }
+        ubar.style.display = '';
+        var scrollY = window.scrollY || window.pageYOffset || 0;
+        var R = rows();
+        var startRow = Math.floor(scrollY / docH * R);
+        var endRow = Math.ceil((scrollY + viewH) / docH * R);
+        if (endRow <= startRow) endRow = startRow + 1;
+        var parts = [];
+        for (var i = 0; i < R; i++) {
+          if (i >= startRow && i < endRow) {
+            parts.push('<span class="filled">' + FILLED + '</span>');
+          } else {
+            parts.push(EMPTY);
+          }
+        }
+        ubar.innerHTML = parts.join('\n');
+      }
+
+      ubar.addEventListener('click', function(e){
+        var rect = ubar.getBoundingClientRect();
+        var rel = (e.clientY - rect.top) / rect.height;
+        rel = Math.max(0, Math.min(1, rel));
+        var docH = document.documentElement.scrollHeight;
+        var viewH = window.innerHeight;
+        var target = rel * (docH - viewH);
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      });
+
+      window.addEventListener('scroll', render, { passive: true });
+      window.addEventListener('resize', render);
+      render();
+      // re-render after layout settles (banner glitch, fonts loading)
+      setTimeout(render, 200);
+      setTimeout(render, 1200);
+    })();
 
     // glitch in all text on page load (cascades top-down by vertical position)
     (function(){

@@ -84,6 +84,7 @@
       display: inline-block;
     }
     @media (max-width: 600px) { .banner { font-size: 8px; } }
+    .banner .race-hl { color: #c4a6e8; }
 
     .head {
       display: flex;
@@ -800,13 +801,32 @@
       if (now - lastStep > 1800) { step(); lastStep = now; }
       if (now - lastFrame > 50) {
         lastFrame = now;
+        // determine the hovered race gene, if any
+        var highlightG = null;
+        if (mxActive) {
+          var gx = Math.floor(mx) + PAD;
+          var gy = Math.floor(my) + PAD;
+          if (gy >= 0 && gy < HH && gx >= 0 && gx < WW) {
+            var hg = grid[gy][gx];
+            if (hg > 0) highlightG = hg;
+          }
+        }
+        var BAND = 0.08;
         var rows = new Array(H);
         for (var y = 0; y < H; y++) {
           var line = '';
-          for (var x = 0; x < W; x++) line += shadeFor(grid[y + PAD][x + PAD]);
+          for (var x = 0; x < W; x++) {
+            var gv = grid[y + PAD][x + PAD];
+            var pair = shadeFor(gv);
+            if (highlightG !== null && gv > 0 && Math.abs(gv - highlightG) <= BAND) {
+              line += '<span class="race-hl">' + pair + '</span>';
+            } else {
+              line += pair;
+            }
+          }
           rows[y] = line;
         }
-        el.textContent = rows.join('\n');
+        el.innerHTML = rows.join('\n');
       }
       requestAnimationFrame(render);
     }

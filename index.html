@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LUKE WEBER</title>
   <meta name="description" content="luke weber. 31. american. building eisberg.ai. ai advisor and researcher at intervance.">
-  <link rel="icon" type="image/svg+xml" href="res/images/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%2F%3E">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLM10NKPV7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -619,9 +619,44 @@
     var tipEl = document.getElementById('tip-popover');
     if (!tipEl) return;
 
+    var TIP_POOL = '░▒▓█▀▄▌▐▘▖▝▗▙▟▛▜▞▚abcdefghijklmnopqrstuvwxyz0123456789·•◆◇';
+    var tipGlitchId = 0;
+    function glitchTip(finalText){
+      var myId = ++tipGlitchId;
+      var start = performance.now();
+      var TOTAL_MS = 320;
+      var TAIL_MS = 180;
+      var lockAt = new Array(finalText.length);
+      for (var i = 0; i < finalText.length; i++) {
+        var c = finalText[i];
+        if (c === ' ' || c === '\n' || c === '\t') { lockAt[i] = 0; continue; }
+        lockAt[i] = (i / Math.max(1, finalText.length)) * (TOTAL_MS - TAIL_MS) + Math.random() * TAIL_MS;
+      }
+      function tick(now){
+        if (myId !== tipGlitchId) return; // a newer showTip superseded this
+        var t = now - start;
+        var out = '';
+        var anyUnlocked = false;
+        for (var i = 0; i < finalText.length; i++) {
+          var c = finalText[i];
+          if (t >= lockAt[i]) {
+            out += c;
+          } else {
+            anyUnlocked = true;
+            if (c === ' ' || c === '\n' || c === '\t') out += c;
+            else out += TIP_POOL[Math.floor(Math.random() * TIP_POOL.length)];
+          }
+        }
+        tipEl.textContent = out;
+        if (anyUnlocked) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
     function showTip(triggerEl){
       var text = triggerEl.getAttribute('data-tip');
       if (!text) return;
+      // set final text first so we can measure final dimensions for positioning
       tipEl.textContent = text;
       // park off-screen first so we can measure rendered width
       tipEl.style.top = '-9999px';
@@ -643,9 +678,12 @@
       tipEl.style.top = top + 'px';
       tipEl.style.left = left + 'px';
       tipEl.classList.add('visible');
+      // glitch-in animation
+      glitchTip(text);
     }
 
     function hideTip(){
+      tipGlitchId++; // cancel any in-progress glitch
       tipEl.classList.remove('visible');
     }
 
@@ -748,6 +786,103 @@
 
     function clamp01(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
     function gauss(){ return (Math.random() + Math.random() + Math.random() - 1.5) * 0.6; }
+
+    // dynamic favicon: dominant race in the conway sim
+    var faviconLink = document.querySelector('link[rel="icon"]');
+    var lastFaviconBin = -1;
+    var BINS = 8;
+    var faviconGlitching = true;
+
+    // render a single conway cell with the actual texture of its shade char
+    // (░ ~25% dots · ▒ 50% checker · ▓ ~75% dense · █ solid) — centered + crisp
+    var FAV_PATTERNS = [
+      [[1,0,1,0,1,0],
+       [0,0,0,0,0,0],
+       [1,0,1,0,1,0],
+       [0,0,0,0,0,0],
+       [1,0,1,0,1,0],
+       [0,0,0,0,0,0]],
+      [[1,0,1,0,1,0],
+       [0,1,0,1,0,1],
+       [1,0,1,0,1,0],
+       [0,1,0,1,0,1],
+       [1,0,1,0,1,0],
+       [0,1,0,1,0,1]],
+      [[0,1,0,1,0,1],
+       [1,1,1,1,1,1],
+       [0,1,0,1,0,1],
+       [1,1,1,1,1,1],
+       [0,1,0,1,0,1],
+       [1,1,1,1,1,1]],
+      [[1,1,1,1,1,1],
+       [1,1,1,1,1,1],
+       [1,1,1,1,1,1],
+       [1,1,1,1,1,1],
+       [1,1,1,1,1,1],
+       [1,1,1,1,1,1]]
+    ];
+    function geneToSVG(gene){
+      var shade = Math.min(3, Math.max(0, Math.floor(gene * 4)));
+      var p = FAV_PATTERNS[shade];
+      var SIZE = 18;
+      var OFF = (32 - SIZE) / 2;
+      var CELL = SIZE / 6; // 3px
+      var rects = '';
+      for (var y = 0; y < 6; y++) {
+        for (var x = 0; x < 6; x++) {
+          if (p[y][x]) {
+            rects += '<rect x="' + (OFF + x * CELL) + '" y="' + (OFF + y * CELL) +
+                     '" width="' + CELL + '" height="' + CELL + '"/>';
+          }
+        }
+      }
+      return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">' +
+        '<style>rect{fill:#1a1a1a}@media (prefers-color-scheme:dark){rect{fill:#ededed}}</style>' +
+        rects + '</svg>';
+    }
+
+    // glitch-in the favicon on load: cycle through random shades, slowing,
+    // then release control to the conway sim's dominant-race updates.
+    function glitchFaviconIn(){
+      var start = performance.now();
+      var DURATION = 1100;
+      function tick(now){
+        var t = now - start;
+        if (t >= DURATION) {
+          faviconGlitching = false;
+          return;
+        }
+        if (faviconLink) {
+          faviconLink.href = 'data:image/svg+xml,' + encodeURIComponent(geneToSVG(Math.random()));
+        }
+        // ease the interval from 60ms → 200ms as we settle
+        var interval = 60 + (t / DURATION) * 140;
+        setTimeout(function(){ tick(performance.now()); }, interval);
+      }
+      tick(performance.now());
+    }
+    glitchFaviconIn();
+
+    function updateFavicon(g){
+      if (!faviconLink || !g || faviconGlitching) return;
+      var counts = new Array(BINS); for (var b = 0; b < BINS; b++) counts[b] = 0;
+      for (var y = 0; y < HH; y++) {
+        for (var x = 0; x < WW; x++) {
+          var v = g[y][x];
+          if (v > 0) {
+            var bin = Math.min(BINS - 1, Math.floor(v * BINS));
+            counts[bin]++;
+          }
+        }
+      }
+      var maxC = -1, maxBin = -1;
+      for (var b = 0; b < BINS; b++) if (counts[b] > maxC) { maxC = counts[b]; maxBin = b; }
+      if (maxBin < 0 || maxBin === lastFaviconBin) return;
+      lastFaviconBin = maxBin;
+      var gene = (maxBin + 0.5) / BINS;
+      var svg = geneToSVG(gene);
+      faviconLink.href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+    }
     function shadeFor(g){
       if (g <= 0) return '  ';
       // map gene in (0,1] → one of 4 square shades; print 2 chars wide for square cells
@@ -838,6 +973,9 @@
           if (v > 0) liveCount++;
         }
       }
+      // tally per-race population in nextG (race = gene bin) and update favicon
+      updateFavicon(nextG);
+
       if (liveCount < WW * HH * 0.18 || Math.random() < 0.02) {
         var cx = Math.floor(Math.random() * WW);
         var cy = Math.floor(Math.random() * HH);

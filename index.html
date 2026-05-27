@@ -278,6 +278,77 @@
       .links .break-m { display: block; }
     }
 
+    /* draft warning overlay */
+    .warn {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 14, 14, 0.88);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      transition: opacity 0.3s ease;
+      font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+    }
+    .warn.fade { opacity: 0; pointer-events: none; }
+    .warn-card {
+      width: 100%;
+      max-width: 460px;
+      padding: 22px 20px 20px;
+      border: 1px dashed var(--rule);
+      background: var(--bg);
+      text-align: center;
+      color: var(--text);
+      box-sizing: border-box;
+    }
+    @media (max-width: 480px) {
+      .warn-card { padding: 18px 14px 16px; }
+    }
+    .warn-tape {
+      font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", monospace;
+      font-size: 14px;
+      line-height: 1.0;
+      letter-spacing: 0;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      user-select: none;
+      height: 16px;
+    }
+    .warn-title {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      margin: 18px auto;
+      color: var(--text);
+    }
+    .warn-body {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      margin: 28px 0 24px;
+    }
+    .warn-body p { margin: 0; }
+    .warn-close {
+      font-family: inherit;
+      font-size: 13px;
+      background: none;
+      color: var(--text);
+      border: 1px dashed var(--rule);
+      padding: 8px 14px;
+      cursor: none;
+    }
+    .warn-close:hover {
+      color: #c4a6e8;
+      border-color: #c4a6e8;
+      font-weight: 700;
+    }
+    @media (hover: none) and (pointer: coarse) { .warn-close { cursor: auto; } }
+
     .updated {
       margin-top: 36px;
       font-size: 11px;
@@ -295,6 +366,21 @@
 </head>
 
 <body>
+<div class="warn" id="warn" role="dialog" aria-modal="true" aria-labelledby="warn-title">
+  <div class="warn-card">
+    <div class="warn-tape" id="warn-tape-top" aria-hidden="true"></div>
+    <svg class="warn-title" id="warn-title" role="img" aria-label="BEWARE" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" shape-rendering="crispEdges" fill="currentColor"><rect x="0" y="0" width="30" height="5"/><rect x="40" y="0" width="35" height="5"/><rect x="80" y="0" width="5" height="5"/><rect x="110" y="0" width="5" height="5"/><rect x="135" y="0" width="5" height="5"/><rect x="160" y="0" width="30" height="5"/><rect x="200" y="0" width="35" height="5"/><rect x="0" y="5" width="5" height="5"/><rect x="30" y="5" width="5" height="5"/><rect x="40" y="5" width="5" height="5"/><rect x="80" y="5" width="5" height="5"/><rect x="95" y="5" width="5" height="5"/><rect x="110" y="5" width="5" height="5"/><rect x="130" y="5" width="5" height="5"/><rect x="140" y="5" width="5" height="5"/><rect x="160" y="5" width="5" height="5"/><rect x="190" y="5" width="5" height="5"/><rect x="200" y="5" width="5" height="5"/><rect x="0" y="10" width="5" height="5"/><rect x="30" y="10" width="5" height="5"/><rect x="40" y="10" width="5" height="5"/><rect x="80" y="10" width="5" height="5"/><rect x="95" y="10" width="5" height="5"/><rect x="110" y="10" width="5" height="5"/><rect x="125" y="10" width="5" height="5"/><rect x="145" y="10" width="5" height="5"/><rect x="160" y="10" width="5" height="5"/><rect x="190" y="10" width="5" height="5"/><rect x="200" y="10" width="5" height="5"/><rect x="0" y="15" width="30" height="5"/><rect x="40" y="15" width="25" height="5"/><rect x="80" y="15" width="5" height="5"/><rect x="95" y="15" width="5" height="5"/><rect x="110" y="15" width="5" height="5"/><rect x="120" y="15" width="5" height="5"/><rect x="150" y="15" width="5" height="5"/><rect x="160" y="15" width="30" height="5"/><rect x="200" y="15" width="25" height="5"/><rect x="0" y="20" width="5" height="5"/><rect x="30" y="20" width="5" height="5"/><rect x="40" y="20" width="5" height="5"/><rect x="80" y="20" width="5" height="5"/><rect x="95" y="20" width="5" height="5"/><rect x="110" y="20" width="5" height="5"/><rect x="120" y="20" width="35" height="5"/><rect x="160" y="20" width="5" height="5"/><rect x="180" y="20" width="5" height="5"/><rect x="200" y="20" width="5" height="5"/><rect x="0" y="25" width="5" height="5"/><rect x="30" y="25" width="5" height="5"/><rect x="40" y="25" width="5" height="5"/><rect x="80" y="25" width="5" height="5"/><rect x="95" y="25" width="5" height="5"/><rect x="110" y="25" width="5" height="5"/><rect x="120" y="25" width="5" height="5"/><rect x="150" y="25" width="5" height="5"/><rect x="160" y="25" width="5" height="5"/><rect x="185" y="25" width="5" height="5"/><rect x="200" y="25" width="5" height="5"/><rect x="0" y="30" width="30" height="5"/><rect x="40" y="30" width="35" height="5"/><rect x="85" y="30" width="10" height="5"/><rect x="100" y="30" width="10" height="5"/><rect x="120" y="30" width="5" height="5"/><rect x="150" y="30" width="5" height="5"/><rect x="160" y="30" width="5" height="5"/><rect x="190" y="30" width="5" height="5"/><rect x="200" y="30" width="35" height="5"/></svg>
+    <div class="warn-tape" id="warn-tape-bot" aria-hidden="true"></div>
+    <div class="warn-body">
+      <p>hark, traveller —</p>
+      <p>ye behold a draft most foul,</p>
+      <p>the ink yet wet, the seal unsworn.</p>
+      <p>words may shift; claims may rot;</p>
+      <p>mind thy step.</p>
+    </div>
+    <button class="warn-close" id="warn-close">[ proceed with caution ]</button>
+  </div>
+</div>
 <main>
 
   <pre class="banner" id="banner" aria-hidden="true"></pre>
@@ -502,6 +588,42 @@
       ctaClose.addEventListener('click', function(){ cta.classList.add('hidden'); });
     }
 
+    // draft warning overlay — shows on every load (no persistence)
+    var warn = document.getElementById('warn');
+    var warnClose = document.getElementById('warn-close');
+    if (warn && warnClose) {
+      // animated caution tape above + below the title (opposite directions)
+      var tapeTop = document.getElementById('warn-tape-top');
+      var tapeBot = document.getElementById('warn-tape-bot');
+      var TAPE_PATTERN = '█▓▒░ ░▒▓';
+      var TAPE_LEN = TAPE_PATTERN.length;
+      var tapeOffset = 0;
+      var tapeChars = 90;
+      function renderTape(el, dir){
+        if (!el) return;
+        var s = '';
+        for (var i = 0; i < tapeChars; i++) {
+          var idx = ((i + tapeOffset * dir) % TAPE_LEN + TAPE_LEN) % TAPE_LEN;
+          s += TAPE_PATTERN[idx];
+        }
+        el.textContent = s;
+      }
+      function tickTape(){
+        tapeOffset++;
+        renderTape(tapeTop, 1);
+        renderTape(tapeBot, -1);
+      }
+      tickTape();
+      var tapeInterval = setInterval(tickTape, 110);
+
+      warnClose.addEventListener('click', function(){
+        warn.classList.add('fade');
+        clearInterval(tapeInterval);
+        setTimeout(function(){ warn.remove(); }, 320);
+        if (window.__startTextGlitch) window.__startTextGlitch();
+      });
+    }
+
     // custom unicode scrollbar
     (function(){
       var ubar = document.getElementById('ubar');
@@ -615,30 +737,47 @@
         e.node.nodeValue = scrambled;
       });
 
-      var start = performance.now();
-      function tick(now){
-        var t = now - start;
-        var allDone = true;
-        for (var s = 0; s < entries.length; s++) {
-          var entry = entries[s];
-          var out = '';
-          var anyUnlocked = false;
-          for (var i = 0; i < entry.final.length; i++) {
-            var c = entry.final[i];
-            if (t >= entry.lockAt[i]) {
-              out += c;
-            } else {
-              anyUnlocked = true;
-              if (c === ' ' || c === '\n' || c === '\t') out += c;
-              else out += POOL[Math.floor(Math.random() * POOL.length)];
+      function startAnimation(){
+        var start = performance.now();
+        function tick(now){
+          var t = now - start;
+          var allDone = true;
+          for (var s = 0; s < entries.length; s++) {
+            var entry = entries[s];
+            var out = '';
+            var anyUnlocked = false;
+            for (var i = 0; i < entry.final.length; i++) {
+              var c = entry.final[i];
+              if (t >= entry.lockAt[i]) {
+                out += c;
+              } else {
+                anyUnlocked = true;
+                if (c === ' ' || c === '\n' || c === '\t') out += c;
+                else out += POOL[Math.floor(Math.random() * POOL.length)];
+              }
             }
+            entry.node.nodeValue = out;
+            if (anyUnlocked) allDone = false;
           }
-          entry.node.nodeValue = out;
-          if (anyUnlocked) allDone = false;
+          if (!allDone) requestAnimationFrame(tick);
         }
-        if (!allDone) requestAnimationFrame(tick);
+        requestAnimationFrame(tick);
       }
-      requestAnimationFrame(tick);
+
+      // text stays scrambled until startAnimation is called.
+      // if the draft-warning modal is present, that modal triggers it on close;
+      // otherwise start immediately.
+      window.__startTextGlitch = (function(){
+        var called = false;
+        return function(){
+          if (called) return;
+          called = true;
+          startAnimation();
+        };
+      })();
+      if (!document.getElementById('warn')) {
+        window.__startTextGlitch();
+      }
     })();
 
     // shared tooltip element positioned in viewport coords

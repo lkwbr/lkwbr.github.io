@@ -393,13 +393,13 @@
       <div class="muted">31 / AMERICAN</div>
     </div>
     <div class="head-now">
-      <div class="now-line">building <a class="r" href="https://eisberg.ai" data-tip="ai product studio; pre-launch" target="_blank" rel="noopener noreferrer">eisberg</a></div>
+      <div class="now-line">currently building <span class="r" id="building-blank" tabindex="0" data-tip="announcing soon" aria-label="announcing soon">░▒▓▙▟▚▞</span></div>
       <div class="now-line">AI advisor and researcher at <a class="r" href="https://www.intervance.com" data-tip="interpretable AI against cancer" target="_blank" rel="noopener noreferrer">intervance</a></div>
     </div>
   </div>
 
   <div class="cta" id="cta">
-    <a class="cta-link" href="mailto:luke@eisberg.ai">[ got talent? work for me ]</a>
+    <a class="cta-link" href="mailto:lkgwbr@gmail.com">[ got talent? work for me ]</a>
     <button class="cta-close" id="cta-close" aria-label="close">×</button>
   </div>
 
@@ -587,6 +587,21 @@
     if (ctaClose && cta) {
       ctaClose.addEventListener('click', function(){ cta.classList.add('hidden'); });
     }
+
+    // "currently building ____" — the blank is a forever-cycling glyph jumble
+    (function(){
+      var blank = document.getElementById('building-blank');
+      if (!blank) return;
+      var POOL = '░▒▓█▀▄▌▐▘▖▝▗▙▟▛▜▞▚#@%&*<>/\\|=+?§¶';
+      var LEN = 7;
+      function scramble(){
+        var s = '';
+        for (var i = 0; i < LEN; i++) s += POOL[Math.floor(Math.random() * POOL.length)];
+        blank.textContent = s;
+      }
+      scramble();
+      setInterval(scramble, 90);
+    })();
 
     // draft warning overlay — shows on every load (no persistence)
     var warn = document.getElementById('warn');

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luke Weber · CV</title>
+  <meta name="description" content="Luke Weber’s CV. Founder and engineer, former Chief Engineer at Omic, and AI advisor and researcher at Intervance.">
+  <link rel="canonical" href="https://lkwbr.com/cv/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Luke Weber · CV">
+  <meta property="og:description" content="Founder and engineer. Built most of Omic OS. AI advisor and researcher at Intervance.">
+  <meta property="og:url" content="https://lkwbr.com/cv/">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #fafafa;
+      --ink: #1a1a1a;
+      --muted: #626262;
+      --rule: #d4d4d4;
+      --accent: #7141a5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #0e0e0e;
+        --ink: #ededed;
+        --muted: #a3a3a3;
+        --rule: #393939;
+        --accent: #c4a6e8;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 14px/1.65 ui-monospace, "JetBrains Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+    }
+    main { max-width: 708px; margin: auto; padding: 46px 24px 50px; }
+    h1 { font-size: clamp(1.75rem, 5vw, 2.25rem); line-height: 1.1; margin: 0; }
+    header p { margin: .8rem 0; }
+    .lead { font-weight: 650; }
+    nav { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; }
+    a { color: inherit; text-underline-offset: .2em; text-decoration-color: var(--rule); }
+    a:hover, a:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
+    section { margin-top: 1.75rem; }
+    h2 {
+      font-size: .84rem;
+      font-weight: 500;
+      color: var(--muted);
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+      margin: 0 0 .85rem;
+    }
+    h2::after {
+      content: "";
+      flex: 1;
+      height: .47rem;
+      background: repeating-linear-gradient(90deg, var(--rule) 0 3px, transparent 3px 6px);
+    }
+    article { margin: 0 0 1rem; }
+    h3, .entry-time { display: inline; font-size: inherit; }
+    .entry-time { color: var(--muted); font-size: .85em; }
+    article p { margin: .2rem 0 0; }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: .45rem .8rem; margin: 0; }
+    dt { font-weight: 650; }
+    dd { margin: 0; }
+    @media (max-width: 550px) {
+      main { padding: 28px 18px 34px; }
+      dl { display: block; }
+      dd { margin: .15rem 0 .65rem; }
+    }
+    @page { size: letter; margin: .55in .62in; }
+    @media print {
+      :root { color-scheme: light; --paper: #fff; --ink: #151515; --muted: #505050; --rule: #b9b9b9; }
+      body { font-size: 9.5pt; line-height: 1.48; }
+      main { max-width: none; padding: 0; }
+      h2, h3, dt { break-after: avoid; }
+      article { break-inside: avoid; }
+      a { text-decoration: underline; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>LUKE WEBER</h1>
+    <p class="lead">i build AI products and the systems that keep them running.</p>
+    <p>founder and engineer in seattle. AI advisor and researcher with intervance.</p>
+    <nav aria-label="Contact and profiles">
+      <a href="mailto:lkgwbr@gmail.com">email</a>
+      <a href="/">home</a>
+      <a href="https://github.com/lkwbr">github</a>
+      <a href="https://www.upwork.com/freelancers/lkwbr">upwork</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="work">
+    <h2 id="work">work</h2>
+    <article>
+      <h3>stealth AI company / founder &amp; CEO</h3>
+      <span class="entry-time"> · current</span>
+      <p>building AI tools for small businesses.</p>
+    </article>
+    <article>
+      <h3>eisberg / co-founder &amp; CTO</h3>
+      <span class="entry-time"> · dec ’25–jun ’26</span>
+      <p>built an AI app builder for web, iOS, and Android, from resumable agents and automatic build repair to databases, auth, publishing, and billing. first app builds in early runs took under five minutes and cost about $0.15–$0.30 per generation.</p>
+    </article>
+    <article>
+      <h3>independent consulting / AI &amp; software engineer</h3>
+      <span class="entry-time"> · jun ’22–current</span>
+      <p>earned Upwork Expert-Vetted recognition in under three months. advised founders, screened CTO candidates, and built software for research teams and businesses.</p>
+    </article>
+    <article>
+      <h3>brighter.ai / senior engineer</h3>
+      <span class="entry-time"> · jan–jun ’23 · berlin</span>
+      <p>built video-processing infrastructure and load tests on Azure and Kubernetes. reworked request scheduling and cut wait times by 10× in the measured workload. drove the backend v2 roadmap.</p>
+    </article>
+    <article>
+      <h3>omic / research scientist → chief engineer</h3>
+      <span class="entry-time"> · apr ’19–feb ’21 · seattle</span>
+      <p>built most of the new Omic OS stack from scratch. wrote the distributed workflow engine and cloud file system, helped integrate the research knowledge graph, and authored the <a href="https://pypi.org/project/omic/">public Python client</a>.</p>
+      <p>helped steer the product through several pivots and led 15 engineers, researchers, and interns over my tenure, with five to six direct reports at peak.</p>
+    </article>
+    <article>
+      <h3>vizinet / AIRPACT-Fire / research engineer</h3>
+      <span class="entry-time"> · sep ’18–apr ’19</span>
+      <p>built computer vision models to estimate wildfire smoke and fine particulate matter from imagery. designed the earlier Android image collection app at WSU and led pre-release feedback sessions for the later system.</p>
+    </article>
+    <article>
+      <h3>microsoft / software engineer, contract</h3>
+      <span class="entry-time"> · dec ’17–sep ’18 · redmond</span>
+      <p>built Azure privacy infrastructure for data exports and deletion across 1,000+ Microsoft service teams. wrote a storage package that handled 2M+ daily requests.</p>
+    </article>
+  </section>
+
+  <section aria-labelledby="consulting">
+    <h2 id="consulting">selected client work</h2>
+    <dl>
+      <dt>intervance</dt>
+      <dd>built research software for gene-expression-based risk estimates and tissue-subtype prediction. worked on reproducible model evaluation and a research dashboard for clinicians.</dd>
+      <dt>farenhyte</dt>
+      <dd>building an AI-assisted insurance workspace for policy review and quote comparison, including agency workflows, access controls, and backend integrations.</dd>
+      <dt>flowium</dt>
+      <dd>built AI-assisted tagging and content workflows. improved permissions, storage accounting, and background job ownership.</dd>
+      <dt>nextplay</dt>
+      <dd>delivered a computer vision feature in about a week, then packaged and deployed the video-analysis worker to Google Cloud.</dd>
+      <dt>caide</dt>
+      <dd>designed the screening process and interviewed CTO candidates for an AI sales startup.</dd>
+      <dt>mallawa</dt>
+      <dd>wrote and debugged MQTT scripts for automated irrigation control in australia.</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="projects">
+    <h2 id="projects">other things i built</h2>
+    <dl>
+      <dt><a href="https://github.com/lkwbr/punk5">punk5</a></dt>
+      <dd>custom realtime Python multiplayer engine for embodied AI agents. YC’s W24 feedback placed the application in the top 10%.</dd>
+      <dt>gpyr</dt>
+      <dd>built a multimodal travel graph for finding cheaper routes from 500,000+ bus, rail, and flight records.</dd>
+      <dt>central access</dt>
+      <dd>built desktop software at Central Washington University to turn textbooks into text and speech for students with disabilities.</dd>
+      <dt>mount baker</dt>
+      <dd>built a mobile weather site for people headed into the mountains and processed more than a million NOAA weather records.</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="education">
+    <h2 id="education">education</h2>
+    <article>
+      <h3>washington state university / B.S. computer science</h3>
+      <span class="entry-time"> · ’17 · cum laude</span>
+      <p>specialized in artificial intelligence. took graduate-level machine learning and structured prediction as an undergraduate. selected coursework also included AI, algorithms, operating systems, software engineering, and databases.</p>
+      <p>researched developer task assignment with <a href="https://eecs.wsu.edu/~jana/">Jana Doppa</a> and Venera Arnaoudova. additional training in deep learning, deep reinforcement learning, and autonomous flight.</p>
+    </article>
+  </section>
+</main>
+</body>
+</html>

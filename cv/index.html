@@ -13,167 +13,255 @@
   <style>
     :root {
       color-scheme: light dark;
-      --paper: #fafafa;
-      --ink: #1a1a1a;
-      --muted: #626262;
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
       --rule: #d4d4d4;
       --accent: #7141a5;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --paper: #0e0e0e;
-        --ink: #ededed;
+        --bg: #0e0e0e;
+        --text: #ededed;
         --muted: #a3a3a3;
-        --rule: #393939;
+        --rule: #2a2a2a;
         --accent: #c4a6e8;
       }
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--text); }
     body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 14px/1.65 ui-monospace, "JetBrains Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+      font: 14px/1.65 ui-monospace, "JetBrains Mono", "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+      -webkit-font-smoothing: antialiased;
+      padding: 36px 24px 28px;
+      min-height: 100vh;
     }
-    main { max-width: 708px; margin: auto; padding: 46px 24px 50px; }
-    h1 { font-size: clamp(1.75rem, 5vw, 2.25rem); line-height: 1.1; margin: 0; }
-    header p { margin: .8rem 0; }
-    .lead { font-weight: 650; }
-    nav { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; }
-    a { color: inherit; text-underline-offset: .2em; text-decoration-color: var(--rule); }
-    a:hover, a:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
-    section { margin-top: 1.75rem; }
-    h2 {
-      font-size: .84rem;
-      font-weight: 500;
-      color: var(--muted);
+    main { max-width: 660px; margin: 0 auto; }
+    .banner {
+      font: inherit;
+      font-size: 10px;
+      line-height: 1;
+      background: rgba(127, 127, 127, 0.08);
+      white-space: pre;
+      overflow: hidden;
+      margin: 0 0 18px;
+      font-variant-ligatures: none;
+      user-select: none;
+    }
+    .head {
       display: flex;
-      gap: .75rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .head-bio, .head-contact { display: flex; flex-direction: column; gap: 2px; }
+    .head-contact { align-items: flex-end; color: var(--muted); }
+    .name { font-size: inherit; font-weight: 600; }
+    .muted { color: var(--muted); }
+    a { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--muted); }
+    a:hover, a:focus-visible { color: var(--accent); border-bottom-color: currentColor; }
+    a:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      margin: 0 0 .85rem;
+      justify-content: flex-end;
+      gap: 6px 10px;
+      color: var(--muted);
     }
-    h2::after {
-      content: "";
-      flex: 1;
-      height: .47rem;
-      background: repeating-linear-gradient(90deg, var(--rule) 0 3px, transparent 3px 6px);
+    .links .sep { color: var(--rule); }
+    .section-heading {
+      font-size: inherit;
+      font-weight: 400;
+      color: var(--muted);
+      margin: 22px 0 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      font-variant-ligatures: none;
+      letter-spacing: 0;
     }
+    .section-heading .divider { font-size: 12px; }
     article { margin: 0 0 1rem; }
     h3, .entry-time { display: inline; font-size: inherit; }
-    .entry-time { color: var(--muted); font-size: .85em; }
+    .entry-time { color: var(--muted); }
     article p { margin: .2rem 0 0; }
+    .work-history article { margin: 0 0 12px; }
+    .work-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 1rem;
+      align-items: baseline;
+    }
+    .work-heading .entry-time { white-space: nowrap; }
     dl { display: grid; grid-template-columns: max-content 1fr; gap: .45rem .8rem; margin: 0; }
     dt { font-weight: 650; }
     dd { margin: 0; }
-    @media (max-width: 550px) {
-      main { padding: 28px 18px 34px; }
+    .education-list { margin-top: .2rem; padding-inline-start: 1.25rem; list-style-type: "- "; }
+    .education-list li::marker { color: var(--muted); }
+    @media (max-width: 600px) {
+      body { padding: 28px 18px 24px; }
+      .banner { font-size: 8px; }
+      .head { flex-direction: column; gap: 10px; }
+      .head-contact { align-items: flex-start; }
+      .links { justify-content: flex-start; }
+      .work-heading { grid-template-columns: 1fr; }
       dl { display: block; }
       dd { margin: .15rem 0 .65rem; }
     }
     @page { size: letter; margin: .55in .62in; }
     @media print {
-      :root { color-scheme: light; --paper: #fff; --ink: #151515; --muted: #505050; --rule: #b9b9b9; }
-      body { font-size: 9.5pt; line-height: 1.48; }
-      main { max-width: none; padding: 0; }
-      h2, h3, dt { break-after: avoid; }
-      article { break-inside: avoid; }
-      a { text-decoration: underline; }
+      :root { color-scheme: light; --bg: #fff; --text: #151515; --muted: #505050; --rule: #b9b9b9; }
+      body { font-size: 9.5pt; line-height: 1.48; padding: 0; min-height: 0; }
+      main { max-width: none; }
+      .banner { display: none; }
+      h2 { break-after: avoid; }
     }
   </style>
 </head>
 <body>
 <main>
+  <!-- Still frame of the homepage Game of Life banner. -->
+  <pre class="banner" aria-hidden="true">      ▒▒    ▓▓                                                                                              ▒▒
+            ▒▒                                                                                              ▒▒
+        ▒▒▒▒                                                      ▓▓    ▓▓
+                                                                  ▓▓    ▒▒
+                                                                    ▓▓▓▓
+                                  ▓▓▓▓▓▓
+              ▒▒      ▒▒        ▓▓    ▓▓
+              ▒▒                              ▒▒░░
+                ▒▒▒▒            ▓▓            ▓▓▒▒
+▒▒
+▒▒▒▒                              ▓▓
+                          ▓▓      ▓▓▓▓                                  ▓▓</pre>
   <header>
-    <h1>LUKE WEBER</h1>
-    <p class="lead">i build AI products and the systems that keep them running.</p>
-    <p>founder and engineer in seattle. AI advisor and researcher with intervance.</p>
-    <nav aria-label="Contact and profiles">
-      <a href="mailto:lkgwbr@gmail.com">email</a>
-      <a href="/">home</a>
-      <a href="https://github.com/lkwbr">github</a>
-      <a href="https://www.upwork.com/freelancers/lkwbr">upwork</a>
-    </nav>
+    <div class="head">
+      <div class="head-bio">
+        <h1 class="name">LUKE WEBER</h1>
+        <p class="muted">31 / AMERICAN</p>
+      </div>
+      <div class="head-contact">
+        <nav class="links" aria-label="Profiles">
+          <a href="https://www.linkedin.com/in/lkwbr/">linkedin</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="https://github.com/lkwbr">github</a>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="https://www.upwork.com/freelancers/lkwbr">upwork</a>
+        </nav>
+        <p>lkgwbr@gmail.com</p>
+      </div>
+    </div>
   </header>
 
-  <section aria-labelledby="work">
-    <h2 id="work">work</h2>
+  <section class="work-history" aria-labelledby="work">
+    <h2 class="section-heading" id="work"><span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒</span> work history <span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</span></h2>
     <article>
-      <h3>stealth AI company / founder &amp; CEO</h3>
-      <span class="entry-time"> · current</span>
+      <div class="work-heading">
+        <h3>stealth AI company <span class="work-role">- founder &amp; CEO</span></h3>
+        <span class="entry-time">current</span>
+      </div>
       <p>building AI tools for small businesses.</p>
     </article>
     <article>
-      <h3>eisberg / co-founder &amp; CTO</h3>
-      <span class="entry-time"> · dec ’25–jun ’26</span>
-      <p>built an AI app builder for web, iOS, and Android, from resumable agents and automatic build repair to databases, auth, publishing, and billing. first app builds in early runs took under five minutes and cost about $0.15–$0.30 per generation.</p>
+      <div class="work-heading">
+        <h3>independent consulting <span class="work-role">- AI + software + fractional CTO</span></h3>
+        <span class="entry-time">jun ’22–current</span>
+      </div>
+      <p>reached the top 1% on upwork (expert-vetted) in &lt;3 months. helped ~12 startups across biotech, e-commerce, medtech, and cybersecurity hire executives, prototype products, and build ml models.</p>
     </article>
     <article>
-      <h3>independent consulting / AI &amp; software engineer</h3>
-      <span class="entry-time"> · jun ’22–current</span>
-      <p>earned Upwork Expert-Vetted recognition in under three months. advised founders, screened CTO candidates, and built software for research teams and businesses.</p>
+      <div class="work-heading">
+        <h3><a href="https://eisberg.ai/">eisberg.ai</a> <span class="work-role">- co-founder &amp; CTO</span></h3>
+        <span class="entry-time">dec ’25–jun ’26</span>
+      </div>
+      <p>built a prompt-to-app platform for web, iOS, and Android. early runs generated a first build in under five minutes for about $0.15–$0.30.</p>
     </article>
     <article>
-      <h3>brighter.ai / senior engineer</h3>
-      <span class="entry-time"> · jan–jun ’23 · berlin</span>
-      <p>built video-processing infrastructure and load tests on Azure and Kubernetes. reworked request scheduling and cut wait times by 10× in the measured workload. drove the backend v2 roadmap.</p>
+      <div class="work-heading">
+        <h3><a href="https://brighter.ai/">brighter.ai</a> <span class="work-role">- senior engineer</span></h3>
+        <span class="entry-time">jan–jun ’23</span>
+      </div>
+      <p>built video-processing infrastructure on Azure and Kubernetes for a multibillion-dollar enterprise client. reworked scheduling and cut request wait times by 10× in the measured workload.</p>
     </article>
     <article>
-      <h3>omic / research scientist → chief engineer</h3>
-      <span class="entry-time"> · apr ’19–feb ’21 · seattle</span>
-      <p>built most of the new Omic OS stack from scratch. wrote the distributed workflow engine and cloud file system, helped integrate the research knowledge graph, and authored the <a href="https://pypi.org/project/omic/">public Python client</a>.</p>
-      <p>helped steer the product through several pivots and led 15 engineers, researchers, and interns over my tenure, with five to six direct reports at peak.</p>
+      <div class="work-heading">
+        <h3><a href="https://omic.ai/">omic.ai</a> <span class="work-role">- research scientist → chief engineer</span></h3>
+        <span class="entry-time">apr ’19–feb ’21</span>
+      </div>
+      <p>built most of Omic OS from scratch, including the distributed workflow engine, cloud file system, and <a href="https://pypi.org/project/omic/">public Python client</a>. the engine handled up to about 15 TB/week. helped steer product pivots and led 15 people over my tenure, with 5–6 direct reports at peak.</p>
     </article>
     <article>
-      <h3>vizinet / AIRPACT-Fire / research engineer</h3>
-      <span class="entry-time"> · sep ’18–apr ’19</span>
-      <p>built computer vision models to estimate wildfire smoke and fine particulate matter from imagery. designed the earlier Android image collection app at WSU and led pre-release feedback sessions for the later system.</p>
+      <div class="work-heading">
+        <h3><a href="https://wsu.edu/">washington state university</a> <span class="work-role">- research engineer</span></h3>
+        <span class="entry-time">sep ’18–apr ’19</span>
+      </div>
+      <p>built a computer vision model to estimate air quality from wildfire images and reduce reliance on $10k+ hardware sensors. led pre-release testing for Vizinet, part of <a href="https://airpact.wsu.edu/about.html">AIRPACT-Fire</a>.</p>
     </article>
     <article>
-      <h3>microsoft / software engineer, contract</h3>
-      <span class="entry-time"> · dec ’17–sep ’18 · redmond</span>
-      <p>built Azure privacy infrastructure for data exports and deletion across 1,000+ Microsoft service teams. wrote a storage package that handled 2M+ daily requests.</p>
+      <div class="work-heading">
+        <h3><a href="https://www.microsoft.com/">microsoft</a> <span class="work-role">- software engineer, contract</span></h3>
+        <span class="entry-time">dec ’17–sep ’18</span>
+      </div>
+      <p>built Azure privacy tools used by 1,000+ Microsoft service teams. sped up deletion-request tracking by 32× and wrote a storage package that handled 2M+ requests a day.</p>
     </article>
   </section>
 
   <section aria-labelledby="consulting">
-    <h2 id="consulting">selected client work</h2>
+    <h2 class="section-heading" id="consulting"><span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒</span> selected client work <span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</span></h2>
     <dl>
-      <dt>intervance</dt>
-      <dd>built research software for gene-expression-based risk estimates and tissue-subtype prediction. worked on reproducible model evaluation and a research dashboard for clinicians.</dd>
-      <dt>farenhyte</dt>
-      <dd>building an AI-assisted insurance workspace for policy review and quote comparison, including agency workflows, access controls, and backend integrations.</dd>
-      <dt>flowium</dt>
-      <dd>built AI-assisted tagging and content workflows. improved permissions, storage accounting, and background job ownership.</dd>
-      <dt>nextplay</dt>
-      <dd>delivered a computer vision feature in about a week, then packaged and deployed the video-analysis worker to Google Cloud.</dd>
-      <dt>caide</dt>
+      <dt><a href="https://www.intervance.com/">intervance</a></dt>
+      <dd>built software that used gene expression data to estimate risk and predict tissue subtypes. returned in ’26 to make model evaluations reproducible and help build a research dashboard for clinicians.</dd>
+      <dt><a href="https://www.caide.io/">caide</a></dt>
       <dd>designed the screening process and interviewed CTO candidates for an AI sales startup.</dd>
-      <dt>mallawa</dt>
-      <dd>wrote and debugged MQTT scripts for automated irrigation control in australia.</dd>
+      <dt><a href="https://farenhyte.com/">farenhyte</a></dt>
+      <dd>building an AI-assisted insurance workspace at an angel-backed startup. work covers policy review, quote comparison, agency workflows, access controls, and backend integrations.</dd>
+      <dt><a href="https://www.next-play.co/">nextplay</a></dt>
+      <dd>delivered a computer vision feature in about a week, then packaged and deployed the video-analysis worker to Google Cloud.</dd>
     </dl>
   </section>
 
   <section aria-labelledby="projects">
-    <h2 id="projects">other things i built</h2>
+    <h2 class="section-heading" id="projects"><span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒</span> other things i built <span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</span></h2>
     <dl>
       <dt><a href="https://github.com/lkwbr/punk5">punk5</a></dt>
       <dd>custom realtime Python multiplayer engine for embodied AI agents. YC’s W24 feedback placed the application in the top 10%.</dd>
       <dt>gpyr</dt>
       <dd>built a multimodal travel graph for finding cheaper routes from 500,000+ bus, rail, and flight records.</dd>
+      <dt>breathefit</dt>
+      <dd>co-founded a breath-sensor startup in my last semester at WSU. after graduation and before joining Microsoft, i worked on an Arduino prototype that sent sensor readings to an Android app over Bluetooth.</dd>
       <dt>central access</dt>
       <dd>built desktop software at Central Washington University to turn textbooks into text and speech for students with disabilities.</dd>
-      <dt>mount baker</dt>
-      <dd>built a mobile weather site for people headed into the mountains and processed more than a million NOAA weather records.</dd>
+      <dt>baker bros</dt>
+      <dd>built a mobile weather site for my uncle, then an engineering director at Google. processed more than a million NOAA weather records for mount baker visitors.</dd>
     </dl>
   </section>
 
   <section aria-labelledby="education">
-    <h2 id="education">education</h2>
+    <h2 class="section-heading" id="education"><span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒</span> education <span class="divider" aria-hidden="true">░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒░▒</span></h2>
     <article>
-      <h3>washington state university / B.S. computer science</h3>
+      <h3><a href="https://wsu.edu/">washington state university</a> / B.S. computer science</h3>
       <span class="entry-time"> · ’17 · cum laude</span>
-      <p>specialized in artificial intelligence. took graduate-level machine learning and structured prediction as an undergraduate. selected coursework also included AI, algorithms, operating systems, software engineering, and databases.</p>
-      <p>researched developer task assignment with <a href="https://eecs.wsu.edu/~jana/">Jana Doppa</a> and Venera Arnaoudova. additional training in deep learning, deep reinforcement learning, and autonomous flight.</p>
+      <ul class="education-list">
+        <li>artificial intelligence specialization</li>
+        <li>graduate-level machine learning and structured prediction, taken as an undergraduate</li>
+        <li>selected coursework in AI, algorithms, operating systems, software engineering, and databases</li>
+        <li>research on developer task assignment with <a href="https://eecs.wsu.edu/~jana/">Jana Doppa</a> and Venera Arnaoudova</li>
+      </ul>
+    </article>
+    <article>
+      <h3>training</h3>
+      <ul class="education-list">
+        <li>Udacity <a href="https://www.udacity.com/certificate/e/fa62fc84-c12a-11e8-9b68-4fed73b64fa3">Deep Reinforcement Learning Nanodegree</a> (2019)</li>
+        <li>Udacity <a href="https://www.udacity.com/certificate/e/b6733756-2b42-11e8-901e-ff75ef612fd4">Autonomous Flight Engineer Nanodegree</a> (2018)</li>
+        <li>DeepLearning.AI’s Deep Learning Specialization</li>
+      </ul>
+    </article>
+    <article>
+      <h3>competitions</h3>
+      <ul class="education-list">
+        <li>Crimson Code finalist (2017)</li>
+        <li>WSU Hackathon finalist (2015)</li>
+      </ul>
     </article>
   </section>
 </main>
